@@ -1,3 +1,4 @@
+import React from "react";
 import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -17,13 +18,8 @@ import Wellness from "./Pages/Wellness";
 import AdminDashboard from "./Pages/AdminDashboard";
 import Login from "./Pages/Login";
 import Article from "./Pages/Article";
-import ScrollToTopButton from "./components/ScrollToTopButton";
-
-
-// Import Dark Mode Context
+import ScrollToTop from "./components/ScrollToTop";
 import { DarkModeProvider } from "./context/Darkmodecontect";
-
-import React from "react";
 
 function AppContent() {
   const location = useLocation();
@@ -32,6 +28,7 @@ function AppContent() {
   return (
     <>
       {!hideHeaderFooter && <Header />}
+      <ScrollToTop />
       <main className="min-h-[calc(100vh-128px)]">
         <Routes>
           <Route path="/home1" element={<Home1 />} />
@@ -47,10 +44,9 @@ function AppContent() {
           <Route path="/stress" element={<Stress />} />
           <Route path="/holistic" element={<Holistic />} />
           <Route path="/wellness" element={<Wellness />} />
-          <Route path="/AdminDashboard" element={<AdminDashboard />} />
+          <Route path="/admindashboard" element={<AdminDashboard />} />
           <Route path="/" element={<Login />} />
-          <Route path="/Article" element={<Article />} />
-          <Route path="/ScrollToTopButton" element={<ScrollToTopButton />} />
+          <Route path="/article" element={<Article />} />
         </Routes>
       </main>
       {!hideHeaderFooter && <Footer />}

@@ -348,7 +348,10 @@ const Nutrition = () => {
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="absolute inset-0 w-full h-full object-cover"
             src={vedio}
-            alt="Nutrition Hero"
+            autoPlay
+            muted
+            loop
+            playsInline
           />
           <div className="absolute inset-0 bg-black/50 transition-colors duration-500" />
           <div className="relative z-10 flex flex-col items-center justify-center text-center w-full h-full px-4">
@@ -371,316 +374,256 @@ const Nutrition = () => {
           </div>
         </section>
 
-        {/* Image + Content Section */}
-        <section className="w-full py-20 px-6 bg-gray-50 dark:bg-gray-900">
+
+        
+
+  {/* Image + Content Section */}
+      <section className={themedClass("w-full py-20 px-6", "bg-gray-900", "bg-gray-50", theme)}>
+        <motion.div
+          className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           <motion.div
-            className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
+            className="w-full md:w-1/2 flex justify-center"
+            variants={itemVariants}
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
           >
-            <motion.div
-              className="w-full md:w-1/2 flex justify-center"
+            <img
+              src={wellnessImg}
+              alt="Wellness Strategy"
+              className="rounded-2xl shadow-lg object-cover w-full sm:w-8/12 md:w-10/12 max-h-[400px]"
+            />
+          </motion.div>
+
+          <motion.div
+            className="w-full md:w-1/2 text-left"
+            variants={itemVariants}
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          >
+            <motion.h2
+              className={themedClass(
+                "text-4xl md:text-5xl font-bold mb-6 hover:text-orange-600",
+                "text-white",
+                "text-black",
+                theme
+              )}
               whileHover={{ scale: 1.05 }}
               transition={{ type: "spring", stiffness: 300 }}
             >
-              <img
-                src={wellnessImg}
-                alt="Wellness Strategy"
-                className="rounded-2xl shadow-lg object-cover w-full sm:w-10/12 md:w-full"
-              />
-            </motion.div>
+              {t("sectionTitle", language)}
+            </motion.h2>
 
-            <motion.div
-              className="w-full md:w-1/2 text-left"
+            <motion.p
+              className={themedClass(
+                "mb-8 text-justify",
+                "text-gray-300",
+                "text-gray-700",
+                theme
+              )}
               variants={itemVariants}
             >
-              <motion.h2
-                className="text-4xl md:text-5xl font-bold text-black dark:text-white mb-6 hover:text-orange-600 dark:hover:text-white"
-                whileHover={{ scale: 1.02 }}
-              >
-                {t("sectionTitle", language)}
-              </motion.h2>
-              <motion.p
-                className="text-gray-700 dark:text-gray-300 mb-8 text-justify"
-                variants={itemVariants}
-              >
-                {t("sectionDesc", language)}
-              </motion.p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[1, 2, 3, 4].map((i, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex items-center gap-3 p-2 rounded-lg hover:bg-orange-50 dark:hover:bg-gray-800 cursor-pointer transition-all duration-300"
-                    variants={itemVariants}
-                    whileHover={{ x: 5, scale: 1.03 }}
-                  >
-                    <span className="w-5 h-5 bg-orange-600 rounded-full flex-shrink-0" />
-                    <p className="text-gray-700 dark:text-gray-300">{t(`feature${i}`, language)}</p>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </motion.div>
-        </section>
-
-        {/* Services / Core Nutrition Cards */}
-        <section className="w-full py-5 px-6 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <motion.h2
-              className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              {t("coreTitle", language)}
-            </motion.h2>
-            <motion.p
-              className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              {t("coreDesc", language)}
+              {t("sectionDesc", language)}
             </motion.p>
-          </div>
 
-          <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            <motion.article
-              className="bg-white/80 dark:bg-gray-800/70 backdrop-blur-md rounded-2xl p-6 shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              whileHover={cardHover}
-            >
-              <div className="flex items-start gap-4">
-                <img src={dietIcon} alt="Meal Planning" className="w-12 h-12 object-contain" />
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white">{t("card1Title", language)}</h4>
-                  <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                    {t("card1Desc", language)}
-                  </p>
-                </div>
-              </div>
-            </motion.article>
-
-            <motion.article
-              className="bg-white/80 dark:bg-gray-800/70 backdrop-blur-md rounded-2xl p-6 shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              whileHover={cardHover}
-            >
-              <div className="flex items-start gap-4">
-                <img src={exerciseIcon} alt="Exercise Guidance" className="w-12 h-12 object-contain" />
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white">{t("card2Title", language)}</h4>
-                  <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                    {t("card2Desc", language)}
-                  </p>
-                </div>
-              </div>
-            </motion.article>
-
-            <motion.article
-              className="bg-white/80 dark:bg-gray-800/70 backdrop-blur-md rounded-2xl p-6 shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              whileHover={cardHover}
-            >
-              <div className="flex items-start gap-4">
-                <img src={consultationIcon} alt="Consultation" className="w-12 h-12 object-contain" />
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white">{t("card3Title", language)}</h4>
-                  <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                    {t("card3Desc", language)}
-                  </p>
-                </div>
-              </div>
-            </motion.article>
-
-            <motion.article
-              className="bg-white/80 dark:bg-gray-800/70 backdrop-blur-md rounded-2xl p-6 shadow-md border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-shadow"
-              variants={cardVariants}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
-              whileHover={cardHover}
-            >
-              <div className="flex items-start gap-4">
-                <img src={trackingIcon} alt="Progress Tracking" className="w-12 h-12 object-contain rounded-lg" />
-                <div>
-                  <h4 className="text-lg font-semibold text-gray-900 dark:text-white">{t("card4Title", language)}</h4>
-                  <p className="mt-1 text-sm text-gray-600 dark:text-gray-300">
-                    {t("card4Desc", language)}
-                  </p>
-                </div>
-              </div>
-            </motion.article>
-          </div>
-        </section>
-
-        {/* Pricing + Joiners Section */}
-        <section className="w-full py-20 px-6 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 mb-0 pb-0">
-          <div className="max-w-7xl mx-auto text-center mb-12">
-            <motion.h2
-              className="text-3xl md:text-5xl font-bold text-gray-900 dark:text-white mb-4"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              {t("plansTitle", language)}
-            </motion.h2>
-            <motion.p
-              className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ delay: 0.3, duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              {t("plansDesc", language)}
-            </motion.p>
-          </div>
-
-          {/* Pricing Plans */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
-            {plans.map((plan, idx) => (
-              <motion.div
-                key={idx}
-                className={`p-8 rounded-2xl shadow-lg border ${
-                  plan.highlight
-                    ? "bg-orange-600 text-white border-orange-600 scale-105"
-                    : "bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700"
-                }`}
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                whileHover={cardHover}
-                viewport={{ once: true, amount: 0.3 }}
-              >
-                <h3 className={`text-2xl font-bold mb-3 ${
-                  plan.highlight
-                    ? "text-white"
-                    : "text-gray-900 dark:text-white"
-                }`}>
-                  {plan.title}
-                </h3>
-                <p className={`text-lg mb-4 opacity-90 ${
-                  plan.highlight
-                    ? "text-white/90"
-                    : "text-gray-700 dark:text-gray-200"
-                }`}>
-                  {plan.description}
-                </p>
-                <div className={`text-3xl font-extrabold mb-6 ${
-                  plan.highlight
-                    ? "text-white"
-                    : "text-orange-600 dark:text-white"
-                }`}>
-                  {plan.price}
-                </div>
-                <ul className="space-y-2 mb-6">
-                  {plan.features.map((feature, i) => (
-                    <li key={i} className={`${
-                      plan.highlight
-                        ? "text-white"
-                        : "text-gray-700 dark:text-white"
-                    }`}>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <Link
-                  to="/contact"
-                  className={`w-full inline-block text-center py-3 rounded-full font-semibold transition ${
-                    plan.highlight
-                      ? "bg-white text-orange-600 hover:bg-gray-100"
-                      : "bg-orange-600 text-white hover:bg-orange-700"
-                  }`}
-                >
-                  {t("getStarted", language)}
-                </Link>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Joiners Section */}
-          <div className="max-w-7xl mx-auto">
-            <motion.h3
-              className="text-2xl md:text-4xl font-bold text-center text-gray-900 dark:text-white mb-10"
-              initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              {t("joinersTitle", language)}
-            </motion.h3>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {joiners.map((join, idx) => (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {[1, 2, 3, 4].map((i, index) => (
                 <motion.div
-                  key={idx}
-                  className="p-6 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-md hover:shadow-xl transition"
-                  variants={cardVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  whileHover={cardHover}
-                  viewport={{ once: true, amount: 0.3 }}
+                  key={index}
+                  className={themedClass(
+                    "flex items-center gap-3 p-2 rounded-lg cursor-pointer transition-all duration-300",
+                    "hover:bg-gray-800",
+                    "hover:bg-orange-50",
+                    theme
+                  )}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  whileHover={{ x: 5, scale: 1.03 }}
+                  transition={{ type: "spring", stiffness: 150, damping: 20, delay: index * 0.2 }}
                 >
-                  <h4 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">{join.role}</h4>
-                  <p className="text-lg font-bold text-orange-600 mb-3">{join.stipend}</p>
-                  <ul className="space-y-1 text-gray-600 dark:text-gray-300">
-                    {join.benefits.map((benefit, i) => (<li key={i}>• {benefit}</li>))}
-                  </ul>
+                  <span className="w-5 h-5 bg-orange-600 rounded-full flex-shrink-0" />
+                  <p className={themedClass("text-base", "text-gray-300", "text-gray-700", theme)}>
+                    {t(`feature${i}`, language)}
+                  </p>
                 </motion.div>
               ))}
             </div>
-          </div>
-        </section>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* Services / Core Nutrition Cards */}
+      <section className={themedClass("w-full py-5 px-6", "bg-gray-900", "bg-gray-50", theme)}>
+  <div className="max-w-4xl mx-auto text-center mb-12">
+    <motion.h2
+      className={themedClass("text-3xl md:text-5xl font-bold mb-4", "text-white", "text-gray-900", theme)}
+      initial={{ opacity: 0, y: -20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      {t("plansTitle", language)}
+    </motion.h2>
+    <motion.p
+      className={themedClass("text-lg max-w-2xl mx-auto", "text-gray-300", "text-gray-700", theme)}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ delay: 0.3, duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      {t("plansDesc", language)}
+    </motion.p>
+  </div>
+
+  {/* Pricing Plans */}
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-12">
+    {plans.map((plan, idx) => (
+      <motion.div
+        key={idx}
+        className={themedClass(
+          "p-8 rounded-2xl shadow-lg border transition-transform transform",
+          plan.highlight
+            ? "bg-orange-600 text-white border-orange-600 scale-105"
+            : "bg-gray-800 text-white border-gray-700",
+          "bg-white text-gray-900 border-gray-200",
+          theme
+        )}
+        variants={cardVariants}
+        initial="hidden"
+        whileInView="visible"
+        whileHover={cardHover}
+        viewport={{ once: true, amount: 0.3 }}
+      >
+        <h3 className="text-2xl font-bold mb-3">
+          {plan.title}
+        </h3>
+        <p className="text-lg mb-4">
+          {plan.description}
+        </p>
+        <div className="text-3xl font-extrabold mb-6">
+          {plan.price}
+        </div>
+        <ul className="space-y-2 mb-6">
+          {plan.features.map((feature, i) => (
+            <li key={i}>
+              {feature}
+            </li>
+          ))}
+        </ul>
+        <Link
+          to="/contact"
+          className={themedClass(
+            "w-full inline-block text-center py-3 rounded-full font-semibold transition",
+            "bg-orange-500 text-white hover:bg-orange-400",
+            "bg-orange-600 text-white hover:bg-orange-700",
+            theme
+          )}
+        >
+          {t("getStarted", language)}
+        </Link>
+      </motion.div>
+    ))}
+  </div>
+
+  {/* Joiners Section */}
+  <div className="max-w-7xl mx-auto">
+    <motion.h3
+      className={themedClass("text-2xl md:text-4xl font-bold text-center mb-10", "text-white", "text-gray-900", theme)}
+      initial={{ opacity: 0, y: -20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+    >
+      {t("joinersTitle", language)}
+    </motion.h3>
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {joiners.map((join, idx) => (
+        <motion.div
+          key={idx}
+          className={themedClass(
+            "p-6 rounded-2xl shadow-md hover:shadow-xl transition border",
+            "bg-gray-800 text-white border-gray-700",
+            "bg-white text-gray-900 border-gray-200",
+            theme
+          )}
+          variants={cardVariants}
+          initial="hidden"
+          whileInView="visible"
+          whileHover={cardHover}
+          viewport={{ once: true, amount: 0.3 }}
+        >
+          <h4 className="text-xl font-semibold mb-2">
+            {join.role}
+          </h4>
+          <p className="text-lg font-bold text-orange-500 mb-3">{join.stipend}</p>
+          <ul className="space-y-1">
+            {join.benefits.map((benefit, i) => (
+              <li key={i}>• {benefit}</li>
+            ))}
+          </ul>
+        </motion.div>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+
 
         {/* CTA Row */}
         <motion.section
-          className="relative w-full mt-0 pt-0"
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-        >
-          {/* Background Image */}
-          <div className="absolute inset-0">
-            <img
-              src={wellnessImg} // Replace with your CTA background image
-              alt="CTA Background"
-              className="w-full h-full object-cover"
-            />
-            {/* Overlay for dark/light theme */}
-            <div className="absolute inset-0 bg-orange-600/50 dark:bg-black/50"></div>
-          </div>
+  className="relative w-full min-h-[400px] mt-0 pt-0 bg-fixed bg-cover bg-center"
+  style={{ backgroundImage: `url(${wellnessImg})` }} // Set as background image
+  initial={{ opacity: 0, y: 20 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+  viewport={{ once: true }}
+>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black opacity-50 pointer-events-none"></div>
 
-          {/* Content */}
-          <div className="relative z-10 max-w-3xl mx-auto text-center py-16 px-6">
-            <h3 className="text-2xl md:text-3xl font-bold text-white dark:text-orange-400">
-              {t("ctaTitle", language)}
-            </h3>
-            <p className="mt-3 text-white/90 dark:text-gray-300">
-              {t("ctaDesc", language)}
-            </p>
-            <div className="mt-6 flex items-center justify-center gap-4">
-              <Link
-                to="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-orange-600 font-semibold shadow hover:bg-gray-100 dark:bg-orange-600 dark:text-white dark:hover:bg-orange-700 transition"
-              >
-                {t("getConsultation", language)}
-              </Link>
-            </div>
-          </div>
-        </motion.section>
+  {/* Content */}
+  <div className="relative z-10 max-w-3xl mx-auto text-center py-24 px-6">
+    <motion.h3
+      className="text-2xl md:text-3xl font-bold text-white dark:text-orange-400"
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.2 }}
+    >
+      {t("ctaTitle", language)}
+    </motion.h3>
+
+    <motion.p
+      className="mt-3 text-white/90 dark:text-gray-300"
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.4 }}
+    >
+      {t("ctaDesc", language)}
+    </motion.p>
+
+    <motion.div
+      className="mt-6 flex items-center justify-center gap-4"
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.6 }}
+    >
+      <Link
+        to="/contact"
+        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-orange-600 font-semibold shadow hover:bg-gray-100 dark:bg-orange-600 dark:text-white dark:hover:bg-orange-700 transition"
+      >
+        {t("getConsultation", language)}
+      </Link>
+    </motion.div>
+  </div>
+</motion.section>
+
   </div>
   );
 };

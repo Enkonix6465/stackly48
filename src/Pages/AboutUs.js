@@ -420,102 +420,134 @@ const AboutUs = () => {
 </section>
 
       {/* Section 1: Our Story */}
-         <section
-      className="relative w-full py-20 lg:py-28 overflow-hidden transition-colors duration-500
-        bg-gradient-to-br from-orange-50 via-orange-100 to-orange-200
-        dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
+      <section
+        className={themedClass(
+          "relative w-full py-20 lg:py-28 overflow-hidden transition-colors duration-500",
+          "bg-gray-950 text-gray-100",
+          "bg-gradient-to-br from-orange-50 via-orange-100 to-orange-200 text-gray-900"
+        )}
+      >
+  {/* Animated Background Orbs */}
+  <motion.div
+    className="absolute top-[-120px] left-[-120px] w-72 h-72 rounded-full blur-3xl opacity-30
+    bg-gradient-to-br from-orange-300 to-orange-500
+    dark:from-orange-700 dark:to-orange-900"
+    animate={{ x: [0, 40, 0], y: [0, 40, 0] }}
+    transition={{ repeat: Infinity, duration: 8, ease: 'easeInOut' }}
+  />
+  <motion.div
+    className="absolute bottom-[-120px] right-[-120px] w-80 h-80 rounded-full blur-3xl opacity-20
+    bg-gradient-to-br from-orange-400 to-red-400
+    dark:from-orange-800 dark:to-red-900"
+    animate={{ x: [0, -40, 0], y: [0, -30, 0] }}
+    transition={{ repeat: Infinity, duration: 10, ease: 'easeInOut' }}
+  />
+
+  <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
+    
+    {/* Left Card - Mission */}
+    <motion.div
+      className={themedClass(
+        "w-full lg:w-1/3 rounded-3xl p-8 shadow-xl backdrop-blur-xl relative hover:shadow-orange-400/50 hover:scale-105 transition-transform duration-500",
+        "bg-gray-900/90 text-gray-100",
+        "bg-white/80 text-gray-900"
+      )}
+      initial={{ x: -120, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1 }}
+      whileHover={{ rotate: 2 }}
     >
-      {/* Animated Background Orbs */}
       <motion.div
-        className="absolute top-[-120px] left-[-120px] w-72 h-72 rounded-full blur-3xl opacity-30
-        bg-gradient-to-br from-orange-300 to-orange-500
-        dark:from-orange-700 dark:to-orange-900"
-        animate={{ x: [0, 40, 0], y: [0, 40, 0] }}
-        transition={{ repeat: Infinity, duration: 8, ease: 'easeInOut' }}
+        className="flex items-center justify-center w-14 h-14 rounded-full text-white text-2xl mb-6
+        bg-gradient-to-r from-orange-500 to-orange-600 dark:from-orange-400 dark:to-orange-500 shadow-lg"
+        whileHover={{ scale: 1.2, rotate: 10 }}
+        transition={{ type: 'spring', stiffness: 200 }}
+      >
+        <FaCheckCircle />
+      </motion.div>
+      <h3 className={themedClass(
+        "text-2xl font-bold mb-4",
+        "text-gray-100",
+        "text-gray-900"
+      )}>{t('missionTitle')}</h3>
+      <p className={themedClass(
+        "leading-relaxed",
+        "text-gray-300",
+        "text-gray-700"
+      )}>
+        {t('mission')}
+      </p>
+    </motion.div>
+
+    {/* Center Image with Parallax */}
+    <motion.div
+      className="w-full lg:w-1/3 flex flex-col items-center text-center"
+      initial={{ scale: 0.8, opacity: 0 }}
+      whileInView={{ scale: 1, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1.2 }}
+    >
+      <motion.img
+        src={img} // Replace with your actual image
+        alt="Team Collaboration"
+        className="rounded-3xl shadow-2xl object-cover w-80 h-80
+        border-4 border-orange-200 dark:border-gray-700"
+        whileHover={{ rotate: [0, 2, -2, 0], transition: { duration: 1.2 } }}
       />
+      <h2 className={themedClass(
+        "text-3xl lg:text-4xl font-extrabold mt-8",
+        "text-orange-400",
+        "text-orange-600"
+      )}>
+        {t('storyHeading')}
+      </h2>
+      <p className={themedClass(
+        "mt-4 max-w-md",
+        "text-gray-300",
+        "text-gray-700"
+      )}>
+        {t('storyParagraph')}
+      </p>
+    </motion.div>
+
+    {/* Right Card - Vision */}
+    <motion.div
+      className={themedClass(
+        "w-full lg:w-1/3 rounded-3xl p-8 shadow-xl backdrop-blur-xl relative hover:shadow-orange-400/50 hover:scale-105 transition-transform duration-500",
+        "bg-gray-900/90 text-gray-100",
+        "bg-white/80 text-gray-900"
+      )}
+      initial={{ x: 120, opacity: 0 }}
+      whileInView={{ x: 0, opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 1 }}
+      whileHover={{ rotate: -2 }}
+    >
       <motion.div
-        className="absolute bottom-[-120px] right-[-120px] w-80 h-80 rounded-full blur-3xl opacity-20
-        bg-gradient-to-br from-orange-400 to-red-400
-        dark:from-orange-800 dark:to-red-900"
-        animate={{ x: [0, -40, 0], y: [0, -30, 0] }}
-        transition={{ repeat: Infinity, duration: 10, ease: 'easeInOut' }}
-      />
+        className="flex items-center justify-center w-14 h-14 rounded-full text-white text-2xl mb-6
+        bg-gradient-to-r from-orange-500 to-orange-600 dark:from-orange-400 dark:to-orange-500 shadow-lg"
+        whileHover={{ scale: 1.2, rotate: -10 }}
+        transition={{ type: 'spring', stiffness: 200 }}
+      >
+        <FaEye />
+      </motion.div>
+      <h3 className={themedClass(
+        "text-2xl font-bold mb-4",
+        "text-gray-100",
+        "text-gray-900"
+      )}>{t('visionTitle')}</h3>
+      <p className={themedClass(
+        "leading-relaxed",
+        "text-gray-300",
+        "text-gray-700"
+      )}>
+        {t('vision')}
+      </p>
+    </motion.div>
+  </div>
+</section>
 
-      <div className="max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-12 relative z-10">
-        
-        {/* Left Card - Mission */}
-        <motion.div
-          className="w-full lg:w-1/3 rounded-3xl p-8 shadow-2xl backdrop-blur-xl relative
-          bg-white dark:bg-gray-900 hover:shadow-orange-400/50 hover:scale-105 transition-transform duration-500"
-          initial={{ x: -120, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          whileHover={{ rotate: 2 }}
-        >
-          <motion.div
-            className="flex items-center justify-center w-14 h-14 rounded-full text-white text-2xl mb-6
-            bg-gradient-to-r from-orange-500 to-orange-600 dark:from-orange-400 dark:to-orange-500 shadow-lg"
-            whileHover={{ scale: 1.2, rotate: 10 }}
-            transition={{ type: 'spring', stiffness: 200 }}
-          >
-            <FaCheckCircle />
-          </motion.div>
-          <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">{t('missionTitle')}</h3>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-            {t('mission')}
-          </p>
-        </motion.div>
-
-        {/* Center Image with Parallax */}
-        <motion.div
-          className="w-full lg:w-1/3 flex flex-col items-center text-center"
-          initial={{ scale: 0.8, opacity: 0 }}
-          whileInView={{ scale: 1, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.2 }}
-        >
-          <motion.img
-            src={img}
-             // Replace with your actual image
-            alt="Team Collaboration"
-            className="rounded-3xl shadow-2xl object-cover w-80 h-80
-            border-4 border-orange-200 dark:border-gray-700"
-            whileHover={{ rotate: [0, 2, -2, 0], transition: { duration: 1.2 } }}
-          />
-          <h2 className="text-3xl lg:text-4xl font-extrabold mt-8 text-orange-600 dark:text-orange-400">
-            {t('storyHeading')}
-          </h2>
-          <p className="mt-4 text-gray-700 dark:text-gray-300 max-w-md">
-            {t('storyParagraph')}
-          </p>
-        </motion.div>
-
-        {/* Right Card - Vision */}
-        <motion.div
-          className="w-full lg:w-1/3 rounded-3xl p-8 shadow-2xl backdrop-blur-xl relative
-          bg-white dark:bg-gray-900 hover:shadow-orange-400/50 hover:scale-105 transition-transform duration-500"
-          initial={{ x: 120, opacity: 0 }}
-          whileInView={{ x: 0, opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1 }}
-          whileHover={{ rotate: -2 }}
-        >
-          <motion.div
-            className="flex items-center justify-center w-14 h-14 rounded-full text-white text-2xl mb-6
-            bg-gradient-to-r from-orange-500 to-orange-600 dark:from-orange-400 dark:to-orange-500 shadow-lg"
-            whileHover={{ scale: 1.2, rotate: -10 }}
-            transition={{ type: 'spring', stiffness: 200 }}
-          >
-            <FaEye />
-          </motion.div>
-          <h3 className="text-2xl font-bold mb-4 text-gray-900 dark:text-white">{t('visionTitle')}</h3>
-          <p className="text-gray-700 dark:text-gray-300 leading-relaxed">
-            {t('vision')}
-          </p>
-        </motion.div>
-      </div>
-    </section>
 
 
       {/* Section 2: Our Philosophy */}
@@ -603,10 +635,12 @@ const AboutUs = () => {
 
       {/* Section 4: Meet The Team */}
       <section
-      className="relative w-full py-20 lg:py-28 overflow-hidden transition-colors duration-500
-        bg-gradient-to-br from-orange-50 via-orange-100 to-orange-200
-        dark:from-gray-900 dark:via-gray-800 dark:to-gray-900"
-    >
+        className={themedClass(
+          "relative w-full py-20 lg:py-28 overflow-hidden transition-colors duration-500",
+          "bg-gray-900 text-gray-100",
+          "bg-gradient-to-br from-orange-50 via-orange-100 to-orange-200 text-gray-900"
+        )}
+      >
       {/* Animated Background Orbs */}
       <motion.div
         className="absolute top-[-100px] left-[-100px] w-64 h-64 rounded-full blur-3xl opacity-25
@@ -631,12 +665,18 @@ const AboutUs = () => {
         transition={{ duration: 1 }}
         className="text-center mb-16 px-6"
       >
-        <h2 className="text-4xl md:text-5xl font-extrabold mb-4
-          text-orange-600 dark:text-orange-400">
+        <h2 className={themedClass(
+          "text-4xl md:text-5xl font-extrabold mb-4",
+          "text-orange-400",
+          "text-orange-600"
+        )}>
           {t('teamHeading')}
         </h2>
-        <p className="text-lg max-w-3xl mx-auto
-          text-gray-700 dark:text-gray-300">
+        <p className={themedClass(
+          "text-lg max-w-3xl mx-auto",
+          "text-gray-300",
+          "text-gray-700"
+        )}>
           {t('teamSubtitle')}
         </p>
       </motion.div>
@@ -651,8 +691,11 @@ const AboutUs = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: index * 0.2 }}
             whileHover={{ scale: 1.05 }}
-            className="group relative rounded-2xl overflow-hidden shadow-2xl
-            bg-white dark:bg-gray-900 transition-transform duration-500"
+            className={themedClass(
+              "group relative rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500",
+              "bg-gray-900 text-gray-100",
+              "bg-white text-gray-900"
+            )}
           >
             {/* Profile Image */}
             <img
@@ -663,13 +706,25 @@ const AboutUs = () => {
 
             {/* Content */}
             <div className="p-6 text-center">
-              <h3 className="text-2xl font-bold mb-2 text-gray-900 dark:text-white">
+              <h3 className={themedClass(
+                "text-2xl font-bold mb-2",
+                "text-white",
+                "text-gray-900"
+              )}>
                 {member.name}
               </h3>
-              <p className="text-orange-500 dark:text-orange-400 font-semibold mb-3">
+              <p className={themedClass(
+                "font-semibold mb-3",
+                "text-orange-400",
+                "text-orange-500"
+              )}>
                 {member.role}
               </p>
-              <p className="text-gray-600 dark:text-gray-300 text-sm">
+              <p className={themedClass(
+                "text-sm",
+                "text-gray-300",
+                "text-gray-600"
+              )}>
                 {member.bio}
               </p>
             </div>
@@ -682,8 +737,11 @@ const AboutUs = () => {
                   <motion.a
                     key={i}
                     href="#"
-                    className="w-12 h-12 flex items-center justify-center rounded-full
-                    bg-orange-500 text-white hover:bg-orange-600 transition"
+                    className={themedClass(
+                      "w-12 h-12 flex items-center justify-center rounded-full transition",
+                      "bg-orange-500 text-white hover:bg-orange-600",
+                      "bg-orange-500 text-white hover:bg-orange-600"
+                    )}
                     whileHover={{ scale: 1.2, rotate: 10 }}
                     whileTap={{ scale: 0.9 }}
                   >

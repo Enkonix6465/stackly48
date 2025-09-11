@@ -7,7 +7,7 @@ import blogVideo from "../assets/blogVideo.mp4";
 import image from "../assets/B2.jpg";
 import image2 from "../assets/3.jpg";
 import image3 from "../assets/1.jpg";
-import bgImage from "../assets/contactBg.jpg";
+import bgImage from "../assets/3.jpg";
 
 
 // Translations and language helpers
@@ -164,6 +164,7 @@ const Blog = () => {
   const rtlLangs = ["ar", "he"];
   const dir = rtlLangs.includes(language) ? "rtl" : "ltr";
 
+  const themedClass = (base, dark, light) => `${base} ${window?.localStorage?.getItem('theme') === 'dark' ? dark : light}`;
   const blogs = [
     {
       id: 1,
@@ -211,9 +212,17 @@ const Blog = () => {
   };
 
   return (
-  <div dir={dir} style={{ direction: dir }}>
+  <div dir={dir} style={{ direction: dir }} className={themedClass(
+    "min-h-screen transition-colors duration-500",
+    "bg-gray-900 text-gray-100",
+    "bg-white text-gray-900"
+  )}>
       {/* 1. Hero Section */}
-      <section className="relative w-full h-screen flex items-center justify-center overflow-hidden bg-black">
+      <section className={themedClass(
+        "relative w-full h-screen flex items-center justify-center overflow-hidden",
+        "bg-black text-white",
+        "bg-white text-gray-900"
+      )}>
         <video
           src={blogVideo}
           autoPlay
@@ -222,11 +231,23 @@ const Blog = () => {
           playsInline
           className="absolute top-0 left-0 w-full h-full object-cover opacity-60"
         />
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6 text-white">
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-wide animate-bounce">
+        <div className={themedClass(
+          "relative z-10 flex flex-col items-center justify-center h-full text-center px-6",
+          "text-white",
+          "text-gray-900"
+        )}>
+          <h1 className={themedClass(
+            "text-5xl md:text-6xl font-extrabold mb-4 tracking-wide animate-bounce",
+            "text-orange-400",
+            "text-orange-600"
+          )}>
             {t('heroTitle')}
           </h1>
-          <p className="text-lg md:text-2xl mb-6 italic opacity-90 animate-pulse">
+          <p className={themedClass(
+            "text-lg md:text-2xl mb-6 italic opacity-90 animate-pulse",
+            "text-orange-200",
+            "text-orange-700"
+          )}>
             {t('heroSubtitle')}
           </p>
           
@@ -236,14 +257,22 @@ const Blog = () => {
       {/* 2. Blog Cards Section */}
       <section
         id="blogs"
-        className="py-20 px-4 md:px-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 transition-colors duration-500"
+        className={themedClass(
+          "py-20 px-4 md:px-20 transition-colors duration-500",
+          "bg-gray-900 text-gray-100",
+          "bg-gradient-to-b from-gray-50 to-white text-gray-900"
+        )}
       >
         <div className="max-w-7xl mx-auto text-center mb-12">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-gray-900 dark:text-white"
+            className={themedClass(
+              "text-4xl md:text-5xl font-extrabold tracking-tight mb-4",
+              "text-white",
+              "text-gray-900"
+            )}
           >
             {t('latestArticles')}
           </motion.h2>
@@ -251,7 +280,11 @@ const Blog = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            className={themedClass(
+              "text-lg md:text-xl max-w-2xl mx-auto",
+              "text-gray-300",
+              "text-gray-600"
+            )}
           >
             {t('latestArticlesDesc')}
           </motion.p>
@@ -264,7 +297,11 @@ const Blog = () => {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
-              className="bg-white dark:bg-gray-900 rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2"
+              className={themedClass(
+                "rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2",
+                "bg-gray-900 text-gray-100",
+                "bg-white text-gray-900"
+              )}
             >
               <img
                 src={blog.img}
@@ -272,10 +309,18 @@ const Blog = () => {
                 className="w-full h-56 object-cover"
               />
               <div className="p-6 text-left">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">
+                <h3 className={themedClass(
+                  "text-xl font-bold mb-3",
+                  "text-white",
+                  "text-gray-900"
+                )}>
                   {blog.title}
                 </h3>
-                <p className="text-gray-600 dark:text-gray-300 mb-4">
+                <p className={themedClass(
+                  "mb-4",
+                  "text-gray-300",
+                  "text-gray-600"
+                )}>
                   {blog.desc}
                 </p>
               </div>
@@ -285,13 +330,21 @@ const Blog = () => {
       </section>
 
       {/* 3. Wellness Journey Section */}
-      <section className="py-12 px-4 md:px-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-800 dark:to-gray-900 transition-colors duration-500">
+      <section className={themedClass(
+        "py-12 px-4 md:px-20 transition-colors duration-500",
+        "bg-gray-800 text-gray-100",
+        "bg-gradient-to-b from-white to-gray-50 text-gray-900"
+      )}>
         <div className="max-w-7xl mx-auto text-center mb-12">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-gray-900 dark:text-white"
+            className={themedClass(
+              "text-4xl md:text-5xl font-extrabold tracking-tight mb-4",
+              "text-white",
+              "text-gray-900"
+            )}
           >
             {t('journeyTitle')}
           </motion.h2>
@@ -299,7 +352,11 @@ const Blog = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            className={themedClass(
+              "text-lg md:text-xl max-w-2xl mx-auto",
+              "text-gray-300",
+              "text-gray-600"
+            )}
           >
             {t('journeyDesc')}
           </motion.p>
@@ -320,10 +377,18 @@ const Blog = () => {
                   {step.id}
                 </div>
                 <div className="ml-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#FF7043] transition-colors duration-300">
+                  <h3 className={themedClass(
+                    "text-xl font-bold mb-2 group-hover:text-[#FF7043] transition-colors duration-300",
+                    "text-white",
+                    "text-gray-900"
+                  )}>
                     {step.title}
                   </h3>
-                  <p className="text-gray-600 dark:text-gray-300">{step.desc}</p>
+                  <p className={themedClass(
+                    "",
+                    "text-gray-300",
+                    "text-gray-600"
+                  )}>{step.desc}</p>
                 </div>
               </motion.div>
             ))}
@@ -333,13 +398,21 @@ const Blog = () => {
 
       {/* 4. Featured Wellness Reads */}
       <motion.section
-        className="w-full py-5 px-4 md:px-20 bg-gradient-to-b from-gray-50 to-white dark:from-[#1E2A38] dark:to-[#22304a] transition-colors duration-500"
+        className={themedClass(
+          "w-full py-5 px-4 md:px-20 transition-colors duration-500",
+          "bg-[#1E2A38] text-green-200",
+          "bg-gradient-to-b from-gray-50 to-white text-gray-900"
+        )}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         viewport={{ once: true }}
       >
-        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-gray-900 dark:text-green-200">
+        <h2 className={themedClass(
+          "text-3xl md:text-4xl font-bold text-center mb-12",
+          "text-green-200",
+          "text-gray-900"
+        )}>
           {t('featuredReads')}
         </h2>
 
@@ -348,14 +421,30 @@ const Blog = () => {
             <motion.div
               key={i}
               whileHover={{ scale: 1.02 }}
-              className="relative rounded-xl overflow-hidden shadow-lg bg-white dark:bg-[#1E2A38] transition-colors duration-500"
+              className={themedClass(
+                "relative rounded-xl overflow-hidden shadow-lg transition-colors duration-500",
+                "bg-[#1E2A38] text-green-200",
+                "bg-white text-gray-900"
+              )}
             >
               <img src={img} alt={`article-${i}`} className="w-full h-64 object-cover" />
-              <div className="p-6 dark:bg-[#22304a] bg-white">
-                <h3 className="text-xl font-bold mb-2 text-gray-900 dark:text-green-200">
+              <div className={themedClass(
+                "p-6",
+                "bg-[#22304a] text-green-100",
+                "bg-white text-gray-900"
+              )}>
+                <h3 className={themedClass(
+                  "text-xl font-bold mb-2",
+                  "text-green-200",
+                  "text-gray-900"
+                )}>
                   {i === 0 ? t('featured1Title') : t('featured2Title')}
                 </h3>
-                <p className="mb-4 text-gray-700 dark:text-green-100">
+                <p className={themedClass(
+                  "mb-4",
+                  "text-green-100",
+                  "text-gray-700"
+                )}>
                   {i === 0 ? t('featured1Desc') : t('featured2Desc')}
                 </p>
                 <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
@@ -373,13 +462,21 @@ const Blog = () => {
       </motion.section>
 
       {/* 5. Daily Wellness Challenges */}
-      <section className="py-20 px-4 md:px-20 bg-gradient-to-b from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 transition-colors duration-500">
+      <section className={themedClass(
+        "py-20 px-4 md:px-20 transition-colors duration-500",
+        "bg-gray-900 text-gray-100",
+        "bg-gradient-to-b from-white to-gray-50 text-gray-900"
+      )}>
         <div className="max-w-7xl mx-auto text-center mb-12">
           <motion.h2
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4 text-gray-900 dark:text-white"
+            className={themedClass(
+              "text-4xl md:text-5xl font-extrabold tracking-tight mb-4",
+              "text-white",
+              "text-gray-900"
+            )}
           >
             {t('challengesTitle')}
           </motion.h2>
@@ -387,7 +484,11 @@ const Blog = () => {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2, duration: 0.6 }}
-            className="text-lg md:text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto"
+            className={themedClass(
+              "text-lg md:text-xl max-w-2xl mx-auto",
+              "text-gray-300",
+              "text-gray-600"
+            )}
           >
             {t('challengesDesc')}
           </motion.p>
@@ -401,15 +502,19 @@ const Blog = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.6 }}
               whileHover={{ scale: 1.03, boxShadow: "0px 10px 25px rgba(255,112,67,0.2)" }}
-              className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 ${
-                completed.includes(challenge.id)
-                  ? "bg-[#FF7043] text-white"
-                  : "bg-white dark:bg-gray-900 text-gray-900 dark:text-white"
-              }`}
+              className={themedClass(
+                `p-6 rounded-2xl cursor-pointer transition-all duration-300 ${completed.includes(challenge.id) ? "bg-[#FF7043] text-white" : ""}`,
+                "bg-gray-900 text-white",
+                "bg-white text-gray-900"
+              )}
               onClick={() => toggleComplete(challenge.id)}
             >
               <h3 className="text-xl font-bold mb-2">{challenge.title}</h3>
-              <p className="text-gray-600 dark:text-gray-300">{challenge.desc}</p>
+              <p className={themedClass(
+                "",
+                "text-gray-300",
+                "text-gray-600"
+              )}>{challenge.desc}</p>
               <span className="mt-2 inline-block text-sm font-semibold">
                 {completed.includes(challenge.id) ? t('completed') : t('notDone')}
               </span>
@@ -419,41 +524,48 @@ const Blog = () => {
       </section>
 
 
-
+ {/* 6. Contact Us */}
 <section
-      className="relative w-full h-96 flex items-center justify-center overflow-hidden rounded-xl"
-      style={{
-        backgroundImage: `url(${bgImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/50"></div>
+  className="relative w-full h-96 flex items-center justify-center overflow-hidden rounded-xl"
+  style={{
+    backgroundImage: `url(${bgImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundAttachment: "fixed", // Fixed background
+  }}
+>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black/50"></div>
 
-      {/* Content */}
-      <motion.div
-        className="relative z-10 text-center px-6"
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <h2 className="text-3xl md:text-5xl font-extrabold text-white mb-4 animate-fadeIn">
-          {t('connectTitle')}
-        </h2>
-        <p className="text-white/90 mb-6 text-lg md:text-xl">
-          {t('connectDesc')}
-        </p>
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => navigate("/contact")}
-          className="px-8 py-3 bg-[#FF7043] text-white font-semibold rounded-full shadow-lg hover:bg-[#e85a2a] transition-all duration-300"
-        >
-          {t('connectBtn')}
-        </motion.button>
-      </motion.div>
-    </section>
+  {/* Content */}
+  <motion.div
+    className="relative z-10 text-center px-6"
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8 }}
+  >
+    <h2 className="text-3xl md:text-5xl font-extrabold mb-4 text-white animate-fadeIn">
+      {t('connectTitle')}
+    </h2>
+
+    <p className="mb-6 text-lg md:text-xl text-white/90">
+      {t('connectDesc')}
+    </p>
+
+    <motion.button
+      whileHover={{
+        scale: 1.05,
+        boxShadow: "0 0 25px rgba(255,140,0,0.6)",
+        backgroundColor: "#ea580c",
+      }}
+      whileTap={{ scale: 0.95 }}
+      onClick={() => navigate("/contact")}
+      className="px-10 py-4 font-semibold rounded-full shadow-lg transition-all bg-orange-500 text-white"
+    >
+      {t('connectBtn')}
+    </motion.button>
+  </motion.div>
+</section>
 
 
 

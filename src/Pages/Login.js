@@ -1,218 +1,309 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import backgroundImage from "../assets/login-bg.jpg";
-
-const THEME_KEY = "theme";
-const LANGUAGE_KEY = "language";
+import welcomeImg from "../assets/BG1.jpg";
+import logoImg from "../assets/logo-dark.png";
 
 const translations = {
   en: {
+    weMake: "We Promote",
+    dreamHouses: "Health and Wellness",
     login: "Login",
-    signup: "Sign Up",
     email: "Email",
     password: "Password",
+    forgotPassword: "Forgot password?",
     loginBtn: "Login",
-    signupBtn: "Sign Up",
-    noAccount: "Don't have an account? Sign up",
-    haveAccount: "Already have an account? Login",
+    noAccount: "Don’t have an account?",
+    signup: "Sign up",
+    resetPassword: "Reset Password",
+    newPassword: "New Password",
+    confirmNewPassword: "Confirm New Password",
+    resetBtn: "Reset Password",
+    cancel: "Cancel",
+    signupTitle: "Sign Up",
     firstName: "First Name",
     lastName: "Last Name",
-    invalid: "Invalid email or password.",
-    exists: "User already exists.",
-    success: "Sign up successful! Please login.",
-    english: "English",
-    arabic: "Arabic",
-    hebrew: "Hebrew",
-    features: [
-      {
-        title: "Personalized Experience",
-        desc: "Your dashboard and recommendations adapt to your goals."
-      },
-      {
-        title: "Multi-language Support",
-        desc: "Switch between English, Arabic, and Hebrew instantly."
-      },
-      {
-        title: "Light & Dark Mode",
-        desc: "Enjoy a beautiful interface in any lighting."
-      }
-    ]
+    phone: "Phone Number",
+    confirmPassword: "Confirm Password",
+    signupBtn: "Sign Up",
+    haveAccount: "Already have an account?",
+    passwordsNotMatch: "Passwords do not match.",
+    emailExists: "Email already registered.",
+    signupSuccess: "Signup successful!",
+    invalidLogin: "Invalid email or password.",
+    emailNotFound: "Email not found.",
+    passwordUpdated: "Password updated successfully!",
+    adminEmail: "admin@enkonix.in",
+    adminPassword: "admin123",
+    selectLanguage: "Language"
   },
   ar: {
+    weMake: "نحن نعزز",
+    dreamHouses: "الصحة والعافية",
     login: "تسجيل الدخول",
-    signup: "إنشاء حساب",
     email: "البريد الإلكتروني",
     password: "كلمة المرور",
+    forgotPassword: "نسيت كلمة المرور؟",
     loginBtn: "تسجيل الدخول",
-    signupBtn: "إنشاء حساب",
-    noAccount: "ليس لديك حساب؟ أنشئ حسابًا",
-    haveAccount: "لديك حساب بالفعل؟ تسجيل الدخول",
+    noAccount: "ليس لديك حساب؟",
+    signup: "إنشاء حساب",
+    resetPassword: "إعادة تعيين كلمة المرور",
+    newPassword: "كلمة مرور جديدة",
+    confirmNewPassword: "تأكيد كلمة المرور الجديدة",
+    resetBtn: "إعادة تعيين",
+    cancel: "إلغاء",
+    signupTitle: "إنشاء حساب",
     firstName: "الاسم الأول",
     lastName: "اسم العائلة",
-    invalid: "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
-    exists: "المستخدم موجود بالفعل.",
-    success: "تم إنشاء الحساب بنجاح! يرجى تسجيل الدخول.",
-    english: "الإنجليزية",
-    arabic: "العربية",
-    hebrew: "العبرية",
-    features: [
-      { title: "تجربة مخصصة", desc: "لوحتك وتوصياتك تتكيف مع أهدافك." },
-      { title: "دعم متعدد اللغات", desc: "بدّل بين الإنجليزية والعربية والعبرية فورًا." },
-      { title: "الوضع الليلي والنهاري", desc: "واجهة جميلة في جميع الأوقات." }
-    ]
+    phone: "رقم الهاتف",
+    confirmPassword: "تأكيد كلمة المرور",
+    signupBtn: "إنشاء حساب",
+    haveAccount: "لديك حساب بالفعل؟",
+    passwordsNotMatch: "كلمات المرور غير متطابقة.",
+    emailExists: "البريد الإلكتروني مسجل بالفعل.",
+    signupSuccess: "تم التسجيل بنجاح!",
+    invalidLogin: "البريد الإلكتروني أو كلمة المرور غير صحيحة.",
+    emailNotFound: "البريد الإلكتروني غير موجود.",
+    passwordUpdated: "تم تحديث كلمة المرور بنجاح!",
+    adminEmail: "admin@enkonix.in",
+    adminPassword: "admin123",
+    selectLanguage: "اختر اللغة"
   },
   he: {
+    weMake: "אנו מקדמים",
+    dreamHouses: "בריאות ורווחה",
     login: "התחברות",
-    signup: "הרשמה",
     email: "אימייל",
     password: "סיסמה",
+    forgotPassword: "שכחת סיסמה?",
     loginBtn: "התחבר",
-    signupBtn: "הרשם",
-    noAccount: "אין לך חשבון? הירשם",
-    haveAccount: "כבר יש לך חשבון? התחבר",
+    noAccount: "אין לך חשבון?",
+    signup: "הרשמה",
+    resetPassword: "איפוס סיסמה",
+    newPassword: "סיסמה חדשה",
+    confirmNewPassword: "אישור סיסמה חדשה",
+    resetBtn: "איפוס סיסמה",
+    cancel: "ביטול",
+    signupTitle: "הרשמה",
     firstName: "שם פרטי",
     lastName: "שם משפחה",
-    invalid: "אימייל או סיסמה שגויים.",
-    exists: "המשתמש כבר קיים.",
-    success: "נרשמת בהצלחה! אנא התחבר.",
-    english: "אנגלית",
-    arabic: "ערבית",
-    hebrew: "עברית",
-    features: [
-      { title: "חוויה מותאמת אישית", desc: "הדשבורד וההמלצות מותאמים למטרות שלך." },
-      { title: "תמיכה רב-לשונית", desc: "החלף בין אנגלית, ערבית ועברית מיד." },
-      { title: "מצב כהה ובהיר", desc: "ממשק יפהפה בכל תאורה." }
-    ]
+    phone: "מספר טלפון",
+    confirmPassword: "אישור סיסמה",
+    signupBtn: "הרשם",
+    haveAccount: "כבר יש לך חשבון?",
+    passwordsNotMatch: "הסיסמאות אינן תואמות.",
+    emailExists: "האימייל כבר רשום.",
+    signupSuccess: "ההרשמה הצליחה!",
+    invalidLogin: "אימייל או סיסמה שגויים.",
+    emailNotFound: "האימייל לא נמצא.",
+    passwordUpdated: "הסיסמה עודכנה בהצלחה!",
+    adminEmail: "admin@enkonix.in",
+    adminPassword: "admin123",
+    selectLanguage: "שפה"
   }
 };
 
-const t = (key, lang) => translations[lang]?.[key] || translations.en[key];
-const rtlLangs = ["ar", "he"];
+function getDirection(lang) {
+  return lang === "ar" || lang === "he" ? "rtl" : "ltr";
+}
 
-const Login = () => {
+export default function WelcomePage() {
+  const [showForgot, setShowForgot] = useState(false);
+  const [forgotEmail, setForgotEmail] = useState("");
+  const [forgotPassword, setForgotPassword] = useState("");
+  const [forgotConfirm, setForgotConfirm] = useState("");
+  const [showSignup, setShowSignup] = useState(false);
+  const [loginEmail, setLoginEmail] = useState("");
+  const [loginPassword, setLoginPassword] = useState("");
+  const [signupData, setSignupData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    password: "",
+    confirmPassword: ""
+  });
+  const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+
   const navigate = useNavigate();
-  const [theme, setTheme] = useState(() => localStorage.getItem(THEME_KEY) || "light");
-  const [language, setLanguage] = useState(() => localStorage.getItem(LANGUAGE_KEY) || "en");
-  const [loginData, setLoginData] = useState({ email: "", password: "" });
-  const [signUpData, setSignUpData] = useState({ firstName: "", lastName: "", email: "", password: "" });
-  const [error, setError] = useState("");
-  const [isLogin, setIsLogin] = useState(true);
-  const [featureIdx, setFeatureIdx] = useState(0);
-  const features = t("features", language);
-  const [fadeIn, setFadeIn] = useState(false);
 
-  useEffect(() => setFadeIn(true), []);
   useEffect(() => {
-    const timer = setInterval(() => setFeatureIdx(prev => (prev + 1) % features.length), 3500);
-    return () => clearInterval(timer);
-  }, [features, language]);
-  useEffect(() => {
-    localStorage.setItem(THEME_KEY, theme);
-    document.documentElement.setAttribute("data-theme", theme);
-  }, [theme]);
-  useEffect(() => {
-    localStorage.setItem(LANGUAGE_KEY, language);
-    document.documentElement.setAttribute("dir", rtlLangs.includes(language) ? "rtl" : "ltr");
+    document.documentElement.dir = getDirection(language);
   }, [language]);
 
-  const dir = rtlLangs.includes(language) ? "rtl" : "ltr";
-  const handleLoginChange = e => setLoginData({ ...loginData, [e.target.name]: e.target.value });
-  const handleSignUpChange = e => setSignUpData({ ...signUpData, [e.target.name]: e.target.value });
+  const t = useMemo(() => translations[language], [language]);
+  const isRtl = getDirection(language) === "rtl";
 
-  const handleLoginSubmit = e => {
+  const handleForgotPassword = (e) => {
     e.preventDefault();
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    if (loginData.email === "admin@enkonix.in" && loginData.password === "admin123") {
-      setError(""); localStorage.setItem("loggedInUserEmail", loginData.email); navigate("/Admindashboard"); return;
+    if (forgotPassword !== forgotConfirm) {
+      alert(t.passwordsNotMatch);
+      return;
     }
-    const user = users.find(u => u.email === loginData.email && u.password === loginData.password);
-    if (user) {
-      setError(""); localStorage.setItem("loggedInUserEmail", JSON.stringify(user));
-      if (user.firstName) localStorage.setItem("firstname", user.firstName);
-      if (user.lastName) localStorage.setItem("lastname", user.lastName);
-      navigate("/home1");
-    } else setError(t("invalid", language));
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const idx = users.findIndex((u) => u.email === forgotEmail);
+    if (idx === -1) {
+      alert(t.emailNotFound);
+      return;
+    }
+    users[idx].password = forgotPassword;
+    localStorage.setItem("users", JSON.stringify(users));
+    alert(t.passwordUpdated);
+    setShowForgot(false);
+    setForgotEmail("");
+    setForgotPassword("");
+    setForgotConfirm("");
   };
 
-  const handleSignUpSubmit = e => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    if (users.find(u => u.email === signUpData.email)) { setError(t("exists", language)); return; }
-    users.push(signUpData); localStorage.setItem("users", JSON.stringify(users));
-    setError(""); alert(t("success", language));
-    setSignUpData({ firstName: "", lastName: "", email: "", password: "" });
-    setIsLogin(true);
+    const email = loginEmail.trim();
+    const password = loginPassword.trim();
+    if (email === t.adminEmail) {
+      if (password === t.adminPassword) {
+        localStorage.setItem("firstname", "Admin");
+        localStorage.setItem("lastname", "Dashboard");
+        localStorage.setItem("email", email);
+        navigate("/admindashboard");
+        return;
+      } else {
+        alert("Admin password is incorrect.");
+        return;
+      }
+    }
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    const user = users.find((u) => u.email === email && u.password === password);
+    if (user) {
+      localStorage.setItem("firstname", user.firstName || "");
+      localStorage.setItem("lastname", user.lastName || "");
+      localStorage.setItem("email", user.email || "");
+      navigate("/home1");
+    } else {
+      alert(t.invalidLogin);
+    }
   };
 
-  // Gradient background colors
-  const gradientBg = "bg-gradient-to-br from-orange-100 via-white to-orange-200";
+  const handleSignup = (e) => {
+    e.preventDefault();
+    if (signupData.password !== signupData.confirmPassword) {
+      alert(t.passwordsNotMatch);
+      return;
+    }
+    const users = JSON.parse(localStorage.getItem("users") || "[]");
+    if (users.find((u) => u.email === signupData.email)) {
+      alert(t.emailExists);
+      return;
+    }
+    const now = new Date();
+    const newUser = {
+      firstName: signupData.firstName,
+      lastName: signupData.lastName,
+      email: signupData.email,
+      phone: signupData.phone,
+      password: signupData.password,
+      signupTime: now.toLocaleTimeString(),
+      signupDate: now.toLocaleDateString()
+    };
+    users.push(newUser);
+    localStorage.setItem("users", JSON.stringify(users));
+    alert(t.signupSuccess);
+    setShowSignup(false);
+    setSignupData({
+      firstName: "",
+      lastName: "",
+      email: "",
+      phone: "",
+      password: "",
+      confirmPassword: ""
+    });
+  };
+
+  const handleLanguageChange = (e) => {
+    const newLang = e.target.value;
+    setLanguage(newLang);
+    localStorage.setItem("language", newLang);
+    document.documentElement.dir = getDirection(newLang);
+  };
 
   return (
-    <div dir={dir} className={`min-h-screen flex font-sans ${gradientBg} transition-all duration-700`}>
-      {/* Left Side Image */}
-      <div className="w-full md:w-1/2 flex items-center justify-center bg-cover bg-center relative"
-        style={{ backgroundImage: `url(${backgroundImage})` }}>
-        <div className="absolute inset-0 bg-black/30 rounded-xl"></div>
-        <div className="relative z-10 flex flex-col justify-center items-center text-white p-8 w-full h-full">
-          <h1 className="text-5xl font-bold mb-4 drop-shadow-lg animate-fadeInDown">Welcome</h1>
-          <p className="text-2xl drop-shadow-lg animate-fadeInUp">Your personalized dashboard awaits.</p>
-        </div>
+    <div className="flex min-h-screen bg-orange-50" dir={isRtl ? "rtl" : "ltr"}>
+      <div className="hidden lg:flex w-1/2 items-center justify-center bg-gradient-to-br from-orange-200 via-orange-300 to-orange-400">
+        <img src={welcomeImg} alt="Sunrise Wellness" className="object-cover h-full w-full rounded-l-xl"/>
       </div>
 
-      {/* Right Side Login/Signup */}
-      <div className="w-full md:w-1/2 flex items-center justify-center relative bg-transparent">
-        {/* Theme Toggle */}
-        <button
-          className="w-10 h-10 rounded-full border border-orange-300 bg-orange-50 flex items-center justify-center transition-colors duration-200 absolute top-6 right-6 z-10 hover:scale-110 hover:border-orange-500"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-        >
-          <svg className="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
-          </svg>
-        </button>
+      <div className="flex flex-col justify-center items-center w-full lg:w-1/2 p-8 bg-white rounded-r-xl shadow-lg">
+        <div className="w-full max-w-md">
+          <div className="flex justify-between items-center mb-6">
+            <img src={logoImg} alt="Logo" className="h-15 w-24" />
+            <select value={language} onChange={handleLanguageChange} className="border rounded-lg p-2 text-sm">
+              <option value="en">🇬🇧 English</option>
+              <option value="ar">🇸🇦 العربية</option>
+              <option value="he">🇮🇱 עברית</option>
+            </select>
+          </div>
 
-        {/* Language Toggle */}
-        <div className="absolute top-6 left-6 z-10 flex items-center">
-          <label htmlFor="language-select" className="mr-2 text-sm text-gray-700">🌐</label>
-          <select
-            id="language-select"
-            value={language}
-            onChange={e => setLanguage(e.target.value)}
-            className="text-sm rounded-md border px-2 py-1 bg-white border-gray-300 text-gray-800 focus:outline-none hover:border-orange-400 transition"
-          >
-            <option value="en">{t("english", language)}</option>
-            <option value="ar">{t("arabic", language)}</option>
-            <option value="he">{t("hebrew", language)}</option>
-          </select>
-        </div>
+          <h1 className="text-4xl font-extrabold text-orange-600 text-center mb-8 whitespace-nowrap">
+            {t.dreamHouses}
+          </h1>
 
-        {/* Form Box */}
-        <div className={`w-full max-w-md p-10 rounded-xl shadow-lg bg-white relative z-10 animate-fadeInUp ${fadeIn ? "opacity-100" : "opacity-0"} transition-opacity duration-700`}>
-          <h2 className="text-3xl font-bold mb-6 text-center text-orange-700 animate-fadeInDown">{isLogin ? t("login", language) : t("signup", language)}</h2>
-
-          {isLogin ? (
-            <form onSubmit={handleLoginSubmit} className="flex flex-col gap-4">
-              <input type="email" name="email" placeholder={t("email", language)} value={loginData.email} onChange={handleLoginChange} required className="p-3 rounded border border-orange-400 focus:ring-2 focus:ring-orange-600 bg-orange-50 text-orange-900 focus:outline-none transition hover:shadow-md hover:border-orange-600" />
-              <input type="password" name="password" placeholder={t("password", language)} value={loginData.password} onChange={handleLoginChange} required className="p-3 rounded border border-orange-400 focus:ring-2 focus:ring-orange-600 bg-orange-50 text-orange-900 focus:outline-none transition hover:shadow-md hover:border-orange-600" />
-              <button type="submit" className="p-3 rounded bg-orange-600 hover:bg-orange-700 text-white font-semibold transition-all hover:scale-105">{t("loginBtn", language)}</button>
-              <p className="mt-2 text-center underline cursor-pointer text-orange-700 hover:text-orange-900 transition" onClick={() => { setError(""); setIsLogin(false); }}>{t("noAccount", language)}</p>
-            </form>
+          {!showSignup && !showForgot ? (
+            <>
+              <h2 className="text-2xl font-bold text-orange-600 text-center mb-6">{t.login}</h2>
+              <form className="space-y-4" onSubmit={handleLogin}>
+                <input type="email" placeholder={t.email} className="w-full border p-3 rounded-lg" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} required />
+                <input type="password" placeholder={t.password} className="w-full border p-3 rounded-lg" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} required />
+                <div className="flex justify-between text-base">
+                  <button type="button" className="text-orange-600 hover:underline" onClick={() => setShowForgot(true)}>
+                    {t.forgotPassword}
+                  </button>
+                </div>
+                <button type="submit" className="w-full bg-orange-500 text-white p-3 rounded-lg hover:bg-orange-600">
+                  {t.loginBtn}
+                </button>
+              </form>
+              <p className="mt-4 text-sm text-center">
+                {t.noAccount}{" "}
+                <button className="text-orange-500 hover:underline" onClick={() => setShowSignup(true)}>
+                  {t.signup}
+                </button>
+              </p>
+            </>
+          ) : showForgot ? (
+            <>
+              <h2 className="text-2xl font-bold text-orange-600 text-center mb-6">{t.resetPassword}</h2>
+              <form className="space-y-4" onSubmit={handleForgotPassword}>
+                <input type="email" placeholder={t.email} className="w-full border p-3 rounded-lg" value={forgotEmail} onChange={(e) => setForgotEmail(e.target.value)} required />
+                <input type="password" placeholder={t.newPassword} className="w-full border p-3 rounded-lg" value={forgotPassword} onChange={(e) => setForgotPassword(e.target.value)} required />
+                <input type="password" placeholder={t.confirmNewPassword} className="w-full border p-3 rounded-lg" value={forgotConfirm} onChange={(e) => setForgotConfirm(e.target.value)} required />
+                <button type="submit" className="w-full bg-orange-500 text-white p-3 rounded-lg hover:bg-orange-600">{t.resetBtn}</button>
+                <button type="button" className="w-full mt-2 bg-gray-200 text-gray-700 p-3 rounded-lg hover:bg-gray-300" onClick={() => setShowForgot(false)}>
+                  {t.cancel}
+                </button>
+              </form>
+            </>
           ) : (
-            <form onSubmit={handleSignUpSubmit} className="flex flex-col gap-4">
-              <input type="text" name="firstName" placeholder={t("firstName", language)} value={signUpData.firstName} onChange={handleSignUpChange} required className="p-3 rounded border border-orange-400 focus:ring-2 focus:ring-orange-600 bg-orange-50 text-orange-900 focus:outline-none transition hover:shadow-md hover:border-orange-600" />
-              <input type="text" name="lastName" placeholder={t("lastName", language)} value={signUpData.lastName} onChange={handleSignUpChange} required className="p-3 rounded border border-orange-400 focus:ring-2 focus:ring-orange-600 bg-orange-50 text-orange-900 focus:outline-none transition hover:shadow-md hover:border-orange-600" />
-              <input type="email" name="email" placeholder={t("email", language)} value={signUpData.email} onChange={handleSignUpChange} required className="p-3 rounded border border-orange-400 focus:ring-2 focus:ring-orange-600 bg-orange-50 text-orange-900 focus:outline-none transition hover:shadow-md hover:border-orange-600" />
-              <input type="password" name="password" placeholder={t("password", language)} value={signUpData.password} onChange={handleSignUpChange} required className="p-3 rounded border border-orange-400 focus:ring-2 focus:ring-orange-600 bg-orange-50 text-orange-900 focus:outline-none transition hover:shadow-md hover:border-orange-600" />
-              <button type="submit" className="p-3 rounded bg-orange-600 hover:bg-orange-700 text-white font-semibold transition-all hover:scale-105">{t("signupBtn", language)}</button>
-              <p className="mt-2 text-center underline cursor-pointer text-orange-700 hover:text-orange-900 transition" onClick={() => { setError(""); setIsLogin(true); }}>{t("haveAccount", language)}</p>
-            </form>
+            <>
+              <h2 className="text-2xl font-bold text-orange-600 text-center mb-6">{t.signupTitle}</h2>
+              <form className="space-y-4" onSubmit={handleSignup}>
+                <div className="flex gap-2 flex-col sm:flex-row">
+                  <input type="text" placeholder={t.firstName} className="w-full sm:w-1/2 border p-3 rounded-lg" value={signupData.firstName} onChange={(e) => setSignupData({ ...signupData, firstName: e.target.value })} required />
+                  <input type="text" placeholder={t.lastName} className="w-full sm:w-1/2 border p-3 rounded-lg" value={signupData.lastName} onChange={(e) => setSignupData({ ...signupData, lastName: e.target.value })} required />
+                </div>
+                <input type="email" placeholder={t.email} className="w-full border p-3 rounded-lg" value={signupData.email} onChange={(e) => setSignupData({ ...signupData, email: e.target.value })} required />
+                <input type="tel" placeholder={t.phone} className="w-full border p-3 rounded-lg" value={signupData.phone} onChange={(e) => setSignupData({ ...signupData, phone: e.target.value })} required />
+                <input type="password" placeholder={t.password} className="w-full border p-3 rounded-lg" value={signupData.password} onChange={(e) => setSignupData({ ...signupData, password: e.target.value })} required />
+                <input type="password" placeholder={t.confirmPassword} className="w-full border p-3 rounded-lg" value={signupData.confirmPassword} onChange={(e) => setSignupData({ ...signupData, confirmPassword: e.target.value })} required />
+                <button type="submit" className="w-full bg-orange-500 text-white p-3 rounded-lg hover:bg-orange-600">{t.signupBtn}</button>
+              </form>
+              <p className="mt-4 text-sm text-center">
+                {t.haveAccount}{" "}
+                <button className="text-orange-500 hover:underline" onClick={() => setShowSignup(false)}>
+                  {t.login}
+                </button>
+              </p>
+            </>
           )}
-
-          {error && <p className="mt-4 text-center font-semibold text-red-600 animate-fadeIn">{error}</p>}
         </div>
       </div>
     </div>
   );
-};
-
-export default Login;
+}

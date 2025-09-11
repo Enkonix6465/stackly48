@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { FaMapMarkerAlt, FaPhoneAlt, FaEnvelope } from "react-icons/fa";
 import contactVideo from "../assets/Contact.mp4";
 import { FaInstagram, FaFacebookF, FaTwitter, FaLinkedinIn } from "react-icons/fa";
-import backgroundImage from "../assets/contactbackgroud.jpg";
+import backgroundImage from "../assets/WC1.jpg";
 
 const THEME_KEY = "theme";
 const LANGUAGE_KEY = "language";
@@ -10,7 +11,7 @@ const LANGUAGE_KEY = "language";
 // Translations
 const translations = {
   en: {
-    heroTitle: "Get in Touch",
+    heroTitle: "Contact Us",
     heroDesc: "Questions? Ideas? Let’s make your wellness journey exceptional. Our team is ready to help.",
     formTitle: "Send Your Message",
     namePlaceholder: "Full Name",
@@ -107,17 +108,33 @@ const ContactUs = () => {
 
       {/* ===== HERO SECTION ===== */}
       <section className="relative h-screen w-full">
-        <video src={contactVideo} autoPlay loop muted className="absolute inset-0 w-full h-full object-cover" />
-        <div className={themedClass("absolute inset-0 transition-colors duration-500", "bg-black bg-opacity-70", "bg-black bg-opacity-40")}></div>
-        <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
-          <motion.h1 initial={{ opacity: 0, y: -60 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} className="text-5xl md:text-6xl font-bold mb-6 drop-shadow-lg" style={{ color: "#FF7043" }}>
-            {t("heroTitle", language)}
-          </motion.h1>
-          <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 1, delay: 0.3 }} className={themedClass("text-lg md:text-2xl max-w-2xl", "text-white", "text-black")}>
-            {t("heroDesc", language)}
-          </motion.p>
-        </div>
-      </section>
+  {/* Background Video */}
+  <video
+    src={contactVideo}
+    autoPlay
+    loop
+    muted
+    className="absolute inset-0 w-full h-full object-cover"
+    style={{ backgroundAttachment: "fixed" }}
+  />
+
+  {/* Overlay: same for both dark and light mode */}
+  <div className="absolute inset-0 bg-black bg-opacity-60 transition-colors duration-500"></div>
+
+  {/* Content */}
+  <div className="relative z-10 flex flex-col items-center justify-center h-full text-center px-4">
+    <motion.h1
+      initial={{ opacity: 0, y: -60 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1 }}
+      className="text-6xl md:text-7xl font-extrabold mb-6 text-[#FF7043] drop-shadow-lg"
+    >
+      {t("heroTitle", language)}
+    </motion.h1>
+  </div>
+</section>
+
+
 
       {/* ===== CONTACT FORM SECTION ===== */}
       <motion.section initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} viewport={{ once: true }} className={themedClass("w-full py-20 px-4 flex justify-center transition-colors duration-500", "bg-black", "bg-white")}>
@@ -142,19 +159,37 @@ const ContactUs = () => {
       </motion.section>
 
       {/* ===== CONTACT INFO CARDS ===== */}
-      <motion.section className="w-full py-20 px-4 grid grid-cols-1 md:grid-cols-3 gap-6 text-center" initial="hidden" whileInView="visible" viewport={{ once: true }}>
-        {[
-          { icon: "📍", title: t("location", language), info: t("locationInfo", language) },
-          { icon: "📞", title: t("callUs", language), info: t("callInfo", language) },
-          { icon: "✉️", title: t("email", language), info: t("emailInfo", language) },
-        ].map((card, idx) => (
-          <motion.div key={idx} variants={cardVariants} whileHover={{ scale: 1.05, y: -5 }} className={themedClass("rounded-xl shadow-lg p-8 flex flex-col items-center justify-center transition-all", "bg-gray-800 text-white", "bg-gray-100 text-black")}>
-            <div className="text-6xl mb-4">{card.icon}</div>
-            <h3 className="text-xl font-bold mb-2">{card.title}</h3>
-            <p className="text-lg">{card.info}</p>
-          </motion.div>
-        ))}
-      </motion.section>
+
+
+<motion.section
+  className="w-full py-20 px-4 grid grid-cols-1 md:grid-cols-3 gap-8 text-center"
+  initial="hidden"
+  whileInView="visible"
+  viewport={{ once: true }}
+>
+  {[
+    { icon: <FaMapMarkerAlt size={40} />, title: t("location", language), info: t("locationInfo", language) },
+    { icon: <FaPhoneAlt size={40} />, title: t("callUs", language), info: t("callInfo", language) },
+    { icon: <FaEnvelope size={40} />, title: "Email", info: "support@stackly.com" },
+  ].map((card, idx) => (
+    <motion.div
+      key={idx}
+      variants={cardVariants}
+      whileHover={{ scale: 1.05, y: -5 }}
+      className={themedClass(
+        "rounded-2xl shadow-2xl p-8 flex flex-col items-center justify-center transition-all",
+        "bg-gray-800 text-white",        // Dark mode
+        "bg-[#FFAA33] text-gray-900"     // Light mode with #FFAA33
+      )}
+    >
+      <div className="mb-4">{card.icon}</div>
+      <h3 className="text-2xl font-semibold mb-2">{card.title}</h3>
+      <p className="text-lg">{card.info}</p>
+    </motion.div>
+  ))}
+</motion.section>
+
+
 
       {/* ===== MAP SECTION ===== */}
       <motion.section className="w-full h-96 relative" initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} viewport={{ once: true }}>
@@ -169,32 +204,56 @@ const ContactUs = () => {
         <div className={themedClass("absolute inset-0 transition-colors duration-500", "bg-black bg-opacity-40", "bg-white bg-opacity-20")}></div>
       </motion.section>
 
-      {/* ===== SOCIAL MEDIA SECTION ===== */}
-      <motion.section className={themedClass("relative w-full py-28 px-4 flex flex-col items-center justify-center overflow-hidden transition-colors duration-500", "bg-black", "bg-white")} initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} transition={{ duration: 1 }} viewport={{ once: true }}>
-        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-[#FF7043] relative z-10">{t("connect", language)}</h2>
-        <div className="relative z-10 flex flex-wrap justify-center gap-12">
-          {[{ icon: <FaInstagram />, href: "https://instagram.com" }, { icon: <FaFacebookF />, href: "https://facebook.com" }, { icon: <FaTwitter />, href: "https://twitter.com" }, { icon: <FaLinkedinIn />, href: "https://linkedin.com" }].map((item, idx) => (
-            <motion.a key={idx} href={item.href} target="_blank" rel="noopener noreferrer" whileHover={{ scale: 1.2, color: "#FF7043" }} whileTap={{ scale: 0.95 }} className={themedClass("text-5xl md:text-6xl transition-colors duration-300", "text-white", "text-black")}>
-              {item.icon}
-            </motion.a>
-          ))}
-        </div>
-      </motion.section>
+     
 
       {/* ===== NEWSLETTER SECTION ===== */}
-      <motion.section className="w-full py-20 px-4 text-center relative transition-colors duration-500" style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: "cover", backgroundPosition: "center", backgroundAttachment: "fixed" }} initial={{ opacity: 0, y: 50 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: 1 }} viewport={{ once: true }}>
-        <div className={themedClass("absolute inset-0 transition-colors duration-500", "bg-black bg-opacity-60", "bg-white bg-opacity-40")}></div>
-        <div className="relative z-10 max-w-3xl mx-auto">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#FF7043]">{t("newsletterTitle", language)}</h2>
-          <p className={themedClass("max-w-2xl mx-auto mb-6", "text-white", "text-black")}>{t("newsletterDesc", language)}</p>
-          <div className="flex justify-center gap-4 flex-col sm:flex-row max-w-xl mx-auto">
-            <input type="email" placeholder={t("emailPlaceholder", language)} className={themedClass("p-4 rounded-full w-full sm:flex-1 focus:outline-none transition-colors duration-500", "bg-gray-800 text-white", "bg-white text-black")} />
-            <motion.button whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(255,112,67,0.3)" }} whileTap={{ scale: 0.95 }} className="px-6 py-4 rounded-full font-semibold mt-4 sm:mt-0 bg-[#FF7043] text-white transition-colors">
-              {t("subscribe", language)}
-            </motion.button>
-          </div>
-        </div>
-      </motion.section>
+<motion.section
+  className="w-full py-28 px-4 text-center relative transition-colors duration-500"
+  style={{
+    backgroundImage: `url(${backgroundImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundAttachment: "fixed",
+  }}
+  initial={{ opacity: 0, y: 50 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+  viewport={{ once: true }}
+>
+  {/* Overlay */}
+  <div className="absolute inset-0 bg-black bg-opacity-50 transition-colors duration-500"></div>
+
+  <div className="relative z-10 max-w-3xl mx-auto">
+    {/* Heading */}
+    <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+      {t("newsletterTitle", language)}
+    </h2>
+
+    {/* Subheading / Description */}
+    <p className="text-white text-lg md:text-xl max-w-3xl mx-auto mb-8">
+      {t("newsletterDesc", language)}
+    </p>
+
+    {/* Input + Button */}
+    <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-xl mx-auto">
+      <input
+        type="email"
+        placeholder={t("emailPlaceholder", language)}
+        className="p-4 rounded-full w-full sm:flex-1 bg-white text-black focus:outline-none transition-colors duration-500"
+      />
+      <motion.button
+        whileHover={{ scale: 1.05, boxShadow: "0 0 15px rgba(255,112,67,0.3)" }}
+        whileTap={{ scale: 0.95 }}
+        className="px-6 py-4 rounded-full font-semibold bg-[#FF7043] text-white transition-colors"
+      >
+        {t("subscribe", language)}
+      </motion.button>
+    </div>
+  </div>
+</motion.section>
+
+
+
     </div>
   );
 };

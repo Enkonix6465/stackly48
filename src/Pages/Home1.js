@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import vedio from "../assets/home1.mp4";
+import vedio from "../assets/Services.mp4";
 import image from "../assets/1.jpg";
 import image2 from "../assets/5.jpg";
 import image3 from "../assets/3.jpg";
@@ -41,6 +41,7 @@ const TRANSLATIONS = {
     ach2: "Wellness Programs",
     ach3: "Expert Coaches",
     ach4: "Years of Service",
+     ach5: "Achievements",
     contactHeading: "Get in Touch",
     contactDesc:
       "Have questions or need guidance on your wellness journey? Reach out to us today.",
@@ -73,7 +74,7 @@ const TRANSLATIONS = {
     serviceTitle2: "خطط تغذية",
     serviceDesc2:
       "خطط غذائية شخصية صممها خبراء تغذية لحياة أكثر صحة.",
-    serviceTitle3: "תدريب ליאקה", 
+    serviceTitle3: "תדريب ליאקה", 
     serviceDesc3:
       "احصل على لياقة بتدريب احترافي مخصص لأهدافك وقدراتك.",
     latestArticles: "أحدث المقالات",
@@ -170,7 +171,8 @@ const achievements = [
   { label: "Happy Clients" },
   { label: "Wellness Programs" },
   { label: "Expert Coaches" },
-  { label: "Years of Service" }
+  { label: "Years of Service" },
+  {healthWellness: "Health & Wellness Programs"},
 ];
 
 const counts = [500, 120, 45, 10]; 
@@ -285,51 +287,111 @@ const achievementDetails = [
 
     
       {/* Hero Section */}
-      <section
-  className={themedClass(
-    "relative w-full h-screen flex items-center justify-center overflow-hidden",
-    "bg-black",
-    "bg-black"
-  )}
->
+<section className="relative w-full h-screen overflow-hidden">
   {/* Background Video */}
   <video
-    src={vedio}
+    className="absolute inset-0 w-full h-full object-cover"
     autoPlay
     loop
     muted
     playsInline
-    className="absolute top-0 left-0 w-full h-full object-cover opacity-60"
-  />
+    style={{ backgroundAttachment: "fixed" }}
+  >
+    <source src={vedio} type="video/mp4" />
+  </video>
+
+  {/* Dark Overlay for better text visibility */}
+  <div className="absolute inset-0 bg-black/50"></div>
+
+  {/* Floating Animated Orbs */}
+  {[...Array(6)].map((_, i) => (
+    <motion.div
+      key={i}
+      className="absolute rounded-full opacity-20"
+      style={{
+        width: `${40 + i * 20}px`,
+        height: `${40 + i * 20}px`,
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        background: `radial-gradient(circle, rgba(255,149,0,0.6), transparent)`,
+      }}
+      animate={{
+        x: [0, 30 * (i % 2 === 0 ? 1 : -1), 0],
+        y: [0, 20 * (i % 2 === 0 ? 1 : -1), 0],
+      }}
+      transition={{
+        repeat: Infinity,
+        repeatType: "mirror",
+        duration: 8 + i,
+        ease: "easeInOut",
+        delay: i * 0.3,
+      }}
+    />
+  ))}
 
   {/* Content */}
-  <div
-    className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6"
-    style={{ color: "#fff" }}
+  <motion.div
+    initial={{ opacity: 0, y: -40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+    className="relative flex flex-col justify-center items-center h-full text-center text-white px-4 z-10"
   >
-    {/* Animated Heading */}
-    <h1 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-wide animate-bounce">
-      {t("heroTitle")}
-    </h1>
-
-    {/* Subtitle with fade effect */}
-    <p className="text-lg md:text-2xl mb-6 italic opacity-90 animate-pulse">
-      {t("heroSubtitle")} 🌿
-    </p>
-
-    {/* Call to Action Button */}
-    <a
-      href="/about"
-      className={themedClass(
-        "px-8 py-3 font-semibold rounded-full shadow-lg transition duration-300 transform hover:scale-110 hover:shadow-2xl",
-        "bg-[#FF7043] text-white hover:bg-[#e85a2a] hover:text-yellow-100",
-        "bg-[#FF7043] text-white hover:bg-[#e85a2a] hover:text-yellow-100"
-      )}
+    {/* Heading */}
+    <motion.h1
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.3 }}
+      className="text-6xl md:text-7xl font-bold mb-4 text-orange-400 drop-shadow-lg"
     >
-      {t("heroCta")}
-    </a>
-  </div>
+      {t('heroTitle')}
+    </motion.h1>
+
+    {/* Subheading (Health & Wellness themed) */}
+    <motion.h2
+      className="text-2xl md:text-2xl mb-5 text-white"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.5 }}
+    >
+      Empowering your journey to holistic health and wellness
+    </motion.h2>
+
+    {/* Buttons */}
+    <div className="flex flex-wrap gap-4 mt-8">
+      <motion.div whileHover={{ scale: 1.05, rotate: [0, 2, -2, 0] }} whileTap={{ scale: 0.95 }}>
+        <Link
+          to="/about"
+          className="font-bold py-3 px-6 rounded-full shadow-lg transition-all inline-block bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-white hover:from-orange-500 hover:via-orange-600 hover:to-orange-700"
+        >
+          About Us
+        </Link>
+      </motion.div>
+
+      <motion.div whileHover={{ scale: 1.05, rotate: [0, -2, 2, 0] }} whileTap={{ scale: 0.95 }}>
+        <Link
+          to="/contact"
+          className="border-2 font-bold py-3 px-6 rounded-full shadow-lg transition-all inline-block border-orange-400 text-orange-400 hover:bg-orange-500 hover:text-white"
+        >
+          Contact
+        </Link>
+      </motion.div>
+    </div>
+  </motion.div>
+
+  {/* Sunrise Glow Circles */}
+  <motion.div
+    className="absolute -top-32 -left-32 w-96 h-96 bg-orange-300/30 rounded-full blur-3xl animate-pulse"
+    animate={{ scale: [1, 1.2, 1], opacity: [0.7, 0.4, 0.7] }}
+    transition={{ repeat: Infinity, duration: 6 }}
+  />
+  <motion.div
+    className="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-orange-400/20 rounded-full blur-3xl animate-pulse"
+    animate={{ scale: [1, 1.15, 1], opacity: [0.6, 0.3, 0.6] }}
+    transition={{ repeat: Infinity, duration: 7 }}
+  />
 </section>
+
+
 
 
 
@@ -459,7 +521,15 @@ const achievementDetails = [
 
       {/* Services Section */}
 <section
-  className="relative w-full py-24 px-6 bg-gradient-to-b from-orange-50 via-white to-orange-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 overflow-hidden"
+  className={themedClass(
+    "relative w-full py-24 px-6 bg-gradient-to-b overflow-hidden",
+    "from-gray-900 via-gray-800 to-gray-900",
+    "from-orange-50 via-white to-orange-100"
+  ) +
+  (theme === 'dark'
+    ? ' bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900'
+    : ' bg-gradient-to-b from-orange-50 via-white to-orange-100')
+  }
 >
   {/* Sunrise Glow Background */}
   <div className="absolute -top-20 left-1/2 -translate-x-1/2 w-[800px] h-[800px] bg-orange-300/20 blur-3xl rounded-full animate-pulse"></div>
@@ -469,7 +539,11 @@ const achievementDetails = [
   <div className="absolute bottom-32 right-10 text-4xl animate-float">🌿</div>
 
   {/* Heading */}
-  <h2 className="text-5xl font-extrabold text-center mb-16 text-orange-600 dark:text-orange-400 animate-bounce">
+  <h2 className={themedClass(
+    "text-5xl font-extrabold text-center mb-16 animate-bounce",
+    "text-orange-400",
+    "text-orange-600"
+  )}>
     {t("servicesHeading")}
   </h2>
 
@@ -499,16 +573,32 @@ const achievementDetails = [
         }`}
       >
         {/* Icon */}
-        <div className="text-6xl bg-orange-100 text-orange-600 rounded-full w-24 h-24 flex items-center justify-center shadow-lg transform transition duration-500 group-hover:scale-125 group-hover:rotate-6 animate-float">
+        <div className={themedClass(
+          "text-6xl rounded-full w-24 h-24 flex items-center justify-center shadow-lg transform transition duration-500 group-hover:scale-125 group-hover:rotate-6 animate-float",
+          "bg-orange-900 text-orange-300",
+          "bg-orange-100 text-orange-600"
+        )}>
           {service.icon}
         </div>
 
         {/* Text Content */}
-        <div className="text-center md:text-left max-w-xl">
-          <h3 className="text-2xl font-bold text-gray-800 dark:text-white group-hover:text-orange-600 transition-colors">
+        <div className={themedClass(
+          "text-center md:text-left max-w-xl",
+          "",
+          ""
+        )}>
+          <h3 className={themedClass(
+            "text-2xl font-bold group-hover:text-orange-600 transition-colors",
+            "text-white",
+            "text-gray-800"
+          )}>
             {service.title}
           </h3>
-          <p className="mt-3 text-gray-600 dark:text-gray-300 leading-relaxed group-hover:translate-x-2 transition-transform duration-300">
+          <p className={themedClass(
+            "mt-3 leading-relaxed group-hover:translate-x-2 transition-transform duration-300",
+            "text-gray-300",
+            "text-gray-600"
+          )}>
             {service.desc}
           </p>
         </div>
@@ -520,7 +610,11 @@ const achievementDetails = [
   <div className="flex justify-center mt-20 relative z-10">
     <a
       href="/services"
-      className="px-12 py-4 rounded-full bg-orange-500 text-white font-semibold shadow-lg hover:bg-orange-600 hover:shadow-2xl transform hover:scale-110 transition-all duration-300"
+      className={themedClass(
+        "px-12 py-4 rounded-full font-semibold shadow-lg hover:shadow-2xl transform hover:scale-110 transition-all duration-300",
+        "bg-orange-700 text-white hover:bg-orange-600",
+        "bg-orange-500 text-white hover:bg-orange-600"
+      )}
     >
   {t("servicesHeading")}
     </a>
@@ -542,22 +636,39 @@ const achievementDetails = [
   </div>
 </section>
 
-/
 
 
       {/* Blog Section */}
-      <section className="relative w-full bg-gradient-to-b from-orange-50 via-white to-orange-100 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 py-24 overflow-hidden">
-  <h2 className="text-5xl font-extrabold text-center text-orange-600 dark:text-orange-400 mb-16 animate-bounce">
-    {t("latestArticles")}
+
+     <section className={themedClass(
+       "relative w-full bg-gradient-to-b py-24 overflow-hidden transition-colors duration-500",
+       "from-gray-900 via-gray-800 to-gray-900",
+       "from-orange-50 via-white to-orange-100"
+     ) +
+     (theme === 'dark'
+       ? ' bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900'
+       : ' bg-gradient-to-b from-orange-50 via-white to-orange-100')
+     }>
+  <h2 className={themedClass(
+    "text-5xl font-extrabold text-center mb-16 animate-bounce",
+    "text-orange-400",
+    "text-orange-600"
+  )}>
+    {t("latestArticles", language)}
   </h2>
 
   <div className="relative max-w-6xl mx-auto">
-    <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-orange-300 dark:bg-orange-600"></div>
+    {/* Vertical Timeline Line */}
+    <div className={themedClass(
+      "absolute left-1/2 transform -translate-x-1/2 h-full w-1 transition-colors duration-500",
+      "bg-orange-600",
+      "bg-orange-300"
+    )}></div>
 
     {[
-      { time: '2021', title: t('blog1Title'), desc: t('blog1Desc') },
-      { time: '2022', title: t('blog2Title'), desc: t('blog2Desc') },
-      { time: '2023', title: t('blog3Title'), desc: t('blog3Desc') },
+      { time: '2021', title: t('blog1Title', language), desc: t('blog1Desc', language) },
+      { time: '2022', title: t('blog2Title', language), desc: t('blog2Desc', language) },
+      { time: '2023', title: t('blog3Title', language), desc: t('blog3Desc', language) },
     ].map((event, idx) => (
       <motion.div
         key={idx}
@@ -569,12 +680,32 @@ const achievementDetails = [
       >
         {idx % 2 === 0 ? (
           <>
-            <div className="md:w-1/2 text-right pr-8">
-              <span className="text-xl font-semibold text-orange-500">{event.time}</span>
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-white">{event.title}</h3>
-              <p className="mt-2 text-gray-600 dark:text-gray-300 leading-relaxed">{event.desc}</p>
+            <div className={themedClass(
+              "md:w-1/2 text-right pr-8",
+              "",
+              ""
+            )}>
+              <span className={themedClass(
+                "text-xl font-semibold",
+                "text-orange-400",
+                "text-orange-500"
+              )}>{event.time}</span>
+              <h3 className={themedClass(
+                "text-2xl font-bold transition-colors duration-500",
+                "text-white",
+                "text-gray-800"
+              )}>
+                {event.title}
+              </h3>
+              <p className={themedClass(
+                "mt-2 leading-relaxed transition-colors duration-500",
+                "text-gray-300",
+                "text-gray-600"
+              )}>
+                {event.desc}
+              </p>
             </div>
-            <div className="flex items-center justify-center w-12 h-12 bg-orange-500 rounded-full text-white shadow-lg">
+            <div className="flex items-center justify-center w-12 h-12 bg-orange-500 rounded-full text-white shadow-lg transition-colors duration-500">
               ●
             </div>
             <div className="md:w-1/2"></div>
@@ -582,13 +713,33 @@ const achievementDetails = [
         ) : (
           <>
             <div className="md:w-1/2"></div>
-            <div className="flex items-center justify-center w-12 h-12 bg-orange-500 rounded-full text-white shadow-lg">
+            <div className="flex items-center justify-center w-12 h-12 bg-orange-500 rounded-full text-white shadow-lg transition-colors duration-500">
               ●
             </div>
-            <div className="md:w-1/2 text-left pl-8">
-              <span className="text-xl font-semibold text-orange-500">{event.time}</span>
-              <h3 className="text-2xl font-bold text-gray-800 dark:text-white">{event.title}</h3>
-              <p className="mt-2 text-gray-600 dark:text-gray-300 leading-relaxed">{event.desc}</p>
+            <div className={themedClass(
+              "md:w-1/2 text-left pl-8",
+              "",
+              ""
+            )}>
+              <span className={themedClass(
+                "text-xl font-semibold",
+                "text-orange-400",
+                "text-orange-500"
+              )}>{event.time}</span>
+              <h3 className={themedClass(
+                "text-2xl font-bold transition-colors duration-500",
+                "text-white",
+                "text-gray-800"
+              )}>
+                {event.title}
+              </h3>
+              <p className={themedClass(
+                "mt-2 leading-relaxed transition-colors duration-500",
+                "text-gray-300",
+                "text-gray-600"
+              )}>
+                {event.desc}
+              </p>
             </div>
           </>
         )}
@@ -601,67 +752,70 @@ const achievementDetails = [
 
 
 
+
       {/* Achievements Section */}
       
 
-    <section
-      className={themedClass(
-        "w-full py-28 px-6",
-        "bg-gray-900", // dark mode background
-        "bg-gradient-to-r from-orange-50 via-orange-100 to-orange-200" // light mode background
-      )}
-    >
-      {/* Heading */}
-      <h2
+   {/* Achievements Section */}
+<section
+  className={themedClass(
+    "w-full py-28 px-6",
+    "bg-gray-900", // dark mode background
+    "bg-gradient-to-r from-orange-50 via-orange-100 to-orange-200" // light mode background
+  )}
+>
+  {/* Heading */}
+  <h2
+    className={themedClass(
+      "text-4xl font-extrabold text-center mb-16",
+      "text-white",
+      "text-orange-600"
+    )}
+  >
+    {t("achievementsHeading")}
+  </h2>
+
+  {/* Achievements Grid */}
+  <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-15 text-center">
+    {["ach1", "ach2", "ach3", "ach4", "ach5"].map((key, i) => (
+      <motion.div
+        key={i}
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false }}
+        transition={{ duration: 0.5 }}
         className={themedClass(
-          "text-4xl font-extrabold text-center mb-16",
-          "text-white",
-          "text-orange-600"
+          "relative w-64 h-64 p-6 flex flex-col items-center justify-center cursor-pointer overflow-hidden shadow-lg transition-transform duration-300",
+          "bg-gray-800 hover:bg-gray-700 rounded-[55px_0_55px_0]",
+          "bg-gradient-to-br from-orange-300 to-orange-400 hover:from-orange-400 hover:to-orange-500 rounded-xl"
         )}
       >
-        {t("achievementsHeading")}
-      </h2>
+        {/* Count */}
+        <h3
+          className={themedClass(
+            "text-5xl font-extrabold mb-2 transition-transform duration-300 group-hover:scale-110",
+            "text-orange-400",
+            "text-orange-600"
+          )}
+        >
+          {counts[i]}+
+        </h3>
 
-      {/* Achievements Grid */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-5 gap-15 text-center">
-        {["ach1", "ach2", "ach3", "ach4"].map((key, i) => (
-          <motion.div
-            key={i}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false }}
-            transition={{ duration: 0.5 }}
-            className={themedClass(
-              "relative w-64 h-64 p-6 flex flex-col items-center justify-center cursor-pointer overflow-hidden shadow-lg transition-transform duration-300",
-              "bg-gray-800 hover:bg-gray-700 rounded-[55px_0_55px_0]",
-              "bg-gradient-to-br from-orange-300 to-orange-400 hover:from-orange-400 hover:to-orange-500 rounded-xl"
-            )}
-          >
-            {/* Count */}
-            <h3
-              className={themedClass(
-                "text-5xl font-extrabold mb-2 transition-transform duration-300 group-hover:scale-110",
-                "text-orange-400",
-                "text-orange-600"
-              )}
-            >
-              {counts[i]}+
-            </h3>
+        {/* Label */}
+        <p
+          className={themedClass(
+            "text-lg font-medium transition-colors duration-300",
+            "text-gray-300",
+            "text-orange-700"
+          )}
+        >
+          {t(key)}
+        </p>
+      </motion.div>
+    ))}
+  </div>
+</section>
 
-            {/* Label */}
-            <p
-              className={themedClass(
-                "text-lg font-medium transition-colors duration-300",
-                "text-gray-300",
-                "text-orange-700"
-              )}
-            >
-              {t(key)}
-            </p>
-          </motion.div>
-        ))}
-      </div>
-    </section>
 
 
       {/* Contact Section */}
@@ -706,21 +860,21 @@ const achievementDetails = [
   {/* Content */}
   <div className="relative z-10 w-full px-6 md:px-12 text-left md:text-center">
     <motion.h2
-      className="text-4xl md:text-5xl font-extrabold mb-6 text-orange-400"
+      className="text-4xl md:text-5xl font-extrabold mb-6 text-white"
       initial={{ opacity: 0, y: -50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
     >
-  {t('contactHeading')}
+      {t('contactHeading')}
     </motion.h2>
 
     <motion.p
-      className="mb-8 text-lg md:text-xl max-w-2xl mx-auto text-orange-100"
+      className="mb-8 text-lg md:text-xl max-w-2xl mx-auto text-white"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1, delay: 0.3 }}
     >
-  {t('contactDesc')}
+      {t('contactDesc')}
     </motion.p>
 
     {/* Contact Button */}
@@ -733,7 +887,7 @@ const achievementDetails = [
         to="/contact"
         className="px-8 py-4 rounded-full shadow-lg transition-all duration-300 transform text-white bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 hover:from-orange-500 hover:via-orange-600 hover:to-orange-700"
       >
-  {t('contactCta')}
+        {t('contactCta')}
       </Link>
     </motion.div>
   </div>
@@ -751,11 +905,8 @@ const achievementDetails = [
   />
 </section>
 
-
-
-
-    </div>
-  );
+  </div>
+);
 };
 
 export default Home1;

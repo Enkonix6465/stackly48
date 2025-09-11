@@ -258,6 +258,11 @@ const Home2 = () => {
   const themedClass = (base, dark, light) =>
     `${base} ${theme === 'dark' ? dark : light}`;
 
+  // Debug: log theme changes
+  useEffect(() => {
+    console.log('Current theme:', theme);
+  }, [theme]);
+
   const [counts, setCounts] = useState(achievements.map(() => 0));
 
   useEffect(() => {
@@ -295,50 +300,108 @@ const Home2 = () => {
       
 
       {/* Section 1: Hero Banner */}
-<section
-  className={themedClass(
-    "relative w-full h-screen flex items-center justify-center overflow-hidden",
-    "bg-black",
-    "bg-black"
-  )}
->
+<section className="relative w-full h-screen overflow-hidden">
   {/* Background Video */}
   <video
-    src={vedio}
+    className="absolute inset-0 w-full h-full object-cover"
     autoPlay
     loop
     muted
     playsInline
-    className="absolute top-0 left-0 w-full h-full object-cover opacity-60"
-  />
+    style={{ backgroundAttachment: "fixed" }}
+  >
+    <source src={vedio} type="video/mp4" />
+  </video>
+
+  {/* Dark Overlay for better text visibility */}
+  <div className="absolute inset-0 bg-black/60"></div>
+
+  {/* Floating Animated Orbs */}
+  {[...Array(6)].map((_, i) => (
+    <motion.div
+      key={i}
+      className="absolute rounded-full opacity-20"
+      style={{
+        width: `${40 + i * 20}px`,
+        height: `${40 + i * 20}px`,
+        top: `${Math.random() * 100}%`,
+        left: `${Math.random() * 100}%`,
+        background: `radial-gradient(circle, rgba(255,149,0,0.6), transparent)`,
+      }}
+      animate={{
+        x: [0, 30 * (i % 2 === 0 ? 1 : -1), 0],
+        y: [0, 20 * (i % 2 === 0 ? 1 : -1), 0],
+      }}
+      transition={{
+        repeat: Infinity,
+        repeatType: "mirror",
+        duration: 8 + i,
+        ease: "easeInOut",
+        delay: i * 0.3,
+      }}
+    />
+  ))}
 
   {/* Content */}
-  <div
-    className="relative z-10 flex flex-col items-center justify-center h-full text-center px-6"
-    style={{ color: "#fff" }}
+  <motion.div
+    initial={{ opacity: 0, y: -40 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 1 }}
+    className="relative flex flex-col justify-center items-center h-full text-center text-white px-4 z-10"
   >
-    {/* Animated Heading */}
-    <h1 className="text-5xl md:text-6xl font-extrabold mb-4 tracking-wide animate-bounce">
-      {t('heroTitle')}
-    </h1>
-
-    {/* Subtitle with fade effect */}
-    <p className="text-lg md:text-2xl mb-6 italic opacity-90 animate-pulse">
-      {t('heroSubtitle')}
-    </p>
-
-    {/* Call to Action Button */}
-    <a
-      href="/about"
-      className={themedClass(
-        "px-8 py-3 font-semibold rounded-full shadow-lg transition duration-300 transform hover:scale-110 hover:shadow-2xl",
-        "bg-[#FF7043] text-white hover:bg-[#e85a2a] hover:text-yellow-100",
-        "bg-[#FF7043] text-white hover:bg-[#e85a2a] hover:text-yellow-100"
-      )}
+    {/* Heading */}
+    <motion.h1
+      initial={{ opacity: 0, y: -50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.3 }}
+      className="text-6xl md:text-7xl font-extrabold mb-4 text-orange-400 drop-shadow-lg"
     >
-      {t('heroCta')}
-    </a>
-  </div>
+      {t('heroTitle')}
+    </motion.h1>
+
+    {/* Health & Wellness Subheading */}
+    <motion.h2
+      className="text-2xl md:text-2xl mb-6 text-white"
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 1, delay: 0.5 }}
+    >
+      Empowering your journey to holistic health and wellness
+    </motion.h2>
+
+    {/* Buttons */}
+    <div className="flex flex-wrap gap-4 mt-8">
+      <motion.div whileHover={{ scale: 1.05, rotate: [0, 2, -2, 0] }} whileTap={{ scale: 0.95 }}>
+        <Link
+          to="/about"
+          className="font-bold py-3 px-6 rounded-full shadow-lg transition-all inline-block bg-gradient-to-r from-orange-400 via-orange-500 to-orange-600 text-white hover:from-orange-500 hover:via-orange-600 hover:to-orange-700"
+        >
+          About Us
+        </Link>
+      </motion.div>
+
+      <motion.div whileHover={{ scale: 1.05, rotate: [0, -2, 2, 0] }} whileTap={{ scale: 0.95 }}>
+        <Link
+          to="/contact"
+          className="border-2 font-bold py-3 px-6 rounded-full shadow-lg transition-all inline-block border-orange-400 text-orange-400 hover:bg-orange-500 hover:text-white"
+        >
+          Contact
+        </Link>
+      </motion.div>
+    </div>
+  </motion.div>
+
+  {/* Sunrise Glow Circles */}
+  <motion.div
+    className="absolute -top-32 -left-32 w-96 h-96 bg-orange-300/30 rounded-full blur-3xl animate-pulse"
+    animate={{ scale: [1, 1.2, 1], opacity: [0.7, 0.4, 0.7] }}
+    transition={{ repeat: Infinity, duration: 6 }}
+  />
+  <motion.div
+    className="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-orange-400/20 rounded-full blur-3xl animate-pulse"
+    animate={{ scale: [1, 1.15, 1], opacity: [0.6, 0.3, 0.6] }}
+    transition={{ repeat: Infinity, duration: 7 }}
+  />
 </section>
 
 
@@ -346,21 +409,25 @@ const Home2 = () => {
         <section
   className={themedClass(
     "relative w-full py-28 px-6 md:px-16 overflow-hidden transition-colors duration-500",
-    "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900", // dark background
-    "bg-gradient-to-br from-orange-50 via-white to-orange-100"  // light background
+    "bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800",
+    "bg-gradient-to-br from-orange-50 via-white to-orange-100"
   )}
 >
   {/* Soft Glow Background */}
-  <div className={themedClass(
-    "absolute -top-32 -left-32 w-96 h-96 rounded-full blur-3xl opacity-20",
-    "bg-gray-700", // dark glow
-    "bg-orange-200" // light glow
-  )}></div>
-  <div className={themedClass(
-    "absolute -bottom-32 -right-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-20",
-    "bg-gray-600", 
-    "bg-orange-300"
-  )}></div>
+  <div
+    className={themedClass(
+      "absolute -top-32 -left-32 w-96 h-96 rounded-full blur-3xl opacity-20",
+      "bg-orange-500/30",
+      "bg-orange-200"
+    )}
+  ></div>
+  <div
+    className={themedClass(
+      "absolute -bottom-32 -right-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-20",
+      "bg-orange-400/20",
+      "bg-orange-300"
+    )}
+  ></div>
 
   <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center relative z-10">
     {/* Left Content */}
@@ -370,31 +437,33 @@ const Home2 = () => {
       viewport={{ once: true }}
       transition={{ duration: 1 }}
     >
-  {/* Removed featured badge for consistency with Home1 */}
-
-      <h2 className={themedClass(
-        "text-4xl md:text-6xl font-extrabold leading-tight mb-6",
-        "text-gray-100", // dark text
-        "text-gray-900"  // light text
-      )}>
-        <span className={themedClass(
-          "bg-clip-text text-transparent bg-gradient-to-r",
-          "from-orange-500 to-orange-700", // dark gradient
-          "from-orange-500 to-orange-700"  // light gradient
-        )}>
+      <h2
+        className={themedClass(
+          "text-4xl md:text-6xl font-extrabold leading-tight mb-6",
+          "text-gray-100",
+          "text-gray-900"
+        )}
+      >
+        <span
+          className={themedClass(
+            "bg-clip-text text-transparent bg-gradient-to-r",
+            "from-orange-400 to-orange-600",
+            "from-orange-600 to-orange-800"
+          )}
+        >
           {t("aboutHeading")}
         </span>
       </h2>
 
-      <p className={themedClass(
-        "text-lg leading-relaxed mb-8",
-        "text-gray-300", // dark paragraph
-        "text-gray-700"  // light paragraph
-      )}>
+      <p
+        className={themedClass(
+          "text-lg leading-relaxed mb-8",
+          "text-gray-300",
+          "text-gray-700"
+        )}
+      >
         {t("aboutParagraph")}
       </p>
-
-  {/* Removed learnMore button for consistency with Home1 */}
     </motion.div>
 
     {/* Right Image */}
@@ -408,8 +477,8 @@ const Home2 = () => {
       <motion.div
         className={themedClass(
           "absolute inset-0",
-          "bg-gray-700", // dark overlay
-          "bg-orange-200" // light overlay
+          "bg-gray-900/50",  // dark overlay
+          "bg-orange-100/60" // light overlay
         )}
         initial={{ x: 0 }}
         whileInView={{ x: "100%" }}
@@ -423,6 +492,7 @@ const Home2 = () => {
     </motion.div>
   </div>
 </section>
+
 
 
       {/* Section 2: Our Services */}
@@ -788,7 +858,7 @@ const Home2 = () => {
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
-    backgroundAttachment: "fixed", // makes the image fixed (parallax)
+    backgroundAttachment: "fixed",
   }}
 >
   {/* Semi-transparent overlay for contrast */}
@@ -802,11 +872,11 @@ const Home2 = () => {
     viewport={{ once: true }}
     transition={{ duration: 1 }}
   >
-    <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-orange-600 bg-gradient-to-r from-orange-500 to-orange-700 bg-clip-text text-transparent">
+    <h2 className="text-3xl md:text-4xl font-extrabold mb-4 text-white">
       {t('contactHeading')}
     </h2>
 
-    <p className="text-gray-100 text-base md:text-lg mb-8 text-justify">
+    <p className="text-white text-base md:text-lg mb-8 text-justify">
       {t('contactDesc')}
     </p>
 
@@ -824,6 +894,7 @@ const Home2 = () => {
     </motion.div>
   </motion.div>
 </section>
+
 
     </div>
   );

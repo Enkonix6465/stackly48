@@ -307,7 +307,11 @@ const ServicesPage = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
         whileHover={{ scale: 1.01 }}
-        className="relative w-full h-screen overflow-hidden"
+        className={themedClass(
+          "relative w-full h-screen overflow-hidden",
+          "bg-gray-900 text-gray-100",
+          "bg-white text-gray-900"
+        )}
       >
         {/* Background Video */}
         <video
@@ -354,7 +358,11 @@ const ServicesPage = () => {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="relative flex justify-center items-center h-full text-center text-white px-4 z-10"
+          className={themedClass(
+            "relative flex justify-center items-center h-full text-center px-4 z-10",
+            "text-white",
+            "text-gray-900"
+          )}
         >
           {/* Live Animated Heading */}
           <motion.h1
@@ -367,7 +375,11 @@ const ServicesPage = () => {
               repeat: Infinity,
               ease: "easeInOut",
             }}
-            className="text-5xl md:text-7xl font-extrabold text-orange-400 drop-shadow-[0_0_20px_rgba(255,165,0,0.8)]"
+            className={themedClass(
+              "text-5xl md:text-7xl font-extrabold drop-shadow-[0_0_20px_rgba(255,165,0,0.8)]",
+              "text-orange-400",
+              "text-orange-600"
+            )}
           >
             {t('heroTitle')}
           </motion.h1>
@@ -393,7 +405,11 @@ const ServicesPage = () => {
         transition={{ duration: 0.8 }}
         whileHover={{ scale: 1.01, boxShadow: "0 8px 32px rgba(255,149,0,0.12)" }}
         viewport={{ once: true }}
-        className="w-full overflow-hidden py-16 relative bg-gradient-to-br from-orange-100 via-yellow-50 to-pink-100 dark:bg-gray-900"
+        className={themedClass(
+          "w-full overflow-hidden py-16 relative",
+          "bg-gray-900 text-gray-100",
+          "bg-gradient-to-br from-orange-100 via-yellow-50 to-pink-100 text-gray-900"
+        )}
       >
         {/* 🌅 Floating Animated Orbs (Light Mode only) */}
         {[...Array(5)].map((_, i) => (
@@ -429,7 +445,11 @@ const ServicesPage = () => {
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             viewport={{ once: true }}
-            className="text-4xl md:text-5xl font-extrabold tracking-wide bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent dark:text-orange-400"
+            className={themedClass(
+              "text-4xl md:text-5xl font-extrabold tracking-wide",
+              "text-orange-400",
+              "bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent"
+            )}
           >
             {t('heroTitle')}
           </motion.h2>
@@ -454,7 +474,11 @@ const ServicesPage = () => {
               transition={{ duration: 0.8, delay: index * 0.2 }}
               viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
-              className="group relative rounded-2xl p-6 flex flex-col justify-between h-[450px] bg-white/70 dark:bg-gray-800/70 backdrop-blur-xl shadow-xl hover:shadow-orange-400/20 transition-all duration-500 border border-transparent hover:border-orange-500/40"
+              className={themedClass(
+                "group relative rounded-2xl p-6 flex flex-col justify-between h-[450px] backdrop-blur-xl shadow-xl hover:shadow-orange-400/20 transition-all duration-500 border border-transparent hover:border-orange-500/40",
+                "bg-gray-800/70 text-gray-100",
+                "bg-white/70 text-gray-900"
+              )}
             >
               {/* Dynamic Gradient Border */}
               <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-70 transition-opacity duration-500 border-4 border-gradient animate-spin-slow bg-gradient-to-r from-yellow-600 via-orange-600 to-red-600 -z-10"></div>
@@ -470,10 +494,18 @@ const ServicesPage = () => {
 
               {/* Service Content */}
               <div className="flex flex-col flex-1 text-center">
-                <h3 className="text-2xl font-bold mb-3 text-orange-600 dark:text-orange-400">
+                <h3 className={themedClass(
+                  "text-2xl font-bold mb-3",
+                  "text-orange-400",
+                  "text-orange-600"
+                )}>
                   {service.title}
                 </h3>
-                <p className="text-gray-700 dark:text-gray-300 text-md mb-6 leading-relaxed">
+                <p className={themedClass(
+                  "text-md mb-6 leading-relaxed",
+                  "text-gray-300",
+                  "text-gray-700"
+                )}>
                   {service.description}
                 </p>
               </div>
@@ -488,7 +520,11 @@ const ServicesPage = () => {
               >
                 <Link
                   to="/nutrition"
-                  className="px-6 py-3 rounded-full font-semibold text-white bg-gradient-to-r from-yellow-600 via-orange-600 to-red-600 shadow-lg hover:shadow-orange-500/30 transition-all inline-block dark:bg-orange-600 dark:hover:bg-orange-500"
+                  className={themedClass(
+                    "px-6 py-3 rounded-full font-semibold shadow-lg hover:shadow-orange-500/30 transition-all inline-block",
+                    "bg-orange-600 text-white hover:bg-orange-500",
+                    "bg-gradient-to-r from-yellow-600 via-orange-600 to-red-600 text-white"
+                  )}
                 >
                   {service.buttonText}
                 </Link>
@@ -518,7 +554,11 @@ const ServicesPage = () => {
         transition={{ duration: 0.8 }}
         whileHover={{ scale: 1.01, boxShadow: "0 8px 32px rgba(255,149,0,0.12)" }}
         viewport={{ once: true }}
-        className="relative py-32 px-6 lg:px-20 overflow-hidden bg-white dark:bg-gray-900"
+        className={themedClass(
+          "relative py-32 px-6 lg:px-20 overflow-hidden",
+          "bg-gray-900 text-gray-100",
+          "bg-white text-gray-900"
+        )}
       >
         {/* 🌅 Subtle Animated Orbs */}
         {[...Array(3)].map((_, i) => (
@@ -552,10 +592,18 @@ const ServicesPage = () => {
           transition={{ duration: 0.8 }}
           className="relative z-10 text-center max-w-3xl mx-auto mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-orange-400 drop-shadow-lg">
+          <h2 className={themedClass(
+            "text-4xl md:text-5xl font-extrabold drop-shadow-lg",
+            "text-orange-400",
+            "text-orange-600"
+          )}>
             {t('featuredHeading')}
           </h2>
-          <p className="text-md md:text-lg text-gray-600 dark:text-gray-300 mt-4">
+          <p className={themedClass(
+            "text-md md:text-lg mt-4",
+            "text-gray-300",
+            "text-gray-700"
+          )}>
             {t('heroSubtitle')}
           </p>
         </motion.div>
@@ -580,12 +628,20 @@ const ServicesPage = () => {
               </div>
 
               {/* Service Title */}
-              <h3 className="text-2xl font-bold text-orange-400 dark:text-orange-400">
+              <h3 className={themedClass(
+                "text-2xl font-bold",
+                "text-orange-400",
+                "text-orange-600"
+              )}>
                 {service.title}
               </h3>
 
               {/* Service Description */}
-              <p className="text-gray-700 dark:text-gray-300 text-md leading-relaxed">
+              <p className={themedClass(
+                "text-md leading-relaxed",
+                "text-gray-300",
+                "text-gray-700"
+              )}>
                 {service.description}
               </p>
 
@@ -596,7 +652,11 @@ const ServicesPage = () => {
               >
                 <Link
                   to="/services"
-                  className="mt-4 px-6 py-2 rounded-full font-semibold text-white bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 shadow-md hover:shadow-orange-500/40 transition-all inline-block"
+                  className={themedClass(
+                    "mt-4 px-6 py-2 rounded-full font-semibold shadow-md hover:shadow-orange-500/40 transition-all inline-block",
+                    "bg-orange-600 text-white hover:bg-orange-500",
+                    "bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 text-white"
+                  )}
                 >
                   {service.buttonText}
                 </Link>
@@ -607,12 +667,12 @@ const ServicesPage = () => {
 
         {/* Sunrise Glow Circles */}
         <motion.div
-          className="absolute -top-32 -left-32 w-96 h-96 bg-orange-300/20 rounded-full blur-3xl animate-pulse"
+    className="absolute -top-32 -left-32 w-96 h-96 bg-orange-300/20 rounded-full blur-3xl animate-pulse"
           animate={{ scale: [1, 1.2, 1], opacity: [0.7, 0.4, 0.7] }}
           transition={{ repeat: Infinity, duration: 6 }}
         />
         <motion.div
-          className="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-orange-400/20 rounded-full blur-3xl animate-pulse"
+    className="absolute -bottom-32 -right-32 w-[500px] h-[500px] bg-orange-400/20 rounded-full blur-3xl animate-pulse"
           animate={{ scale: [1, 1.15, 1], opacity: [0.6, 0.3, 0.6] }}
           transition={{ repeat: Infinity, duration: 7 }}
         />
@@ -668,9 +728,9 @@ const ServicesPage = () => {
               key={idx}
               whileHover={{ scale: 1.05, y: -5, boxShadow: "0 20px 40px rgba(0,0,0,0.15)" }}
               className={themedClass(
-                "relative bg-gradient-to-br rounded-2xl shadow-md overflow-hidden p-8 transition-all",
-                "from-[#22304a] to-[#1E2A38]",
-                "from-orange-100 to-orange-200"
+                "relative rounded-2xl shadow-md overflow-hidden p-8 transition-all",
+                "bg-[#22304a] text-orange-200",
+                "bg-orange-100 text-orange-900"
               )}
             >
               {/* Accent strip on top */}
@@ -713,8 +773,8 @@ const ServicesPage = () => {
         viewport={{ once: true }}
         className={themedClass(
           "w-full py-24 px-6",
-          "bg-[#22304a]",
-          "bg-orange-50"
+          "bg-[#22304a] text-orange-200",
+          "bg-orange-50 text-orange-900"
         )}
       >
         <h2 className={themedClass(
@@ -779,17 +839,14 @@ const ServicesPage = () => {
         </div>
       </motion.section>
 
-      {/* Book a Workshop Section */}
-     <motion.section
+    {/* Book a Workshop Section */}
+<motion.section
   initial={{ opacity: 0, y: 40 }}
   whileInView={{ opacity: 1, y: 0 }}
   transition={{ duration: 0.8 }}
   whileHover={{ scale: 1.01, boxShadow: "0 8px 32px rgba(255,149,0,0.12)" }}
   viewport={{ once: true }}
-  className={themedClass(
-    "relative py-32 px-4 sm:px-6 lg:px-8 text-center",
-    "text-white"
-  )}
+  className="relative py-32 px-4 sm:px-6 lg:px-8 text-center text-white"
   style={{
     backgroundImage: `url(${backgroundImage})`,
     backgroundSize: "cover",
@@ -798,7 +855,7 @@ const ServicesPage = () => {
   }}
 >
   {/* Overlay */}
-  <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+  <div className="absolute inset-0 bg-black/50"></div>
 
   {/* Content */}
   <div className="relative z-10 max-w-3xl mx-auto">
@@ -806,25 +863,25 @@ const ServicesPage = () => {
       {t("workshopHeading")}
     </h2>
 
-    {/* Centered subheading */}
     <p className="text-lg md:text-xl mb-8 text-white drop-shadow-md text-center truncate">
-  {t('workshopBody')}
-</p>
+      {t('workshopBody')}
+    </p>
 
-    {/* Button */}
     <motion.a
       href="/contact"
       whileHover={{
         scale: 1.05,
-        boxShadow: "0 0 20px rgba(255,255,255,0.5)",
+        boxShadow: "0 0 25px rgba(255,140,0,0.6)",
+        backgroundColor: "#ea580c",
       }}
       whileTap={{ scale: 0.95 }}
-      className="inline-block px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all bg-white text-orange-600"
+      className="inline-block px-10 py-4 rounded-full font-semibold text-lg shadow-lg bg-orange-500 text-white transition-all"
     >
       {t("workshopBtn")}
     </motion.a>
   </div>
 </motion.section>
+
 
     </div>
   );
