@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom"; 
-import video from '../assets/Services3.mp4';
+import { Link } from "react-router-dom";
+import video from "../assets/Services3.mp4";
 import wellnessImg from "../assets/7.jpg";
-import coachingIcon from "../assets/BG2.jpg"; 
+import coachingIcon from "../assets/BG2.jpg";
 import exerciseIcon from "../assets/Dp.jpg";
 import consultationIcon from "../assets/B2.jpg";
 import trackingIcon from "../assets/blog1.jpg";
@@ -12,25 +12,32 @@ import trackingIcon from "../assets/blog1.jpg";
 const translations = {
   en: {
     heroTitle: "Expert Wellness Coaching",
-    
+
     sectionTitle: "Holistic Wellness Guidance",
-    sectionDesc: "Our certified wellness coaches provide personalized plans, mindfulness guidance, and actionable strategies to help you achieve long-term health and wellness.",
+    sectionDesc:
+      "Our certified wellness coaches provide personalized plans, mindfulness guidance, and actionable strategies to help you achieve long-term health and wellness.",
     feature1: "Personalized Coaching Plans",
     feature2: "Mindfulness & Stress Management",
     feature3: "Progress Tracking",
     feature4: "1-on-1 Sessions",
     coreTitle: "Core Wellness Coaching Services",
-    coreDesc: "From personalized coaching to mindfulness support, our programs help you achieve physical, mental, and emotional wellness.",
+    coreDesc:
+      "From personalized coaching to mindfulness support, our programs help you achieve physical, mental, and emotional wellness.",
     card1Title: "Personalized Coaching",
-    card1Desc: "Customized wellness coaching plans based on your health goals and lifestyle.",
+    card1Desc:
+      "Customized wellness coaching plans based on your health goals and lifestyle.",
     card2Title: "Fitness & Mindfulness",
-    card2Desc: "Guidance on exercises, meditation, and stress management techniques.",
+    card2Desc:
+      "Guidance on exercises, meditation, and stress management techniques.",
     card3Title: "1-on-1 Consultation",
-    card3Desc: "Private sessions with certified wellness coaches for tailored guidance.",
+    card3Desc:
+      "Private sessions with certified wellness coaches for tailored guidance.",
     card4Title: "Progress Tracking",
-    card4Desc: "Track your health progress and receive actionable insights from your coach.",
+    card4Desc:
+      "Track your health progress and receive actionable insights from your coach.",
     plansTitle: "Wellness Coaching Plans",
-    plansDesc: "Choose a coaching plan that aligns with your wellness goals, or join our expert coaching team.",
+    plansDesc:
+      "Choose a coaching plan that aligns with your wellness goals, or join our expert coaching team.",
     getStarted: "Get Started",
     joinersTitle: "Opportunities for Wellness Enthusiasts",
     joiner1Role: "Wellness Intern",
@@ -49,7 +56,8 @@ const translations = {
     joiner3Benefit2: "Profit Sharing",
     joiner3Benefit3: "Long-term Growth",
     ctaTitle: "Ready to transform your wellness journey?",
-    ctaDesc: "Book a free wellness coaching session and start your personalized plan today.",
+    ctaDesc:
+      "Book a free wellness coaching session and start your personalized plan today.",
     bookSession: "Book Session",
     // Plans
     plan1Title: "Starter Coaching Plan",
@@ -61,7 +69,8 @@ const translations = {
     plan1Feature4: "Monthly Check-ins",
     plan2Title: "Growth Coaching Plan",
     plan2Price: "$399/mo",
-    plan2Desc: "For those looking to make measurable progress in health and lifestyle.",
+    plan2Desc:
+      "For those looking to make measurable progress in health and lifestyle.",
     plan2Feature1: "Detailed Health & Lifestyle Assessment",
     plan2Feature2: "Personalized Coaching Sessions",
     plan2Feature3: "Exercise & Mindfulness Guidance",
@@ -69,7 +78,8 @@ const translations = {
     plan2Feature5: "Progress Tracking & Insights",
     plan3Title: "Premium Coaching Plan",
     plan3Price: "$699/mo",
-    plan3Desc: "Full wellness support with 1-on-1 coaching and ongoing guidance.",
+    plan3Desc:
+      "Full wellness support with 1-on-1 coaching and ongoing guidance.",
     plan3Feature1: "Unlimited Coaching Sessions",
     plan3Feature2: "Custom Health & Nutrition Plans",
     plan3Feature3: "Stress & Mindfulness Management",
@@ -78,15 +88,17 @@ const translations = {
   },
   ar: {
     heroTitle: "تدريب الصحة الشامل",
-  
+
     sectionTitle: "إرشاد الصحة الشامل",
-    sectionDesc: "يقدم مدربونا المعتمدون خططًا شخصية وإرشادًا لليقظة واستراتيجيات عملية لمساعدتك على تحقيق الصحة والرفاهية طويلة الأمد.",
+    sectionDesc:
+      "يقدم مدربونا المعتمدون خططًا شخصية وإرشادًا لليقظة واستراتيجيات عملية لمساعدتك على تحقيق الصحة والرفاهية طويلة الأمد.",
     feature1: "خطط تدريب شخصية",
     feature2: "إدارة اليقظة والتوتر",
     feature3: "تتبع التقدم",
     feature4: "جلسات فردية",
     coreTitle: "الخدمات الأساسية لتدريب الصحة",
-    coreDesc: "من التدريب الشخصي إلى دعم اليقظة، تساعدك برامجنا على تحقيق الصحة الجسدية والعقلية والعاطفية.",
+    coreDesc:
+      "من التدريب الشخصي إلى دعم اليقظة، تساعدك برامجنا على تحقيق الصحة الجسدية والعقلية والعاطفية.",
     card1Title: "تدريب شخصي",
     card1Desc: "خطط تدريب صحة مخصصة بناءً على أهدافك ونمط حياتك.",
     card2Title: "اللياقة واليقظة",
@@ -143,15 +155,17 @@ const translations = {
   },
   he: {
     heroTitle: "אימון בריאות מקצועי",
-   
+
     sectionTitle: "הדרכת בריאות הוליסטית",
-    sectionDesc: "המאמנים המוסמכים שלנו מספקים תוכניות אישיות, הדרכת מיינדפולנס ואסטרטגיות מעשיות להשגת בריאות ורווחה ארוכת טווח.",
+    sectionDesc:
+      "המאמנים המוסמכים שלנו מספקים תוכניות אישיות, הדרכת מיינדפולנס ואסטרטגיות מעשיות להשגת בריאות ורווחה ארוכת טווח.",
     feature1: "תוכניות אימון אישיות",
     feature2: "מיינדפולנס וניהול מתחים",
     feature3: "מעקב התקדמות",
     feature4: "מפגשים אישיים",
     coreTitle: "שירותי אימון בריאות עיקריים",
-    coreDesc: "מאימון אישי ועד תמיכת מיינדפולנס, התוכניות שלנו עוזרות לך להשיג בריאות פיזית, נפשית ורגשית.",
+    coreDesc:
+      "מאימון אישי ועד תמיכת מיינדפולנס, התוכניות שלנו עוזרות לך להשיג בריאות פיזית, נפשית ורגשית.",
     card1Title: "אימון אישי",
     card1Desc: "תוכניות אימון בריאות מותאמות אישית לפי מטרותיך ואורח חייך.",
     card2Title: "כושר ומיינדפולנס",
@@ -161,7 +175,8 @@ const translations = {
     card4Title: "מעקב התקדמות",
     card4Desc: "עקוב אחר התקדמות הבריאות שלך וקבל תובנות מעשיות מהמאמן.",
     plansTitle: "תוכניות אימון בריאות",
-    plansDesc: "בחר תוכנית אימון התואמת את מטרות הבריאות שלך או הצטרף לצוות המומחים שלנו.",
+    plansDesc:
+      "בחר תוכנית אימון התואמת את מטרות הבריאות שלך או הצטרף לצוות המומחים שלנו.",
     getStarted: "התחל עכשיו",
     joinersTitle: "הזדמנויות לחובבי בריאות",
     joiner1Role: "מתמחה בריאות",
@@ -216,7 +231,8 @@ function getLanguage() {
   if (typeof window === "undefined") return "en";
   return localStorage.getItem(LANGUAGE_KEY) || "en";
 }
-const themedClass = (base, dark, light, theme) => `${base} ${theme === "dark" ? dark : light}`;
+const themedClass = (base, dark, light, theme) =>
+  `${base} ${theme === "dark" ? dark : light}`;
 
 const WellnessCoaching = () => {
   const [theme, setTheme] = React.useState(() => {
@@ -239,8 +255,10 @@ const WellnessCoaching = () => {
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
-      const handleThemeChange = () => setTheme(localStorage.getItem(THEME_KEY) || "light");
-      const handleLanguageChange = () => setLanguage(localStorage.getItem(LANGUAGE_KEY) || "en");
+      const handleThemeChange = () =>
+        setTheme(localStorage.getItem(THEME_KEY) || "light");
+      const handleLanguageChange = () =>
+        setLanguage(localStorage.getItem(LANGUAGE_KEY) || "en");
       window.addEventListener("theme-changed", handleThemeChange);
       window.addEventListener("language-changed", handleLanguageChange);
       window.addEventListener("storage", handleThemeChange);
@@ -349,7 +367,15 @@ const WellnessCoaching = () => {
   const dir = rtlLangs.includes(language) ? "rtl" : "ltr";
 
   return (
-    <div dir={dir} className={themedClass("overflow-x-hidden", "bg-black", "bg-white", theme)}>
+    <div
+      dir={dir}
+      className={themedClass(
+        "caret-transparent",
+        "bg-black",
+        "bg-white",
+        theme,
+      )}
+    >
       {/* Hero Section */}
       <section className="relative w-full h-screen">
         <div className="absolute inset-0">
@@ -357,7 +383,7 @@ const WellnessCoaching = () => {
             initial={{ scale: 1.1, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
-            className="w-full h-full object-cover"
+            className="object-cover w-full h-full"
             src={video}
             autoPlay
             muted
@@ -367,9 +393,9 @@ const WellnessCoaching = () => {
           />
           <div className="absolute inset-0 bg-black/50" />
         </div>
-        <div className="relative z-10 flex flex-col items-center justify-center text-center w-full h-full px-4">
+        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full px-4 text-center">
           <motion.h1
-            className="text-4xl md:text-6xl font-bold leading-tight text-white"
+            className="text-4xl font-bold leading-tight text-white md:text-6xl"
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -377,7 +403,7 @@ const WellnessCoaching = () => {
             {t("heroTitle", language)}
           </motion.h1>
           <motion.p
-            className="mt-6 text-lg md:text-2xl max-w-4xl text-gray-200"
+            className="max-w-4xl mt-6 text-lg text-gray-200 md:text-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
@@ -388,16 +414,20 @@ const WellnessCoaching = () => {
       </section>
 
       {/* Image + Content Section */}
-  <section className={`w-full py-20 px-6 ${theme === "dark" ? "bg-gray-900" : "bg-gray-50"} transition-colors duration-500`}>
+      <section
+        className={`w-full py-20 px-6 ${
+          theme === "dark" ? "bg-gray-900" : "bg-gray-50"
+        } transition-colors duration-500`}
+      >
         <motion.div
-          className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12"
+          className="flex flex-col items-center gap-12 mx-auto max-w-7xl md:flex-row"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.div
-            className="w-full md:w-1/2 flex justify-center"
+            className="flex justify-center w-full md:w-1/2"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -409,11 +439,11 @@ const WellnessCoaching = () => {
           </motion.div>
 
           <motion.div
-            className="w-full md:w-1/2 text-left"
+            className="w-full text-left md:w-1/2"
             variants={itemVariants}
           >
             <motion.h2
-              className="text-4xl md:text-5xl font-bold mb-6 transition-colors duration-500"
+              className="mb-6 text-4xl font-bold transition-colors duration-500 md:text-5xl"
               style={{ color: theme === "dark" ? "#fff" : "#111827" }}
               whileHover={{ scale: 1.02 }}
             >
@@ -421,22 +451,26 @@ const WellnessCoaching = () => {
             </motion.h2>
 
             <motion.p
-              className="mb-8 transition-colors duration-500 text-justify"
+              className="mb-8 text-justify transition-colors duration-500"
               style={{ color: theme === "dark" ? "#d1d5db" : "#374151" }}
               variants={itemVariants}
             >
               {t("sectionDesc", language)}
             </motion.p>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {[1,2,3,4].map((i, index) => (
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {[1, 2, 3, 4].map((i, index) => (
                 <motion.div
                   key={index}
-                  className={`flex items-center gap-3 p-2 rounded-lg cursor-pointer transition-all duration-300 ${theme === "dark" ? "bg-gray-800 hover:bg-gray-700" : "bg-gray-100 hover:bg-orange-50"}`}
+                  className={`flex items-center gap-3 p-2 rounded-lg cursor-pointer transition-all duration-300 ${
+                    theme === "dark"
+                      ? "bg-gray-800 hover:bg-gray-700"
+                      : "bg-gray-100 hover:bg-orange-50"
+                  }`}
                   variants={itemVariants}
                   whileHover={{ x: 5, scale: 1.03 }}
                 >
-                  <span className="w-5 h-5 bg-orange-600 rounded-full flex-shrink-0" />
+                  <span className="flex-shrink-0 w-5 h-5 bg-orange-600 rounded-full" />
                   <p
                     className="transition-colors duration-500"
                     style={{ color: theme === "dark" ? "#e5e7eb" : "#111827" }}
@@ -451,10 +485,16 @@ const WellnessCoaching = () => {
       </section>
 
       {/* Services / Core Coaching Cards */}
-  <section className={`w-full py-5 px-6 transition-colors duration-500 ${theme === "dark" ? "bg-gradient-to-b from-gray-900 to-gray-800" : "bg-gradient-to-b from-white to-gray-50"}`}>
-        <div className="max-w-4xl mx-auto text-center mb-12">
+      <section
+        className={`w-full py-5 px-6 transition-colors duration-500 ${
+          theme === "dark"
+            ? "bg-gradient-to-b from-gray-900 to-gray-800"
+            : "bg-gradient-to-b from-white to-gray-50"
+        }`}
+      >
+        <div className="max-w-4xl mx-auto mb-12 text-center">
           <motion.h2
-            className="text-3xl md:text-5xl font-bold mb-4 transition-colors duration-500"
+            className="mb-4 text-3xl font-bold transition-colors duration-500 md:text-5xl"
             style={{ color: theme === "dark" ? "#fff" : "#111827" }}
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -464,7 +504,7 @@ const WellnessCoaching = () => {
             {t("coreTitle", language)}
           </motion.h2>
           <motion.p
-            className="text-lg max-w-2xl mx-auto transition-colors duration-500"
+            className="max-w-2xl mx-auto text-lg transition-colors duration-500"
             style={{ color: theme === "dark" ? "#d1d5db" : "#374151" }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -475,15 +515,36 @@ const WellnessCoaching = () => {
           </motion.p>
         </div>
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 gap-8 mx-auto max-w-7xl md:grid-cols-2">
           {[
-            {icon:coachingIcon,title:t("card1Title", language),desc:t("card1Desc", language)},
-            {icon:exerciseIcon,title:t("card2Title", language),desc:t("card2Desc", language)},
-            {icon:consultationIcon,title:t("card3Title", language),desc:t("card3Desc", language)},
-            {icon:trackingIcon,title:t("card4Title", language),desc:t("card4Desc", language)}
-          ].map((service,i)=>(
-            <motion.article key={i}
-              className={`rounded-2xl p-6 shadow-md border hover:shadow-lg transition-all duration-500 ${theme === "dark" ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}
+            {
+              icon: coachingIcon,
+              title: t("card1Title", language),
+              desc: t("card1Desc", language),
+            },
+            {
+              icon: exerciseIcon,
+              title: t("card2Title", language),
+              desc: t("card2Desc", language),
+            },
+            {
+              icon: consultationIcon,
+              title: t("card3Title", language),
+              desc: t("card3Desc", language),
+            },
+            {
+              icon: trackingIcon,
+              title: t("card4Title", language),
+              desc: t("card4Desc", language),
+            },
+          ].map((service, i) => (
+            <motion.article
+              key={i}
+              className={`rounded-2xl p-6 shadow-md border hover:shadow-lg transition-all duration-500 ${
+                theme === "dark"
+                  ? "bg-gray-800 border-gray-700"
+                  : "bg-white border-gray-200"
+              }`}
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
@@ -491,7 +552,11 @@ const WellnessCoaching = () => {
               whileHover={cardHover}
             >
               <div className="flex items-start gap-4">
-                <img src={service.icon} alt={service.title} className="w-12 h-12 object-contain rounded-lg" />
+                <img
+                  src={service.icon}
+                  alt={service.title}
+                  className="object-contain w-12 h-12 rounded-lg"
+                />
                 <div>
                   <h4
                     className="text-lg font-semibold transition-colors duration-500"
@@ -513,214 +578,212 @@ const WellnessCoaching = () => {
       </section>
 
       {/* Pricing & Joiners Section */}
-  <section
-  className={`w-full pt-32 pb-24 px-6 transition-colors duration-500 ${
-    theme === "dark"
-      ? "bg-gradient-to-b from-gray-900 to-gray-800"
-      : "bg-gradient-to-b from-white to-gray-50"
-  }`}
->
-  {/* Section Top Heading */}
-  <div className="max-w-7xl mx-auto text-center mb-12">
-    <motion.h2
-      className="text-3xl md:text-5xl font-bold mb-4 transition-colors duration-500"
-      style={{ color: theme === "dark" ? "#fff" : "#111827" }}
-      initial={{ opacity: 0, y: -20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-    >
-      Opportunities for Wellness Enthusiasts
-    </motion.h2>
-
-    <motion.p
-      className="text-lg max-w-2xl mx-auto transition-colors duration-500"
-      style={{ color: theme === "dark" ? "#d1d5db" : "#374151" }}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ delay: 0.3, duration: 0.6 }}
-      viewport={{ once: true }}
-    >
-      {t("plansDesc", language)}
-    </motion.p>
-  </div>
-
-  {/* Pricing Plans */}
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
-    {plans.map((plan, idx) => (
-      <motion.div
-        key={idx}
-        className={`p-8 rounded-2xl shadow-lg border transition-all duration-300 ${
-          plan.highlight
-            ? "bg-orange-600 text-white border-orange-600 scale-105"
-            : theme === "dark"
-            ? "bg-gray-800 border-gray-700 text-white"
-            : "bg-white border-gray-200 text-gray-900"
+      <section
+        className={`w-full pt-32 pb-24 px-6 transition-colors duration-500 ${
+          theme === "dark"
+            ? "bg-gradient-to-b from-gray-900 to-gray-800"
+            : "bg-gradient-to-b from-white to-gray-50"
         }`}
-        variants={cardVariants}
-        initial="hidden"
-        whileInView="visible"
-        whileHover={cardHover}
-        viewport={{ once: true, amount: 0.3 }}
       >
-        <h3
-          className="text-2xl font-bold mb-3 transition-colors duration-500"
-          style={{
-            color: plan.highlight
-              ? "white"
-              : theme === "dark"
-              ? "#fff"
-              : "#111827",
-          }}
-        >
-          {plan.title}
-        </h3>
-        <p
-          className="text-lg mb-4 opacity-90 transition-colors duration-500"
-          style={{
-            color: plan.highlight
-              ? "white"
-              : theme === "dark"
-              ? "#d1d5db"
-              : "#4b5563",
-          }}
-        >
-          {plan.description}
-        </p>
-        <div
-          className="text-3xl font-extrabold mb-6 transition-colors duration-500"
-          style={{
-            color: plan.highlight
-              ? "white"
-              : theme === "dark"
-              ? "#f97316"
-              : "#ea580c",
-          }}
-        >
-          {plan.price}
-        </div>
-        <ul className="space-y-2 mb-6">
-          {plan.features.map((feature, i) => (
-            <li
-              key={i}
-              className="transition-colors duration-500"
-              style={{
-                color: plan.highlight
-                  ? "white"
-                  : theme === "dark"
-                  ? "#d1d5db"
-                  : "#374151",
-              }}
-            >
-              {feature}
-            </li>
-          ))}
-        </ul>
-        <Link
-          to="/contact"
-          className={`w-full inline-block text-center py-3 rounded-full font-semibold transition ${
-            plan.highlight
-              ? "bg-white text-orange-600 hover:bg-gray-100"
-              : "bg-orange-600 text-white hover:bg-orange-700"
-          }`}
-        >
-          {t("getStarted", language)}
-        </Link>
-      </motion.div>
-    ))}
-  </div>
-
-  {/* Joiners Section */}
-  <div className="max-w-7xl mx-auto">
-    <motion.h3
-      className="text-2xl md:text-4xl font-bold text-center mb-10 transition-colors duration-500"
-      style={{ color: theme === "dark" ? "#fff" : "#111827" }}
-      initial={{ opacity: 0, y: -20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-    >
-      {t("joinersTitle", language)}
-    </motion.h3>
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-      {joiners.map((join, idx) => (
-        <motion.div
-          key={idx}
-          className={`p-6 rounded-2xl shadow-md border transition-all duration-300 ${
-            theme === "dark"
-              ? "bg-gray-800 border-gray-700 text-white"
-              : "bg-white border-gray-200 text-gray-900"
-          }`}
-          variants={cardVariants}
-          initial="hidden"
-          whileInView="visible"
-          whileHover={cardHover}
-          viewport={{ once: true, amount: 0.3 }}
-        >
-          <h4
-            className="text-xl font-semibold mb-2 transition-colors duration-500"
+        {/* Section Top Heading */}
+        <div className="mx-auto mb-12 text-center max-w-7xl">
+          <motion.h2
+            className="mb-4 text-3xl font-bold transition-colors duration-500 md:text-5xl"
             style={{ color: theme === "dark" ? "#fff" : "#111827" }}
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
           >
-            {join.role}
-          </h4>
-          <p
-            className="text-lg font-bold mb-3 transition-colors duration-500"
-            style={{ color: theme === "dark" ? "#f97316" : "#ea580c" }}
-          >
-            {join.stipend}
-          </p>
-          <ul
-            className="space-y-1 transition-colors duration-500"
-            style={{ color: theme === "dark" ? "#d1d5db" : "#4b5563" }}
-          >
-            {join.benefits.map((benefit, i) => (
-              <li key={i}>• {benefit}</li>
-            ))}
-          </ul>
-        </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+            Opportunities for Wellness Enthusiasts
+          </motion.h2>
 
+          <motion.p
+            className="max-w-2xl mx-auto text-lg transition-colors duration-500"
+            style={{ color: theme === "dark" ? "#d1d5db" : "#374151" }}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            {t("plansDesc", language)}
+          </motion.p>
+        </div>
+
+        {/* Pricing Plans */}
+        <div className="grid grid-cols-1 gap-8 mx-auto mb-16 md:grid-cols-3 max-w-7xl">
+          {plans.map((plan, idx) => (
+            <motion.div
+              key={idx}
+              className={themedClass(
+                "p-8 rounded-2xl flex flex-col justify-between shadow-lg border transition-transform transform",
+                plan.highlight
+                  ? "bg-orange-400 text-white border-orange-600 scale-105"
+                  : "bg-gray-800 text-white border-gray-700",
+                plan.highlight
+                  ? "bg-orange-600 text-white border-orange-600 scale-105"
+                  : "bg-white text-gray-900 border-gray-200",
+                theme,
+              )}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              whileHover={cardHover}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <h3
+                className={themedClass(
+                  "text-2xl font-bold mb-3",
+                  // "text-white",
+                  // "text-gray-900",
+                  theme,
+                )}
+              >
+                {plan.title}
+              </h3>
+
+              <p
+                className={themedClass(
+                  "text-lg mb-4 opacity-90",
+                  // "text-white/90",
+                  // "text-gray-700 dark:text-gray-200",
+                  theme,
+                )}
+              >
+                {plan.description}
+              </p>
+
+              <div
+                className={themedClass(
+                  "text-3xl font-extrabold mb-6",
+                  // "text-white",
+                  // "text-orange-600",
+                  theme,
+                )}
+              >
+                {plan.price}
+              </div>
+
+              <ul className="mb-6 space-y-2">
+                {plan.features.map((feature, i) => (
+                  <li
+                    key={i}
+                    className={themedClass(
+                      // "text-gray-300",
+                      // "text-white",
+                      // "text-gray-700",
+                      theme,
+                    )}
+                  >
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                to="/contact"
+                className={themedClass(
+                  "w-full inline-block text-center py-3 rounded-full font-semibold transition",
+                  "bg-orange-600 text-white hover:bg-orange-700",
+                  "bg-orange-500 hover:text-black  hover:bg-gray-100",
+                  theme,
+                )}
+              >
+                {t("getStarted", language)}
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Joiners Section */}
+        <div className="mx-auto max-w-7xl">
+          <motion.h3
+            className="mb-10 text-2xl font-bold text-center transition-colors duration-500 md:text-4xl"
+            style={{ color: theme === "dark" ? "#fff" : "#111827" }}
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            {t("joinersTitle", language)}
+          </motion.h3>
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+            {joiners.map((join, idx) => (
+              <motion.div
+                key={idx}
+                className={`p-6 rounded-2xl shadow-md border transition-all duration-300 ${
+                  theme === "dark"
+                    ? "bg-gray-800 border-gray-700 text-white"
+                    : "bg-white border-gray-200 text-gray-900"
+                }`}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                whileHover={cardHover}
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                <h4
+                  className="mb-2 text-xl font-semibold transition-colors duration-500"
+                  style={{ color: theme === "dark" ? "#fff" : "#111827" }}
+                >
+                  {join.role}
+                </h4>
+                <p
+                  className="mb-3 text-lg font-bold transition-colors duration-500"
+                  style={{ color: theme === "dark" ? "#f97316" : "#ea580c" }}
+                >
+                  {join.stipend}
+                </p>
+                <ul
+                  className="space-y-1 transition-colors duration-500"
+                  style={{ color: theme === "dark" ? "#d1d5db" : "#4b5563" }}
+                >
+                  {join.benefits.map((benefit, i) => (
+                    <li key={i}>• {benefit}</li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA Row */}
-<motion.section
-  className="relative w-full mt-0 pt-0"
-  initial={{ opacity: 0, y: 12 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
->
-  <div className="absolute inset-0">
-    {/* Background image fixed */}
-    <img
-      src={wellnessImg}
-      alt="CTA Background"
-      className="w-full h-full object-cover"
-      style={{ backgroundAttachment: "fixed" }}
-    />
-    {/* Black overlay with 50% opacity */}
-    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-  </div>
-
-  <div className="relative z-10 max-w-3xl mx-auto text-center py-24 px-6">
-    <h3 className="text-2xl md:text-3xl font-bold text-white">
-      {t("ctaTitle", language)}
-    </h3>
-    <p className="mt-3 text-white/90 text-lg md:text-xl">
-      {t("ctaDesc", language)}
-    </p>
-    <div className="mt-8 flex items-center justify-center gap-4">
-      <Link
-        to="/contact"
-        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-orange-600 font-semibold shadow hover:bg-gray-100 transition"
+      <motion.section
+        className="relative w-full pt-0 mt-0"
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
       >
-        {t("bookSession", language)}
-      </Link>
-    </div>
-  </div>
-</motion.section>
+        <div className="absolute inset-0">
+          {/* Background image fixed */}
+          <img
+            src={wellnessImg}
+            alt="CTA Background"
+            className="object-cover w-full h-full"
+            style={{ backgroundAttachment: "fixed" }}
+          />
+          {/* Black overlay with 50% opacity */}
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
 
+        <div className="relative z-10 max-w-3xl px-6 py-24 mx-auto text-center">
+          <h3 className="text-2xl font-bold text-white md:text-3xl">
+            {t("ctaTitle", language)}
+          </h3>
+          <p className="mt-3 text-lg text-white/90 md:text-xl">
+            {t("ctaDesc", language)}
+          </p>
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 font-semibold text-orange-600 transition bg-white rounded-full shadow hover:bg-gray-100"
+            >
+              {t("bookSession", language)}
+            </Link>
+          </div>
+        </div>
+      </motion.section>
     </div>
   );
 };

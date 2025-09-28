@@ -1,12 +1,17 @@
 import React from "react";
-import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Home1 from "./Pages/Home1";
 import Home2 from "./Pages/Home2";
 import AboutUs from "./Pages/AboutUs";
 import TestMotion from "./TestMotion";
-import Services from './Pages/Services';
+import Services from "./Pages/Services";
 import Blog from "./Pages/Blog";
 import ContactUs from "./Pages/ContactUs";
 import Nutrition from "./Pages/Nutrition";
@@ -29,7 +34,7 @@ function AppContent() {
     <>
       {!hideHeaderFooter && <Header />}
       <ScrollToTop />
-      <main className="min-h-[calc(100vh-128px)]">
+      <main className="min-h-screen">
         <Routes>
           <Route path="/home1" element={<Home1 />} />
           <Route path="/home2" element={<Home2 />} />

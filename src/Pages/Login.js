@@ -34,7 +34,7 @@ const translations = {
     passwordUpdated: "Password updated successfully!",
     adminEmail: "admin@enkonix.in",
     adminPassword: "admin123",
-    selectLanguage: "Language"
+    selectLanguage: "Language",
   },
   ar: {
     weMake: "نحن نعزز",
@@ -66,7 +66,7 @@ const translations = {
     passwordUpdated: "تم تحديث كلمة المرور بنجاح!",
     adminEmail: "admin@enkonix.in",
     adminPassword: "admin123",
-    selectLanguage: "اختر اللغة"
+    selectLanguage: "اختر اللغة",
   },
   he: {
     weMake: "אנו מקדמים",
@@ -98,8 +98,8 @@ const translations = {
     passwordUpdated: "הסיסמה עודכנה בהצלחה!",
     adminEmail: "admin@enkonix.in",
     adminPassword: "admin123",
-    selectLanguage: "שפה"
-  }
+    selectLanguage: "שפה",
+  },
 };
 
 function getDirection(lang) {
@@ -120,9 +120,11 @@ export default function WelcomePage() {
     email: "",
     phone: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
-  const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+  const [language, setLanguage] = useState(
+    localStorage.getItem("language") || "en",
+  );
 
   const navigate = useNavigate();
 
@@ -160,9 +162,14 @@ export default function WelcomePage() {
     const password = loginPassword.trim();
     if (email === t.adminEmail) {
       if (password === t.adminPassword) {
-        localStorage.setItem("firstname", "Admin");
-        localStorage.setItem("lastname", "Dashboard");
-        localStorage.setItem("email", email);
+        const adminUser = {
+          firstname: "Admin",
+          lastname: "Dashboard",
+          email: email,
+          role: "admin",
+          loginTime: new Date().toISOString(),
+        };
+        localStorage.setItem("currentUser", JSON.stringify(adminUser));
         navigate("/admindashboard");
         return;
       } else {
@@ -171,11 +178,32 @@ export default function WelcomePage() {
       }
     }
     const users = JSON.parse(localStorage.getItem("users") || "[]");
-    const user = users.find((u) => u.email === email && u.password === password);
-    if (user) {
-      localStorage.setItem("firstname", user.firstName || "");
-      localStorage.setItem("lastname", user.lastName || "");
-      localStorage.setItem("email", user.email || "");
+    const userIndex = users.findIndex(
+      (u) => u.email === email && u.password === password,
+    );
+    if (userIndex !== -1) {
+      const user = users[userIndex];
+      const loginTime = new Date().toISOString();
+
+      // Update the user's login time in the users array
+      users[userIndex] = {
+        ...user,
+        lastLoginTime: loginTime,
+      };
+      localStorage.setItem("users", JSON.stringify(users));
+
+      // Store current user session
+      const currentUser = {
+        firstname: user.firstName || "",
+        lastname: user.lastName || "",
+        email: user.email || "",
+        phone: user.phone || "",
+        role: "user",
+        loginTime: loginTime,
+        signupTime: user.signupTime || "",
+        signupDate: user.signupDate || "",
+      };
+      localStorage.setItem("currentUser", JSON.stringify(currentUser));
       navigate("/home1");
     } else {
       alert(t.invalidLogin);
@@ -201,7 +229,7 @@ export default function WelcomePage() {
       phone: signupData.phone,
       password: signupData.password,
       signupTime: now.toLocaleTimeString(),
-      signupDate: now.toLocaleDateString()
+      signupDate: now.toLocaleDateString(),
     };
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
@@ -213,7 +241,7 @@ export default function WelcomePage() {
       email: "",
       phone: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
     });
   };
 
@@ -226,77 +254,213 @@ export default function WelcomePage() {
 
   return (
     <div className="flex min-h-screen bg-orange-50" dir={isRtl ? "rtl" : "ltr"}>
-      <div className="hidden lg:flex w-1/2 items-center justify-center bg-gradient-to-br from-orange-200 via-orange-300 to-orange-400">
-        <img src={welcomeImg} alt="Sunrise Wellness" className="object-cover h-full w-full rounded-l-xl"/>
+      <div className="items-center justify-center hidden w-1/2 lg:flex bg-gradient-to-br from-orange-200 via-orange-300 to-orange-400">
+        <img
+          src={welcomeImg}
+          alt="Sunrise Wellness"
+          className="object-cover w-full h-screen rounded-l-xl"
+        />
       </div>
 
-      <div className="flex flex-col justify-center items-center w-full lg:w-1/2 p-8 bg-white rounded-r-xl shadow-lg">
+      <div className="flex flex-col items-center justify-center w-full p-8 bg-white shadow-lg lg:w-1/2 rounded-r-xl">
         <div className="w-full max-w-md">
-          <div className="flex justify-between items-center mb-6">
-            <img src={logoImg} alt="Logo" className="h-15 w-24" />
-            <select value={language} onChange={handleLanguageChange} className="border rounded-lg p-2 text-sm">
-              <option value="en">🇬🇧 English</option>
-              <option value="ar">🇸🇦 العربية</option>
-              <option value="he">🇮🇱 עברית</option>
+          <div className="flex items-center justify-between mb-6">
+            <img src={logoImg} alt="Logo" className="w-[150px] h-auto" />
+            <select
+              value={language}
+              onChange={handleLanguageChange}
+              className="p-2 text-sm border rounded-lg"
+            >
+              <option value="en"> English</option>
+              <option value="ar"> العربية</option>
+              <option value="he"> עברית</option>
             </select>
           </div>
 
-          <h1 className="text-4xl font-extrabold text-orange-600 text-center mb-8 whitespace-nowrap">
+          <h1 className="mb-8 text-4xl font-extrabold text-center text-orange-600 whitespace-nowrap caret-transparent">
             {t.dreamHouses}
           </h1>
 
           {!showSignup && !showForgot ? (
             <>
-              <h2 className="text-2xl font-bold text-orange-600 text-center mb-6">{t.login}</h2>
+              <h2 className="mb-6 text-2xl font-bold text-center text-orange-600 caret-transparent">
+                {t.login}
+              </h2>
               <form className="space-y-4" onSubmit={handleLogin}>
-                <input type="email" placeholder={t.email} className="w-full border p-3 rounded-lg" value={loginEmail} onChange={(e) => setLoginEmail(e.target.value)} required />
-                <input type="password" placeholder={t.password} className="w-full border p-3 rounded-lg" value={loginPassword} onChange={(e) => setLoginPassword(e.target.value)} required />
+                <input
+                  type="email"
+                  placeholder={t.email}
+                  className="w-full p-3 border rounded-lg"
+                  value={loginEmail}
+                  onChange={(e) => setLoginEmail(e.target.value)}
+                  required
+                />
+                <input
+                  type="password"
+                  placeholder={t.password}
+                  className="w-full p-3 border rounded-lg"
+                  value={loginPassword}
+                  onChange={(e) => setLoginPassword(e.target.value)}
+                  required
+                />
                 <div className="flex justify-between text-base">
-                  <button type="button" className="text-orange-600 hover:underline" onClick={() => setShowForgot(true)}>
+                  <button
+                    type="button"
+                    className="text-orange-600 hover:underline"
+                    onClick={() => setShowForgot(true)}
+                  >
                     {t.forgotPassword}
                   </button>
                 </div>
-                <button type="submit" className="w-full bg-orange-500 text-white p-3 rounded-lg hover:bg-orange-600">
+                <button
+                  type="submit"
+                  className="w-full p-3 text-white bg-orange-500 rounded-lg hover:bg-orange-600"
+                >
                   {t.loginBtn}
                 </button>
               </form>
               <p className="mt-4 text-sm text-center">
                 {t.noAccount}{" "}
-                <button className="text-orange-500 hover:underline" onClick={() => setShowSignup(true)}>
+                <button
+                  className="text-orange-500 hover:underline"
+                  onClick={() => setShowSignup(true)}
+                >
                   {t.signup}
                 </button>
               </p>
             </>
           ) : showForgot ? (
             <>
-              <h2 className="text-2xl font-bold text-orange-600 text-center mb-6">{t.resetPassword}</h2>
+              <h2 className="mb-6 text-2xl font-bold text-center text-orange-600">
+                {t.resetPassword}
+              </h2>
               <form className="space-y-4" onSubmit={handleForgotPassword}>
-                <input type="email" placeholder={t.email} className="w-full border p-3 rounded-lg" value={forgotEmail} onChange={(e) => setForgotEmail(e.target.value)} required />
-                <input type="password" placeholder={t.newPassword} className="w-full border p-3 rounded-lg" value={forgotPassword} onChange={(e) => setForgotPassword(e.target.value)} required />
-                <input type="password" placeholder={t.confirmNewPassword} className="w-full border p-3 rounded-lg" value={forgotConfirm} onChange={(e) => setForgotConfirm(e.target.value)} required />
-                <button type="submit" className="w-full bg-orange-500 text-white p-3 rounded-lg hover:bg-orange-600">{t.resetBtn}</button>
-                <button type="button" className="w-full mt-2 bg-gray-200 text-gray-700 p-3 rounded-lg hover:bg-gray-300" onClick={() => setShowForgot(false)}>
+                <input
+                  type="email"
+                  placeholder={t.email}
+                  className="w-full p-3 border rounded-lg"
+                  value={forgotEmail}
+                  onChange={(e) => setForgotEmail(e.target.value)}
+                  required
+                />
+                <input
+                  type="password"
+                  placeholder={t.newPassword}
+                  className="w-full p-3 border rounded-lg"
+                  value={forgotPassword}
+                  onChange={(e) => setForgotPassword(e.target.value)}
+                  required
+                />
+                <input
+                  type="password"
+                  placeholder={t.confirmNewPassword}
+                  className="w-full p-3 border rounded-lg"
+                  value={forgotConfirm}
+                  onChange={(e) => setForgotConfirm(e.target.value)}
+                  required
+                />
+                <button
+                  type="submit"
+                  className="w-full p-3 text-white bg-orange-500 rounded-lg hover:bg-orange-600"
+                >
+                  {t.resetBtn}
+                </button>
+                <button
+                  type="button"
+                  className="w-full p-3 mt-2 text-gray-700 bg-gray-200 rounded-lg hover:bg-gray-300"
+                  onClick={() => setShowForgot(false)}
+                >
                   {t.cancel}
                 </button>
               </form>
             </>
           ) : (
             <>
-              <h2 className="text-2xl font-bold text-orange-600 text-center mb-6">{t.signupTitle}</h2>
+              <h2 className="mb-6 text-2xl font-bold text-center text-orange-600">
+                {t.signupTitle}
+              </h2>
               <form className="space-y-4" onSubmit={handleSignup}>
-                <div className="flex gap-2 flex-col sm:flex-row">
-                  <input type="text" placeholder={t.firstName} className="w-full sm:w-1/2 border p-3 rounded-lg" value={signupData.firstName} onChange={(e) => setSignupData({ ...signupData, firstName: e.target.value })} required />
-                  <input type="text" placeholder={t.lastName} className="w-full sm:w-1/2 border p-3 rounded-lg" value={signupData.lastName} onChange={(e) => setSignupData({ ...signupData, lastName: e.target.value })} required />
+                <div className="flex flex-col gap-2 sm:flex-row">
+                  <input
+                    type="text"
+                    placeholder={t.firstName}
+                    className="w-full p-3 border rounded-lg sm:w-1/2"
+                    value={signupData.firstName}
+                    onChange={(e) =>
+                      setSignupData({
+                        ...signupData,
+                        firstName: e.target.value,
+                      })
+                    }
+                    required
+                  />
+                  <input
+                    type="text"
+                    placeholder={t.lastName}
+                    className="w-full p-3 border rounded-lg sm:w-1/2"
+                    value={signupData.lastName}
+                    onChange={(e) =>
+                      setSignupData({ ...signupData, lastName: e.target.value })
+                    }
+                    required
+                  />
                 </div>
-                <input type="email" placeholder={t.email} className="w-full border p-3 rounded-lg" value={signupData.email} onChange={(e) => setSignupData({ ...signupData, email: e.target.value })} required />
-                <input type="tel" placeholder={t.phone} className="w-full border p-3 rounded-lg" value={signupData.phone} onChange={(e) => setSignupData({ ...signupData, phone: e.target.value })} required />
-                <input type="password" placeholder={t.password} className="w-full border p-3 rounded-lg" value={signupData.password} onChange={(e) => setSignupData({ ...signupData, password: e.target.value })} required />
-                <input type="password" placeholder={t.confirmPassword} className="w-full border p-3 rounded-lg" value={signupData.confirmPassword} onChange={(e) => setSignupData({ ...signupData, confirmPassword: e.target.value })} required />
-                <button type="submit" className="w-full bg-orange-500 text-white p-3 rounded-lg hover:bg-orange-600">{t.signupBtn}</button>
+                <input
+                  type="email"
+                  placeholder={t.email}
+                  className="w-full p-3 border rounded-lg"
+                  value={signupData.email}
+                  onChange={(e) =>
+                    setSignupData({ ...signupData, email: e.target.value })
+                  }
+                  required
+                />
+                <input
+                  type="tel"
+                  placeholder={t.phone}
+                  className="w-full p-3 border rounded-lg"
+                  value={signupData.phone}
+                  onChange={(e) =>
+                    setSignupData({ ...signupData, phone: e.target.value })
+                  }
+                  required
+                />
+                <input
+                  type="password"
+                  placeholder={t.password}
+                  className="w-full p-3 border rounded-lg"
+                  value={signupData.password}
+                  onChange={(e) =>
+                    setSignupData({ ...signupData, password: e.target.value })
+                  }
+                  required
+                />
+                <input
+                  type="password"
+                  placeholder={t.confirmPassword}
+                  className="w-full p-3 border rounded-lg"
+                  value={signupData.confirmPassword}
+                  onChange={(e) =>
+                    setSignupData({
+                      ...signupData,
+                      confirmPassword: e.target.value,
+                    })
+                  }
+                  required
+                />
+                <button
+                  type="submit"
+                  className="w-full p-3 text-white bg-orange-500 rounded-lg hover:bg-orange-600"
+                >
+                  {t.signupBtn}
+                </button>
               </form>
               <p className="mt-4 text-sm text-center">
                 {t.haveAccount}{" "}
-                <button className="text-orange-500 hover:underline" onClick={() => setShowSignup(false)}>
+                <button
+                  className="text-orange-500 hover:underline"
+                  onClick={() => setShowSignup(false)}
+                >
                   {t.login}
                 </button>
               </p>

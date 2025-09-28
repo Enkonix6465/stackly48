@@ -34,10 +34,14 @@ const translations = {
     passwordUpdated: "Password updated successfully!",
     adminEmail: "admin@enkonix.in",
     adminPassword: "admin123",
-    selectLanguage: "Language"
+    selectLanguage: "Language",
   },
-  ar: { /* Arabic translations */ },
-  he: { /* Hebrew translations */ }
+  ar: {
+    /* Arabic translations */
+  },
+  he: {
+    /* Hebrew translations */
+  },
 };
 
 function getDirection(lang) {
@@ -58,9 +62,11 @@ export default function WelcomePage() {
     email: "",
     phone: "",
     password: "",
-    confirmPassword: ""
+    confirmPassword: "",
   });
-  const [language, setLanguage] = useState(localStorage.getItem("language") || "en");
+  const [language, setLanguage] = useState(
+    localStorage.getItem("language") || "en",
+  );
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
   const navigate = useNavigate();
@@ -109,7 +115,9 @@ export default function WelcomePage() {
       return;
     }
     const users = JSON.parse(localStorage.getItem("users") || "[]");
-    const user = users.find((u) => u.email === email && u.password === password);
+    const user = users.find(
+      (u) => u.email === email && u.password === password,
+    );
     if (user) {
       localStorage.setItem("firstname", user.firstName || "");
       localStorage.setItem("lastname", user.lastName || "");
@@ -139,7 +147,7 @@ export default function WelcomePage() {
       phone: signupData.phone,
       password: signupData.password,
       signupTime: now.toLocaleTimeString(),
-      signupDate: now.toLocaleDateString()
+      signupDate: now.toLocaleDateString(),
     };
     users.push(newUser);
     localStorage.setItem("users", JSON.stringify(users));
@@ -151,7 +159,7 @@ export default function WelcomePage() {
       email: "",
       phone: "",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
     });
   };
 
@@ -163,7 +171,10 @@ export default function WelcomePage() {
   };
 
   return (
-    <div className="relative w-full h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100" dir={isRtl ? "rtl" : "ltr"}>
+    <div
+      className="relative w-full h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100"
+      dir={isRtl ? "rtl" : "ltr"}
+    >
       <img
         src={welcomeImg}
         alt="Welcome"
@@ -295,7 +306,9 @@ export default function WelcomePage() {
             </>
           ) : (
             <>
-              <h2 className="text-2xl font-bold mb-6 text-green-600 text-center">{t.signupTitle}</h2>
+              <h2 className="text-2xl font-bold mb-6 text-green-600 text-center">
+                {t.signupTitle}
+              </h2>
               <form className="space-y-4" onSubmit={handleSignup}>
                 <div className="flex gap-2 flex-col sm:flex-row">
                   <input
@@ -303,7 +316,12 @@ export default function WelcomePage() {
                     placeholder={t.firstName}
                     className="w-full sm:w-1/2 border p-3 rounded-lg bg-white dark:bg-gray-700 dark:text-gray-100"
                     value={signupData.firstName}
-                    onChange={(e) => setSignupData({ ...signupData, firstName: e.target.value })}
+                    onChange={(e) =>
+                      setSignupData({
+                        ...signupData,
+                        firstName: e.target.value,
+                      })
+                    }
                     required
                   />
                   <input
@@ -311,7 +329,9 @@ export default function WelcomePage() {
                     placeholder={t.lastName}
                     className="w-full sm:w-1/2 border p-3 rounded-lg bg-white dark:bg-gray-700 dark:text-gray-100"
                     value={signupData.lastName}
-                    onChange={(e) => setSignupData({ ...signupData, lastName: e.target.value })}
+                    onChange={(e) =>
+                      setSignupData({ ...signupData, lastName: e.target.value })
+                    }
                     required
                   />
                 </div>
@@ -320,7 +340,9 @@ export default function WelcomePage() {
                   placeholder={t.email}
                   className="w-full border p-3 rounded-lg bg-white dark:bg-gray-700 dark:text-gray-100"
                   value={signupData.email}
-                  onChange={(e) => setSignupData({ ...signupData, email: e.target.value })}
+                  onChange={(e) =>
+                    setSignupData({ ...signupData, email: e.target.value })
+                  }
                   required
                 />
                 <input
@@ -328,7 +350,9 @@ export default function WelcomePage() {
                   placeholder={t.phone}
                   className="w-full border p-3 rounded-lg bg-white dark:bg-gray-700 dark:text-gray-100"
                   value={signupData.phone}
-                  onChange={(e) => setSignupData({ ...signupData, phone: e.target.value })}
+                  onChange={(e) =>
+                    setSignupData({ ...signupData, phone: e.target.value })
+                  }
                   required
                 />
                 <input
@@ -336,7 +360,9 @@ export default function WelcomePage() {
                   placeholder={t.password}
                   className="w-full border p-3 rounded-lg bg-white dark:bg-gray-700 dark:text-gray-100"
                   value={signupData.password}
-                  onChange={(e) => setSignupData({ ...signupData, password: e.target.value })}
+                  onChange={(e) =>
+                    setSignupData({ ...signupData, password: e.target.value })
+                  }
                   required
                 />
                 <input
@@ -344,7 +370,12 @@ export default function WelcomePage() {
                   placeholder={t.confirmPassword}
                   className="w-full border p-3 rounded-lg bg-white dark:bg-gray-700 dark:text-gray-100"
                   value={signupData.confirmPassword}
-                  onChange={(e) => setSignupData({ ...signupData, confirmPassword: e.target.value })}
+                  onChange={(e) =>
+                    setSignupData({
+                      ...signupData,
+                      confirmPassword: e.target.value,
+                    })
+                  }
                   required
                 />
                 <button

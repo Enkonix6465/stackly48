@@ -1,10 +1,9 @@
-
 import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom"; 
-import video from '../assets/Services7.mp4';
+import { Link } from "react-router-dom";
+import video from "../assets/Services7.mp4";
 import detoxImg from "../assets/HD1.jpg";
-import cleanseIcon from "../assets/BG2.jpg"; 
+import cleanseIcon from "../assets/BG2.jpg";
 import yogaIcon from "../assets/HD.jpg";
 import consultationIcon from "../assets/B2.jpg";
 import trackingIcon from "../assets/blog1.jpg";
@@ -13,9 +12,10 @@ import trackingIcon from "../assets/blog1.jpg";
 const translations = {
   en: {
     heroTitle: "Holistic Detox & Wellness",
-    
+
     section2Title: "Personalized Holistic Detox Solutions",
-    section2Desc: "Our holistic detox programs combine nutrition, mindful practices, and gentle exercises to cleanse your body and restore natural balance.",
+    section2Desc:
+      "Our holistic detox programs combine nutrition, mindful practices, and gentle exercises to cleanse your body and restore natural balance.",
     section2Features: [
       "Personalized Cleanse Plans",
       "Yoga & Mindfulness",
@@ -23,20 +23,35 @@ const translations = {
       "1-on-1 Consultations",
     ],
     coreTitle: "Core Detox Services",
-    coreDesc: "From cleansing meals to guided yoga and mindfulness, our holistic services help you rejuvenate naturally.",
+    coreDesc:
+      "From cleansing meals to guided yoga and mindfulness, our holistic services help you rejuvenate naturally.",
     coreCards: [
-      { title: "Detox Meal Plans", desc: "Customized cleanse meal plans designed for optimal body detoxification." },
-      { title: "Yoga & Mindfulness", desc: "Gentle yoga and mindfulness practices to enhance your detox process." },
-      { title: "1-on-1 Consultations", desc: "Direct access to holistic wellness coaches for personalized guidance." },
-      { title: "Progress Tracking", desc: "Monitor your body's cleansing progress and overall wellness." },
+      {
+        title: "Detox Meal Plans",
+        desc: "Customized cleanse meal plans designed for optimal body detoxification.",
+      },
+      {
+        title: "Yoga & Mindfulness",
+        desc: "Gentle yoga and mindfulness practices to enhance your detox process.",
+      },
+      {
+        title: "1-on-1 Consultations",
+        desc: "Direct access to holistic wellness coaches for personalized guidance.",
+      },
+      {
+        title: "Progress Tracking",
+        desc: "Monitor your body's cleansing progress and overall wellness.",
+      },
     ],
     plansTitle: "Holistic Detox Plans",
-    plansDesc: "Choose a plan to cleanse, rejuvenate, and restore balance, or join our detox team for wellness opportunities.",
+    plansDesc:
+      "Choose a plan to cleanse, rejuvenate, and restore balance, or join our detox team for wellness opportunities.",
     plans: [
       {
         title: "Starter Detox Plan",
         price: "$199/mo",
-        description: "Gentle introduction to detox for beginners to cleanse the body naturally.",
+        description:
+          "Gentle introduction to detox for beginners to cleanse the body naturally.",
         features: [
           "Basic Detox Assessment",
           "Personalized Cleanse Meal Plan",
@@ -47,7 +62,8 @@ const translations = {
       {
         title: "Advanced Detox Plan",
         price: "$399/mo",
-        description: "Structured detox program to enhance energy, digestion, and overall wellness.",
+        description:
+          "Structured detox program to enhance energy, digestion, and overall wellness.",
         features: [
           "Comprehensive Detox Assessment",
           "Customized Meal & Drink Plans",
@@ -59,7 +75,8 @@ const translations = {
       {
         title: "Premium Holistic Detox",
         price: "$699/mo",
-        description: "Complete support for total body cleansing and rejuvenation.",
+        description:
+          "Complete support for total body cleansing and rejuvenation.",
         features: [
           "Unlimited 1-on-1 Detox Consultations",
           "Personalized Meal, Exercise & Yoga Plans",
@@ -89,7 +106,8 @@ const translations = {
       },
     ],
     ctaTitle: "Ready for a full-body rejuvenation?",
-    ctaDesc: "Book your holistic detox consultation today and start your journey to wellness.",
+    ctaDesc:
+      "Book your holistic detox consultation today and start your journey to wellness.",
     ctaBtn: "Get Consultation",
     contact: "/contact",
     altHero: "Holistic Detox Hero",
@@ -98,9 +116,10 @@ const translations = {
   },
   ar: {
     heroTitle: "إزالة السموم الشاملة والعافية",
-   
+
     section2Title: "حلول إزالة السموم الشاملة المخصصة",
-    section2Desc: "تجمع برامج إزالة السموم الشاملة لدينا بين التغذية والممارسات الذهنية والتمارين اللطيفة لتنظيف الجسم واستعادة التوازن الطبيعي.",
+    section2Desc:
+      "تجمع برامج إزالة السموم الشاملة لدينا بين التغذية والممارسات الذهنية والتمارين اللطيفة لتنظيف الجسم واستعادة التوازن الطبيعي.",
     section2Features: [
       "خطط تنظيف مخصصة",
       "اليوغا واليقظة الذهنية",
@@ -108,20 +127,32 @@ const translations = {
       "استشارات فردية",
     ],
     coreTitle: "خدمات إزالة السموم الأساسية",
-    coreDesc: "من الوجبات المنظفة إلى اليوغا واليقظة الموجهة، تساعدك خدماتنا الشاملة على التجدد بشكل طبيعي.",
+    coreDesc:
+      "من الوجبات المنظفة إلى اليوغا واليقظة الموجهة، تساعدك خدماتنا الشاملة على التجدد بشكل طبيعي.",
     coreCards: [
-      { title: "خطط وجبات إزالة السموم", desc: "خطط وجبات تنظيف مخصصة مصممة لإزالة السموم من الجسم بشكل مثالي." },
-      { title: "اليوغا واليقظة الذهنية", desc: "ممارسات يوغا وذهنية لطيفة لتعزيز عملية إزالة السموم." },
-      { title: "استشارات فردية", desc: "الوصول المباشر إلى مدربي العافية الشاملة للإرشاد الشخصي." },
+      {
+        title: "خطط وجبات إزالة السموم",
+        desc: "خطط وجبات تنظيف مخصصة مصممة لإزالة السموم من الجسم بشكل مثالي.",
+      },
+      {
+        title: "اليوغا واليقظة الذهنية",
+        desc: "ممارسات يوغا وذهنية لطيفة لتعزيز عملية إزالة السموم.",
+      },
+      {
+        title: "استشارات فردية",
+        desc: "الوصول المباشر إلى مدربي العافية الشاملة للإرشاد الشخصي.",
+      },
       { title: "تتبع التقدم", desc: "راقب تقدم تنظيف الجسم والعافية العامة." },
     ],
     plansTitle: "خطط إزالة السموم الشاملة",
-    plansDesc: "اختر خطة للتنظيف والتجدد واستعادة التوازن، أو انضم إلى فريق إزالة السموم لفرص العافية.",
+    plansDesc:
+      "اختر خطة للتنظيف والتجدد واستعادة التوازن، أو انضم إلى فريق إزالة السموم لفرص العافية.",
     plans: [
       {
         title: "خطة إزالة السموم للمبتدئين",
         price: "$199/شهر",
-        description: "مقدمة لطيفة لإزالة السموم للمبتدئين لتنظيف الجسم بشكل طبيعي.",
+        description:
+          "مقدمة لطيفة لإزالة السموم للمبتدئين لتنظيف الجسم بشكل طبيعي.",
         features: [
           "تقييم إزالة السموم الأساسي",
           "خطة وجبات تنظيف شخصية",
@@ -132,7 +163,8 @@ const translations = {
       {
         title: "خطة إزالة السموم المتقدمة",
         price: "$399/شهر",
-        description: "برنامج إزالة سموم منظم لتعزيز الطاقة والهضم والعافية العامة.",
+        description:
+          "برنامج إزالة سموم منظم لتعزيز الطاقة والهضم والعافية العامة.",
         features: [
           "تقييم إزالة السموم الشامل",
           "خطط وجبات ومشروبات مخصصة",
@@ -183,9 +215,10 @@ const translations = {
   },
   he: {
     heroTitle: "דיטוקס הוליסטי ובריאות",
-  
+
     section2Title: "פתרונות דיטוקס הוליסטיים מותאמים אישית",
-    section2Desc: "תוכניות הדיטוקס שלנו משלבות תזונה, תרגולים מנטליים ופעילות גופנית עדינה לניקוי הגוף והשבת האיזון הטבעי.",
+    section2Desc:
+      "תוכניות הדיטוקס שלנו משלבות תזונה, תרגולים מנטליים ופעילות גופנית עדינה לניקוי הגוף והשבת האיזון הטבעי.",
     section2Features: [
       "תוכניות ניקוי מותאמות אישית",
       "יוגה ומיינדפולנס",
@@ -193,15 +226,29 @@ const translations = {
       "ייעוץ אישי",
     ],
     coreTitle: "שירותי דיטוקס עיקריים",
-    coreDesc: "מארוחות ניקוי ועד יוגה ומיינדפולנס מודרכים, השירותים ההוליסטיים שלנו יעזרו לך להתחדש באופן טבעי.",
+    coreDesc:
+      "מארוחות ניקוי ועד יוגה ומיינדפולנס מודרכים, השירותים ההוליסטיים שלנו יעזרו לך להתחדש באופן טבעי.",
     coreCards: [
-      { title: "תוכניות ארוחות דיטוקס", desc: "תוכניות ניקוי מותאמות אישית לניקוי מיטבי של הגוף." },
-      { title: "יוגה ומיינדפולנס", desc: "תרגולי יוגה ומיינדפולנס עדינים לשיפור תהליך הדיטוקס." },
-      { title: "ייעוץ אישי", desc: "גישה ישירה למאמני בריאות הוליסטיים להכוונה אישית." },
-      { title: "מעקב התקדמות", desc: "עקוב אחר התקדמות ניקוי הגוף והבריאות הכללית." },
+      {
+        title: "תוכניות ארוחות דיטוקס",
+        desc: "תוכניות ניקוי מותאמות אישית לניקוי מיטבי של הגוף.",
+      },
+      {
+        title: "יוגה ומיינדפולנס",
+        desc: "תרגולי יוגה ומיינדפולנס עדינים לשיפור תהליך הדיטוקס.",
+      },
+      {
+        title: "ייעוץ אישי",
+        desc: "גישה ישירה למאמני בריאות הוליסטיים להכוונה אישית.",
+      },
+      {
+        title: "מעקב התקדמות",
+        desc: "עקוב אחר התקדמות ניקוי הגוף והבריאות הכללית.",
+      },
     ],
     plansTitle: "תוכניות דיטוקס הוליסטי",
-    plansDesc: "בחר תוכנית לניקוי, התחדשות והשבת איזון, או הצטרף לצוות הדיטוקס להזדמנויות בריאות.",
+    plansDesc:
+      "בחר תוכנית לניקוי, התחדשות והשבת איזון, או הצטרף לצוות הדיטוקס להזדמנויות בריאות.",
     plans: [
       {
         title: "תוכנית דיטוקס למתחילים",
@@ -278,7 +325,8 @@ function getLanguage() {
   return localStorage.getItem(LANGUAGE_KEY) || "en";
 }
 
-const themedClass = (base, dark, light, theme) => `${base} ${theme === "dark" ? dark : light}`;
+const themedClass = (base, dark, light, theme) =>
+  `${base} ${theme === "dark" ? dark : light}`;
 
 const HolisticDetox = () => {
   const [theme, setTheme] = React.useState(() => {
@@ -291,8 +339,10 @@ const HolisticDetox = () => {
 
   React.useEffect(() => {
     if (typeof window !== "undefined") {
-      const handleThemeChange = () => setTheme(localStorage.getItem(THEME_KEY) || "light");
-      const handleLanguageChange = () => setLanguage(localStorage.getItem(LANGUAGE_KEY) || "en");
+      const handleThemeChange = () =>
+        setTheme(localStorage.getItem(THEME_KEY) || "light");
+      const handleLanguageChange = () =>
+        setLanguage(localStorage.getItem(LANGUAGE_KEY) || "en");
       window.addEventListener("theme-changed", handleThemeChange);
       window.addEventListener("language-changed", handleLanguageChange);
       window.addEventListener("storage", handleThemeChange);
@@ -326,25 +376,25 @@ const HolisticDetox = () => {
   const dir = rtlLangs.includes(language) ? "rtl" : "ltr";
 
   return (
-    <div className="overflow-x-hidden" dir={dir} style={{ direction: dir }}>
+    <div className=" caret-transparent" dir={dir} style={{ direction: dir }}>
       {/* Hero Section */}
-      <section className="relative w-full h-screen m-0 p-0">
+      <section className="relative w-full h-screen p-0 m-0">
         <motion.video
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 object-cover w-full h-full"
           src={video}
           autoPlay
-            muted
-            loop
-            playsInline
+          muted
+          loop
+          playsInline
           alt={t("altHero", language)}
         />
-        <div className="absolute inset-0 bg-black/50 transition-colors duration-500" />
-        <div className="relative z-10 flex flex-col items-center justify-center text-center w-full h-full px-4">
+        <div className="absolute inset-0 transition-colors duration-500 bg-black/50" />
+        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full px-4 text-center">
           <motion.h1
-            className="text-4xl md:text-6xl font-bold leading-tight text-white"
+            className="text-4xl font-bold leading-tight text-white md:text-6xl"
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -352,7 +402,7 @@ const HolisticDetox = () => {
             {t("heroTitle", language)}
           </motion.h1>
           <motion.p
-            className="mt-6 text-lg md:text-2xl max-w-4xl text-gray-200"
+            className="max-w-4xl mt-6 text-lg text-gray-200 md:text-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
@@ -363,381 +413,432 @@ const HolisticDetox = () => {
       </section>
 
       {/* Image + Content Section */}
-     <section className={themedClass(
-  "w-full py-20 px-6",
-  "bg-gray-900",
-  "bg-gray-50",
-  theme
-)}>
-  <motion.div
-    className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12"
-    variants={containerVariants}
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, amount: 0.3 }}
-  >
-    <motion.div
-      className="w-full md:w-1/2 flex justify-center"
-      variants={itemVariants}
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ type: "spring", stiffness: 100, damping: 20 }}
-    >
-      <img
-        src={detoxImg}
-        alt={t("altStrategy", language)}
-        className="rounded-2xl shadow-lg object-cover w-full sm:w-8/12 md:w-10/12 max-h-[400px]"
-      />
-    </motion.div>
-    <motion.div className="w-full md:w-1/2 text-left" variants={itemVariants}>
-      <motion.h2
+      <section
         className={themedClass(
-          "text-4xl md:text-5xl font-bold mb-6 hover:text-orange-600",
-          "text-white",
-          "text-black",
-          theme
+          "w-full py-20 px-6",
+          "bg-gray-900",
+          "bg-gray-100",
+          theme,
         )}
-        whileHover={{ scale: 1.02 }}
       >
-        {t("section2Title", language)}
-      </motion.h2>
-      <motion.p
-        className={themedClass(
-          "mb-8 text-justify",
-          "text-gray-300",
-          "text-gray-700",
-          theme
-        )}
-        variants={itemVariants}
-      >
-        {t("section2Desc", language)}
-      </motion.p>
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4" style={{ direction: dir }}>
-        {translations[language].section2Features.map((feature, index) => (
-          <motion.div
-            key={index}
-            className={themedClass(
-              "flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all duration-300",
-              "hover:bg-gray-800",
-              "hover:bg-orange-50",
-              theme
-            )}
-            variants={itemVariants}
-            whileHover={{ x: 8, scale: 1.05, backgroundColor: "rgba(255,165,0,0.1)" }}
-            transition={{ type: "spring", stiffness: 150 }}
-          >
-            <span className="w-5 h-5 bg-orange-600 rounded-full flex-shrink-0" />
-            <p className={themedClass(
-              "",
-              "text-gray-300",
-              "text-gray-700",
-              theme
-            )}>
-              {feature}
-            </p>
-          </motion.div>
-        ))}
-      </div>
-    </motion.div>
-  </motion.div>
-</section>
-
-<section className={themedClass(
-  "w-full py-5 px-6",
-  "bg-gray-900",
-  "bg-gray-50",
-  theme
-)}>
-  <div className="max-w-4xl mx-auto text-center mb-12">
-    <motion.h2
-      className={themedClass(
-        "text-3xl md:text-5xl font-bold mb-4",
-        "text-white",
-        "text-gray-900",
-        theme
-      )}
-      initial={{ opacity: 0, y: -20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-    >
-      {t("coreTitle", language)}
-    </motion.h2>
-    <motion.p
-      className={themedClass(
-        "text-lg max-w-2xl mx-auto",
-        "text-gray-300",
-        "text-gray-700",
-        theme
-      )}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ delay: 0.3, duration: 0.6 }}
-      viewport={{ once: true }}
-    >
-      {t("coreDesc", language)}
-    </motion.p>
-  </div>
-  <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8" style={{ direction: dir }}>
-    {translations[language].coreCards.map((service, i) => (
-      <motion.article key={i}
-        className={themedClass(
-          "backdrop-blur-md rounded-2xl p-6 shadow-md border hover:shadow-lg transition-shadow",
-          "bg-gray-800 border-gray-700",
-          "bg-white border-gray-200",
-          theme
-        )}
-        variants={cardVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        whileHover={cardHover}
-      >
-        <div className="flex items-start gap-4">
-          <img src={[cleanseIcon, yogaIcon, consultationIcon, trackingIcon][i]} alt={service.title} className="w-12 h-12 object-contain rounded-lg" />
-          <div>
-            <h4 className={themedClass(
-              "text-lg font-semibold",
-              "text-white",
-              "text-gray-900",
-              theme
-            )}>
-              {service.title}
-            </h4>
-            <p className={themedClass(
-              "mt-1 text-sm",
-              "text-gray-300",
-              "text-gray-700",
-              theme
-            )}>
-              {service.desc}
-            </p>
-          </div>
-        </div>
-      </motion.article>
-    ))}
-  </div>
-</section>
-
-
-<section className={themedClass(
-  "w-full py-20 px-6",
-  "bg-gray-900",
-  "bg-gray-50",
-  theme
-)}>
-  <div className="max-w-7xl mx-auto text-center mb-12">
-    <motion.h2
-      className={themedClass(
-        "text-3xl md:text-5xl font-bold mb-4",
-        "text-white",
-        "text-gray-900",
-        theme
-      )}
-      initial={{ opacity: 0, y: -20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-    >
-      {t("plansTitle", language)}
-    </motion.h2>
-    <motion.p
-      className={themedClass(
-        "text-lg max-w-2xl mx-auto",
-        "text-gray-300",
-        "text-gray-700",
-        theme
-      )}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ delay: 0.3, duration: 0.6 }}
-      viewport={{ once: true }}
-    >
-      {t("plansDesc", language)}
-    </motion.p>
-  </div>
-
-  {/* Pricing Plans */}
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16" style={{ direction: dir }}>
-    {translations[language].plans.map((plan, idx) => (
-      <motion.div
-        key={idx}
-        className={themedClass(
-          "p-8 rounded-2xl shadow-lg border transition-transform transform",
-          idx === 1
-            ? "bg-orange-600 text-white border-orange-600 scale-105"
-            : "bg-gray-800 text-white border-gray-700",
-          idx === 1
-            ? "bg-orange-600 text-white border-orange-600 scale-105"
-            : "bg-white text-gray-900 border-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-700",
-          theme
-        )}
-        variants={cardVariants}
-        initial="hidden"
-        whileInView="visible"
-        whileHover={cardHover}
-        viewport={{ once: true, amount: 0.3 }}
-      >
-        <h3 className={themedClass(
-          "text-2xl font-bold mb-3",
-          "text-white",
-          "text-gray-900",
-          theme
-        )}>
-          {plan.title}
-        </h3>
-
-        <p className={themedClass(
-          "text-lg mb-4 opacity-90",
-          "text-white/90",
-          "text-gray-700 dark:text-gray-200",
-          theme
-        )}>
-          {plan.description}
-        </p>
-
-        <div className={themedClass(
-          "text-3xl font-extrabold mb-6",
-          "text-white",
-          "text-orange-600 dark:text-white",
-          theme
-        )}>
-          {plan.price}
-        </div>
-
-        <ul className="space-y-2 mb-6">
-          {plan.features.map((feature, i) => (
-            <li key={i} className={themedClass(
-              "text-gray-300",
-              "text-white",
-              "text-gray-700 dark:text-white",
-              theme
-            )}>
-              {feature}
-            </li>
-          ))}
-        </ul>
-
-        <Link
-          to={t("contact", language)}
-          className={themedClass(
-            "w-full inline-block text-center py-3 rounded-full font-semibold transition",
-            "bg-white text-orange-600 hover:bg-gray-100",
-            "bg-orange-600 text-white hover:bg-orange-700",
-            theme
-          )}
-        >
-          {t("getStarted", language)}
-        </Link>
-      </motion.div>
-    ))}
-  </div>
-
-  {/* Joiners Section */}
-  <div className="max-w-7xl mx-auto">
-    <motion.h3
-      className={themedClass(
-        "text-2xl md:text-4xl font-bold text-center mb-10",
-        "text-white",
-        "text-gray-900",
-        theme
-      )}
-      initial={{ opacity: 0, y: -20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.6 }}
-      viewport={{ once: true }}
-    >
-      {t("joinersTitle", language)}
-    </motion.h3>
-
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8" style={{ direction: dir }}>
-      {translations[language].joiners.map((join, idx) => (
         <motion.div
-          key={idx}
-          className={themedClass(
-            "p-6 rounded-2xl shadow-md border hover:shadow-xl transition",
-            "bg-gray-800 text-white border-gray-700",
-            "bg-white text-gray-900 border-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-700",
-            theme
-          )}
-          variants={cardVariants}
+          className="flex flex-col items-center gap-12 mx-auto max-w-7xl md:flex-row"
+          variants={containerVariants}
           initial="hidden"
           whileInView="visible"
-          whileHover={cardHover}
           viewport={{ once: true, amount: 0.3 }}
         >
-          <h4 className={themedClass(
-            "text-xl font-semibold mb-2",
-            "text-white",
-            "text-gray-900",
-            theme
-          )}>
-            {join.role}
-          </h4>
-
-          <p className={themedClass(
-            "text-lg font-bold mb-3",
-            "text-orange-400",
-            "text-orange-600",
-            theme
-          )}>
-            {join.stipend}
-          </p>
-
-          <ul className={themedClass(
-            "space-y-1",
-            "text-gray-300",
-            "text-gray-600 dark:text-gray-300",
-            theme
-          )}>
-            {join.benefits.map((b,i) => (
-              <li key={i}>• {b}</li>
-            ))}
-          </ul>
+          <motion.div
+            className="flex justify-center w-full md:w-1/2"
+            variants={itemVariants}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+          >
+            <img
+              src={detoxImg}
+              alt={t("altStrategy", language)}
+              className="rounded-2xl shadow-lg object-cover w-full sm:w-8/12 md:w-10/12 max-h-[400px]"
+            />
+          </motion.div>
+          <motion.div
+            className="w-full text-left md:w-1/2"
+            variants={itemVariants}
+          >
+            <motion.h2
+              className={themedClass(
+                "text-4xl md:text-5xl font-bold mb-6 hover:text-orange-600",
+                "text-white",
+                "text-black",
+                theme,
+              )}
+              whileHover={{ scale: 1.02 }}
+            >
+              {t("section2Title", language)}
+            </motion.h2>
+            <motion.p
+              className={themedClass(
+                "mb-8 text-justify",
+                "text-gray-300",
+                "text-gray-700",
+                theme,
+              )}
+              variants={itemVariants}
+            >
+              {t("section2Desc", language)}
+            </motion.p>
+            <div
+              className="grid grid-cols-1 gap-4 sm:grid-cols-2"
+              style={{ direction: dir }}
+            >
+              {translations[language].section2Features.map((feature, index) => (
+                <motion.div
+                  key={index}
+                  className={themedClass(
+                    "flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all duration-300",
+                    "hover:bg-gray-800",
+                    "hover:bg-orange-50",
+                    theme,
+                  )}
+                  variants={itemVariants}
+                  whileHover={{
+                    x: 8,
+                    scale: 1.05,
+                    backgroundColor: "rgba(255,165,0,0.1)",
+                  }}
+                  transition={{ type: "spring", stiffness: 150 }}
+                >
+                  <span className="flex-shrink-0 w-5 h-5 bg-orange-600 rounded-full" />
+                  <p
+                    className={themedClass(
+                      "",
+                      "text-gray-300",
+                      "text-gray-700",
+                      theme,
+                    )}
+                  >
+                    {feature}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </motion.div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
+
+      <section
+        className={themedClass(
+          "w-full py-5 px-6",
+          "bg-gray-900",
+          "bg-gray-50",
+          theme,
+        )}
+      >
+        <div className="max-w-4xl mx-auto mb-12 text-center">
+          <motion.h2
+            className={themedClass(
+              "text-3xl md:text-5xl font-bold mb-4",
+              "text-white",
+              "text-gray-900",
+              theme,
+            )}
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            {t("coreTitle", language)}
+          </motion.h2>
+          <motion.p
+            className={themedClass(
+              "text-lg max-w-2xl mx-auto",
+              "text-gray-300",
+              "text-gray-700",
+              theme,
+            )}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            {t("coreDesc", language)}
+          </motion.p>
+        </div>
+        <div
+          className="grid grid-cols-1 gap-8 mx-auto max-w-7xl md:grid-cols-2"
+          style={{ direction: dir }}
+        >
+          {translations[language].coreCards.map((service, i) => (
+            <motion.article
+              key={i}
+              className={themedClass(
+                "backdrop-blur-md rounded-2xl p-6 shadow-md border hover:shadow-lg transition-shadow",
+                "bg-gray-800 border-gray-700",
+                "bg-white border-gray-200",
+                theme,
+              )}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              whileHover={cardHover}
+            >
+              <div className="flex items-start gap-4">
+                <img
+                  src={
+                    [cleanseIcon, yogaIcon, consultationIcon, trackingIcon][i]
+                  }
+                  alt={service.title}
+                  className="object-cover h-[50px] rounded-xl w-[50px]"
+                />
+                <div>
+                  <h4
+                    className={themedClass(
+                      "text-lg font-semibold",
+                      "text-white",
+                      "text-gray-900",
+                      theme,
+                    )}
+                  >
+                    {service.title}
+                  </h4>
+                  <p
+                    className={themedClass(
+                      "mt-1 text-sm",
+                      "text-gray-300",
+                      "text-gray-700",
+                      theme,
+                    )}
+                  >
+                    {service.desc}
+                  </p>
+                </div>
+              </div>
+            </motion.article>
+          ))}
+        </div>
+      </section>
+
+      <section
+        className={themedClass(
+          "w-full py-20 px-6",
+          "bg-gray-900",
+          "bg-gray-100",
+          theme,
+        )}
+      >
+        <div className="mx-auto mb-12 text-center max-w-7xl">
+          <motion.h2
+            className={themedClass(
+              "text-3xl md:text-5xl font-bold mb-4",
+              "text-white",
+              "text-gray-900",
+              theme,
+            )}
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            {t("plansTitle", language)}
+          </motion.h2>
+          <motion.p
+            className={themedClass(
+              "text-lg max-w-2xl mx-auto",
+              "text-gray-300",
+              "text-gray-700",
+              theme,
+            )}
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ delay: 0.3, duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            {t("plansDesc", language)}
+          </motion.p>
+        </div>
+
+        {/* Pricing Plans */}
+        <div
+          className="grid grid-cols-1 gap-8 mx-auto mb-16 md:grid-cols-3 max-w-7xl"
+          style={{ direction: dir }}
+        >
+          {translations[language].plans.map((plan, idx) => (
+            <motion.div
+              key={idx}
+              className={themedClass(
+                "p-8 rounded-2xl flex flex-col justify-between shadow-lg border transition-transform transform",
+                idx === 1
+                  ? "bg-orange-400 text-white border-orange-600 scale-105"
+                  : "bg-gray-800 text-white border-gray-700",
+                idx === 1
+                  ? "bg-orange-600 text-white border-orange-600 scale-105"
+                  : "bg-white text-gray-900 border-gray-200",
+                theme,
+              )}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
+              whileHover={cardHover}
+              viewport={{ once: true, amount: 0.3 }}
+            >
+              <h3
+                className={themedClass(
+                  "text-2xl font-bold mb-3",
+                  // "text-white",
+                  // "text-gray-900",
+                  theme,
+                )}
+              >
+                {plan.title}
+              </h3>
+
+              <p
+                className={themedClass(
+                  "text-lg mb-4 opacity-90",
+                  // "text-white/90",
+                  // "text-gray-700 dark:text-gray-200",
+                  theme,
+                )}
+              >
+                {plan.description}
+              </p>
+
+              <div
+                className={themedClass(
+                  "text-3xl font-extrabold mb-6",
+                  // "text-white",
+                  // "text-orange-600",
+                  theme,
+                )}
+              >
+                {plan.price}
+              </div>
+
+              <ul className="mb-6 space-y-2">
+                {plan.features.map((feature, i) => (
+                  <li
+                    key={i}
+                    className={themedClass(
+                      // "text-gray-300",
+                      // "text-white",
+                      // "text-gray-700",
+                      theme,
+                    )}
+                  >
+                    {feature}
+                  </li>
+                ))}
+              </ul>
+
+              <Link
+                to="/contact"
+                className={themedClass(
+                  "w-full inline-block text-center py-3 rounded-full font-semibold transition",
+                  "bg-orange-600 text-white hover:bg-orange-700",
+                  "bg-orange-500 hover:text-black  hover:bg-gray-100",
+                  theme,
+                )}
+              >
+                {t("getStarted", language)}
+              </Link>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* Joiners Section */}
+        <div className="mx-auto max-w-7xl">
+          <motion.h3
+            className={themedClass(
+              "text-2xl md:text-4xl font-bold text-center mb-10",
+              "text-white",
+              "text-gray-900",
+              theme,
+            )}
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            viewport={{ once: true }}
+          >
+            {t("joinersTitle", language)}
+          </motion.h3>
+
+          <div
+            className="grid grid-cols-1 gap-8 md:grid-cols-3"
+            style={{ direction: dir }}
+          >
+            {translations[language].joiners.map((join, idx) => (
+              <motion.div
+                key={idx}
+                className={themedClass(
+                  "p-6 rounded-2xl shadow-md border hover:shadow-xl transition",
+                  "bg-gray-800 text-white border-gray-700",
+                  "bg-white text-gray-900 border-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-700",
+                  theme,
+                )}
+                variants={cardVariants}
+                initial="hidden"
+                whileInView="visible"
+                whileHover={cardHover}
+                viewport={{ once: true, amount: 0.3 }}
+              >
+                <h4
+                  className={themedClass(
+                    "text-xl font-semibold mb-2",
+                    "text-white",
+                    "text-gray-900",
+                    theme,
+                  )}
+                >
+                  {join.role}
+                </h4>
+
+                <p
+                  className={themedClass(
+                    "text-lg font-bold mb-3",
+                    "text-orange-400",
+                    "text-orange-600",
+                    theme,
+                  )}
+                >
+                  {join.stipend}
+                </p>
+
+                <ul
+                  className={themedClass(
+                    "space-y-1",
+                    "text-gray-300",
+                    "text-gray-600 dark:text-gray-300",
+                    theme,
+                  )}
+                >
+                  {join.benefits.map((b, i) => (
+                    <li key={i}>• {b}</li>
+                  ))}
+                </ul>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA Row */}
       <motion.section
-  className="relative w-full mt-0 pt-0"
-  initial={{ opacity: 0, y: 12 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
->
-  <div className="absolute inset-0">
-    {/* Background image fixed */}
-    <img
-      src={detoxImg}
-      alt={t("altCta", language)}
-      className="w-full h-full object-cover"
-      style={{ backgroundAttachment: "fixed" }}
-    />
-    {/* Black overlay with 50% opacity */}
-    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-  </div>
-
-  <div className="relative z-10 max-w-3xl mx-auto text-center py-24 px-6">
-    <h3 className="text-2xl md:text-3xl font-bold text-white">
-      {t("ctaTitle", language)}
-    </h3>
-    <p className="mt-3 text-white/90 text-lg md:text-xl">
-      {t("ctaDesc", language)}
-    </p>
-    <div className="mt-8 flex items-center justify-center gap-4">
-      <Link
-        to={t("contact", language)}
-        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-orange-600 font-semibold shadow hover:bg-gray-100 transition"
+        className="relative w-full pt-0 mt-0"
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
       >
-        {t("ctaBtn", language)}
-      </Link>
-    </div>
-  </div>
-</motion.section>
+        <div className="absolute inset-0">
+          {/* Background image fixed */}
+          <img
+            src={detoxImg}
+            alt={t("altCta", language)}
+            className="object-cover w-full h-full"
+            style={{ backgroundAttachment: "fixed" }}
+          />
+          {/* Black overlay with 50% opacity */}
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
 
+        <div className="relative z-10 max-w-3xl px-6 py-24 mx-auto text-center">
+          <h3 className="text-2xl font-bold text-white md:text-3xl">
+            {t("ctaTitle", language)}
+          </h3>
+          <p className="mt-3 text-lg text-white/90 md:text-xl">
+            {t("ctaDesc", language)}
+          </p>
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <Link
+              to={t("contact", language)}
+              className="inline-flex items-center gap-2 px-6 py-3 font-semibold text-orange-600 transition bg-white rounded-full shadow hover:bg-gray-100"
+            >
+              {t("ctaBtn", language)}
+            </Link>
+          </div>
+        </div>
+      </motion.section>
     </div>
   );
 };

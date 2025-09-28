@@ -1,35 +1,39 @@
-import React from "react";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom"; 
-import vedio from '../assets/Services4.mp4'; // Replace with a Sleep Optimization video if available
-import wellnessImg from "../assets/SO.jpg";
-import sleepIcon from "../assets/BG2.jpg"; 
-import routineIcon from "../assets/Dp.jpg";
-import consultationIcon from "../assets/B2.jpg";
+import React from "react";
+import { Link } from "react-router-dom";
 import trackingIcon from "../assets/blog1.jpg";
+import vedio from "../assets/Services4.mp4";
+import wellnessImg from "../assets/SO.jpg";
 
 // Multilingual translations
 const translations = {
   en: {
     heroTitle: "Sleep Optimization for Health & Wellness",
     sectionTitle: "Personalized Sleep Solutions",
-    sectionDesc: "Our experts design personalized sleep routines, relaxation techniques, and recovery strategies to help you achieve restorative rest.",
+    sectionDesc:
+      "Our experts design personalized sleep routines, relaxation techniques, and recovery strategies to help you achieve restorative rest.",
     feature1: "Customized Sleep Plans",
     feature2: "Mindfulness & Relaxation",
     feature3: "Sleep Tracking",
     feature4: "1-on-1 Coaching",
     coreTitle: "Core Sleep Optimization Services",
-    coreDesc: "From personalized sleep routines to coaching, our solutions help you achieve restorative and high-quality sleep.",
+    coreDesc:
+      "From personalized sleep routines to coaching, our solutions help you achieve restorative and high-quality sleep.",
     card1Title: "Sleep Planning",
-    card1Desc: "Personalized routines and bedtime strategies for optimal sleep quality.",
+    card1Desc:
+      "Personalized routines and bedtime strategies for optimal sleep quality.",
     card2Title: "Relaxation Guidance",
-    card2Desc: "Mindfulness, breathing exercises, and pre-sleep routines to improve rest.",
+    card2Desc:
+      "Mindfulness, breathing exercises, and pre-sleep routines to improve rest.",
     card3Title: "1-on-1 Coaching",
-    card3Desc: "Personalized guidance from sleep experts to optimize your rest.",
+    card3Desc:
+      "Personalized guidance from sleep experts to optimize your rest.",
     card4Title: "Progress Tracking",
-    card4Desc: "Monitor sleep patterns and improvement with actionable insights and analytics.",
+    card4Desc:
+      "Monitor sleep patterns and improvement with actionable insights and analytics.",
     plansTitle: "Sleep Optimization Plans",
-    plansDesc: "Choose a plan that suits your sleep goals, or explore opportunities to join our sleep & wellness team.",
+    plansDesc:
+      "Choose a plan that suits your sleep goals, or explore opportunities to join our sleep & wellness team.",
     getStarted: "Get Started",
     joinersTitle: "Opportunities for Sleep & Wellness Enthusiasts",
     joiner1Role: "Sleep Intern",
@@ -67,7 +71,8 @@ const translations = {
     plan2Feature5: "Sleep Tracking & Analytics",
     plan3Title: "Premium Sleep Plan",
     plan3Price: "$499/mo",
-    plan3Desc: "Comprehensive sleep optimization with full guidance and support.",
+    plan3Desc:
+      "Comprehensive sleep optimization with full guidance and support.",
     plan3Feature1: "Unlimited 1-on-1 Sleep Coaching",
     plan3Feature2: "Personalized Sleep & Recovery Plans",
     plan3Feature3: "Mind-Body Relaxation Sessions",
@@ -77,13 +82,15 @@ const translations = {
   ar: {
     heroTitle: "تحسين النوم للصحة والعافية",
     sectionTitle: "حلول نوم شخصية",
-    sectionDesc: "يصمم خبراؤنا روتينات نوم مخصصة، تقنيات استرخاء، واستراتيجيات تعافي لمساعدتك على تحقيق راحة عميقة.",
+    sectionDesc:
+      "يصمم خبراؤنا روتينات نوم مخصصة، تقنيات استرخاء، واستراتيجيات تعافي لمساعدتك على تحقيق راحة عميقة.",
     feature1: "خطط نوم مخصصة",
     feature2: "اليقظة والاسترخاء",
     feature3: "تتبع النوم",
     feature4: "تدريب فردي",
     coreTitle: "الخدمات الأساسية لتحسين النوم",
-    coreDesc: "من روتينات النوم الشخصية إلى التدريب، تساعدك حلولنا على تحقيق نوم مريح وعالي الجودة.",
+    coreDesc:
+      "من روتينات النوم الشخصية إلى التدريب، تساعدك حلولنا على تحقيق نوم مريح وعالي الجودة.",
     card1Title: "تخطيط النوم",
     card1Desc: "روتينات شخصية واستراتيجيات وقت النوم لجودة نوم مثالية.",
     card2Title: "إرشادات الاسترخاء",
@@ -93,7 +100,8 @@ const translations = {
     card4Title: "تتبع التقدم",
     card4Desc: "راقب أنماط النوم والتحسن مع رؤى وتحليلات قابلة للتنفيذ.",
     plansTitle: "خطط تحسين النوم",
-    plansDesc: "اختر خطة تناسب أهداف نومك أو استكشف فرص الانضمام لفريق النوم والعافية.",
+    plansDesc:
+      "اختر خطة تناسب أهداف نومك أو استكشف فرص الانضمام لفريق النوم والعافية.",
     getStarted: "ابدأ الآن",
     joinersTitle: "فرص لعشاق النوم والعافية",
     joiner1Role: "متدرب نوم",
@@ -141,13 +149,15 @@ const translations = {
   he: {
     heroTitle: "אופטימיזציית שינה לבריאות ורווחה",
     sectionTitle: "פתרונות שינה מותאמים אישית",
-    sectionDesc: "המומחים שלנו מעצבים שגרות שינה אישיות, טכניקות הרפיה ואסטרטגיות התאוששות כדי לעזור לך להגיע למנוחה משקמת.",
+    sectionDesc:
+      "המומחים שלנו מעצבים שגרות שינה אישיות, טכניקות הרפיה ואסטרטגיות התאוששות כדי לעזור לך להגיע למנוחה משקמת.",
     feature1: "תוכניות שינה מותאמות",
     feature2: "מודעות והרפיה",
     feature3: "מעקב שינה",
     feature4: "אימון אישי",
     coreTitle: "שירותי אופטימיזציית שינה עיקריים",
-    coreDesc: "משגרות שינה אישיות ועד אימון, הפתרונות שלנו עוזרים לך להגיע לשינה איכותית ומשקמת.",
+    coreDesc:
+      "משגרות שינה אישיות ועד אימון, הפתרונות שלנו עוזרים לך להגיע לשינה איכותית ומשקמת.",
     card1Title: "תכנון שינה",
     card1Desc: "שגרות אישיות ואסטרטגיות לשעת שינה לאיכות שינה מיטבית.",
     card2Title: "הכוונת הרפיה",
@@ -157,7 +167,8 @@ const translations = {
     card4Title: "מעקב התקדמות",
     card4Desc: "נטר דפוסי שינה ושיפור עם תובנות וניתוחים מעשיים.",
     plansTitle: "תוכניות אופטימיזציית שינה",
-    plansDesc: "בחר תוכנית המתאימה למטרות השינה שלך או גלה הזדמנויות להצטרף לצוות השינה והרווחה.",
+    plansDesc:
+      "בחר תוכנית המתאימה למטרות השינה שלך או גלה הזדמנויות להצטרף לצוות השינה והרווחה.",
     getStarted: "התחל עכשיו",
     joinersTitle: "הזדמנויות לחובבי שינה ורווחה",
     joiner1Role: "מתמחה שינה",
@@ -212,7 +223,8 @@ function getLanguage() {
   if (typeof window === "undefined") return "en";
   return localStorage.getItem(LANGUAGE_KEY) || "en";
 }
-const themedClass = (base, dark, light, theme) => `${base} ${theme === "dark" ? dark : light}`;
+const themedClass = (base, dark, light, theme) =>
+  `${base} ${theme === "dark" ? dark : light}`;
 
 const SleepOptimization = () => {
   const [theme, setTheme] = React.useState(() => {
@@ -234,8 +246,10 @@ const SleepOptimization = () => {
   }, [theme]);
 
   React.useEffect(() => {
-    const handleThemeChange = () => setTheme(localStorage.getItem(THEME_KEY) || "light");
-    const handleLanguageChange = () => setLanguage(localStorage.getItem(LANGUAGE_KEY) || "en");
+    const handleThemeChange = () =>
+      setTheme(localStorage.getItem(THEME_KEY) || "light");
+    const handleLanguageChange = () =>
+      setLanguage(localStorage.getItem(LANGUAGE_KEY) || "en");
     window.addEventListener("theme-changed", handleThemeChange);
     window.addEventListener("language-changed", handleLanguageChange);
     window.addEventListener("storage", handleThemeChange);
@@ -342,14 +356,22 @@ const SleepOptimization = () => {
 
   const dir = rtlLangs.includes(language) ? "rtl" : "ltr";
   return (
-    <div dir={dir} className={themedClass("overflow-x-hidden", "bg-black", "bg-white", theme)}>
+    <div
+      dir={dir}
+      className={themedClass(
+        "caret-transparent",
+        "bg-black",
+        "bg-white",
+        theme,
+      )}
+    >
       {/* Hero Section */}
-      <section className="relative w-full h-screen m-0 p-0">
+      <section className="relative w-full h-screen p-0 m-0">
         <motion.video
           initial={{ scale: 1.1, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 1.2, ease: "easeOut" }}
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 object-cover w-full h-full"
           src={vedio}
           autoPlay
           muted
@@ -357,10 +379,10 @@ const SleepOptimization = () => {
           playsInline
           alt="Sleep Optimization Hero"
         />
-        <div className="absolute inset-0 bg-black/50 transition-colors duration-500" />
-        <div className="relative z-10 flex flex-col items-center justify-center text-center w-full h-full px-4">
+        <div className="absolute inset-0 transition-colors duration-500 bg-black/50" />
+        <div className="relative z-10 flex flex-col items-center justify-center w-full h-full px-4 text-center">
           <motion.h1
-            className="text-4xl md:text-6xl font-bold leading-tight text-white"
+            className="text-4xl font-bold leading-tight text-white md:text-6xl"
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -368,7 +390,7 @@ const SleepOptimization = () => {
             {t("heroTitle", language)}
           </motion.h1>
           <motion.p
-            className="mt-6 text-lg md:text-2xl max-w-4xl text-gray-200"
+            className="max-w-4xl mt-6 text-lg text-gray-200 md:text-2xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
@@ -380,17 +402,19 @@ const SleepOptimization = () => {
 
       {/* Image + Content Section (2nd section) */}
       <section
-        className={`w-full py-20 px-6 ${theme === "dark" ? "bg-gray-900" : "bg-white"} transition-colors duration-500`}
+        className={`w-full py-20 px-6 ${
+          theme === "dark" ? "bg-gray-900" : "bg-white"
+        } transition-colors duration-500`}
       >
         <motion.div
-          className="max-w-7xl mx-auto flex flex-col md:flex-row items-center gap-12"
+          className="flex flex-col items-center gap-12 mx-auto max-w-7xl md:flex-row"
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
           <motion.div
-            className="w-full md:w-1/2 flex justify-center"
+            className="flex justify-center w-full md:w-1/2"
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
@@ -400,30 +424,37 @@ const SleepOptimization = () => {
               className="rounded-2xl shadow-lg object-cover w-full sm:w-8/12 md:w-10/12 max-h-[400px]"
             />
           </motion.div>
-          <motion.div className="w-full md:w-1/2 text-left" variants={itemVariants}>
+          <motion.div
+            className="w-full text-left md:w-1/2"
+            variants={itemVariants}
+          >
             <motion.h2
-              className="text-4xl md:text-5xl font-bold mb-6 transition-colors duration-500"
+              className="mb-6 text-4xl font-bold transition-colors duration-500 md:text-5xl"
               style={{ color: theme === "dark" ? "#fff" : "#111827" }}
               whileHover={{ scale: 1.02 }}
             >
               {t("sectionTitle", language)}
             </motion.h2>
             <motion.p
-              className="mb-8 transition-colors duration-500 text-justify"
+              className="mb-8 text-justify transition-colors duration-500"
               style={{ color: theme === "dark" ? "#d1d5db" : "#374151" }}
               variants={itemVariants}
             >
               {t("sectionDesc", language)}
             </motion.p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {[1, 2, 3, 4].map((i, idx) => (
                 <motion.div
                   key={idx}
-                  className={`flex items-center gap-3 p-3 rounded-lg transition-all duration-300 ${theme === "dark" ? "bg-gray-800 hover:bg-gray-700" : "bg-gray-100 hover:bg-orange-50"}`}
+                  className={`flex items-center gap-3 p-3 rounded-lg transition-all duration-300 ${
+                    theme === "dark"
+                      ? "bg-gray-800 hover:bg-gray-700"
+                      : "bg-gray-100 hover:bg-orange-50"
+                  }`}
                   variants={itemVariants}
                   whileHover={{ x: 5, scale: 1.03 }}
                 >
-                  <span className="w-5 h-5 bg-orange-600 rounded-full flex-shrink-0" />
+                  <span className="flex-shrink-0 w-5 h-5 bg-orange-600 rounded-full" />
                   <p
                     className="transition-colors duration-500"
                     style={{ color: theme === "dark" ? "#e5e7eb" : "#111827" }}
@@ -439,11 +470,13 @@ const SleepOptimization = () => {
 
       {/* Core Cards Section (3rd section) */}
       <section
-        className={`w-full py-16 px-6 ${theme === "dark" ? "bg-gray-900" : "bg-gray-50"} transition-colors duration-500`}
+        className={`w-full py-16 px-6 ${
+          theme === "dark" ? "bg-gray-900" : "bg-gray-100"
+        } transition-colors duration-500`}
       >
-        <div className="max-w-4xl mx-auto text-center mb-12">
+        <div className="max-w-4xl mx-auto mb-12 text-center">
           <motion.h2
-            className="text-3xl md:text-5xl font-bold mb-4 transition-colors duration-500"
+            className="mb-4 text-3xl font-bold transition-colors duration-500 md:text-5xl"
             style={{ color: theme === "dark" ? "#fff" : "#111827" }}
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -453,7 +486,7 @@ const SleepOptimization = () => {
             {t("coreTitle", language)}
           </motion.h2>
           <motion.p
-            className="text-lg max-w-2xl mx-auto transition-colors duration-500"
+            className="max-w-2xl mx-auto text-lg transition-colors duration-500"
             style={{ color: theme === "dark" ? "#d1d5db" : "#374151" }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -463,11 +496,32 @@ const SleepOptimization = () => {
             {t("coreDesc", language)}
           </motion.p>
         </div>
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[{ icon: sleepIcon, title: "card1Title", desc: "card1Desc" }, { icon: routineIcon, title: "card2Title", desc: "card2Desc" }, { icon: consultationIcon, title: "card3Title", desc: "card3Desc" }, { icon: trackingIcon, title: "card4Title", desc: "card4Desc" }].map((card, idx) => (
+        <div className="grid grid-cols-1 gap-8 mx-auto max-w-7xl md:grid-cols-2">
+          {[
+            {
+              icon: "https://i.pinimg.com/736x/54/8c/79/548c79918c150866286e342b4fc40119.jpg",
+              title: "card1Title",
+              desc: "card1Desc",
+            },
+            {
+              icon: "https://i.pinimg.com/736x/c7/7b/ca/c77bca6309a29a2bd0d70271873e1682.jpg",
+              title: "card2Title",
+              desc: "card2Desc",
+            },
+            {
+              icon: "https://i.pinimg.com/736x/ba/f0/6a/baf06acc568e8d5b119273dfd9b0dde1.jpg",
+              title: "card3Title",
+              desc: "card3Desc",
+            },
+            { icon: trackingIcon, title: "card4Title", desc: "card4Desc" },
+          ].map((card, idx) => (
             <motion.article
               key={idx}
-              className={`rounded-2xl p-6 shadow-md border hover:shadow-lg transition-all duration-500 ${theme === "dark" ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}`}
+              className={`rounded-2xl p-6 shadow-md border hover:shadow-lg transition-all duration-500 ${
+                theme === "dark"
+                  ? "bg-gray-800 border-gray-700"
+                  : "bg-white border-gray-200"
+              }`}
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
@@ -475,7 +529,11 @@ const SleepOptimization = () => {
               whileHover={cardHover}
             >
               <div className="flex items-start gap-4">
-                <img src={card.icon} alt={t(card.title, language)} className="w-12 h-12 object-contain rounded-lg" />
+                <img
+                  src={card.icon}
+                  alt={t(card.title, language)}
+                  className="object-cover h-[50px] rounded-xl w-[50px]"
+                />
                 <div>
                   <h4
                     className="text-lg font-semibold transition-colors duration-500"
@@ -499,13 +557,15 @@ const SleepOptimization = () => {
       {/* Pricing + Joiners Section */}
       <section
         className={`w-full py-20 px-6 ${
-          theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-50 text-gray-900"
+          theme === "dark"
+            ? "bg-gray-900 text-white"
+            : "bg-gray-50 text-gray-900"
         }`}
       >
         {/* Section Header */}
-        <div className="max-w-7xl mx-auto text-center mb-12">
+        <div className="mx-auto mb-12 text-center max-w-7xl">
           <motion.h2
-            className="text-3xl md:text-5xl font-bold mb-4 transition-colors duration-500"
+            className="mb-4 text-3xl font-bold transition-colors duration-500 md:text-5xl"
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -514,7 +574,7 @@ const SleepOptimization = () => {
             {t("plansTitle", language)}
           </motion.h2>
           <motion.p
-            className="text-lg max-w-2xl mx-auto transition-colors duration-500"
+            className="max-w-2xl mx-auto text-lg transition-colors duration-500"
             style={{ color: theme === "dark" ? "#d1d5db" : "#4b5563" }}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
@@ -526,71 +586,83 @@ const SleepOptimization = () => {
         </div>
 
         {/* Pricing Plans */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto mb-16">
+        <div className="grid grid-cols-1 gap-8 mx-auto mb-16 md:grid-cols-3 max-w-7xl">
           {plans.map((plan, idx) => (
             <motion.div
               key={idx}
-              className={`p-8 rounded-2xl shadow-lg border transition-all duration-300 ${
+              className={themedClass(
+                "p-8 rounded-2xl flex flex-col justify-between shadow-lg border transition-transform transform",
+                plan.highlight
+                  ? "bg-orange-400 text-white border-orange-600 scale-105"
+                  : "bg-gray-800 text-white border-gray-700",
                 plan.highlight
                   ? "bg-orange-600 text-white border-orange-600 scale-105"
-                  : theme === "dark"
-                  ? "bg-gray-800 border-gray-700 text-white"
-                  : "bg-white border-gray-200 text-gray-900"
-              }`}
+                  : "bg-white text-gray-900 border-gray-200",
+                theme,
+              )}
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
               whileHover={cardHover}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <h3 className="text-2xl font-bold mb-3">{plan.title}</h3>
+              <h3
+                className={themedClass(
+                  "text-2xl font-bold mb-3",
+                  // "text-white",
+                  // "text-gray-900",
+                  theme,
+                )}
+              >
+                {plan.title}
+              </h3>
+
               <p
-                className="text-lg mb-4 opacity-90"
-                style={{
-                  color: plan.highlight
-                    ? "white"
-                    : theme === "dark"
-                    ? "#d1d5db"
-                    : "#4b5563",
-                }}
+                className={themedClass(
+                  "text-lg mb-4 opacity-90",
+                  // "text-white/90",
+                  // "text-gray-700 dark:text-gray-200",
+                  theme,
+                )}
               >
                 {plan.description}
               </p>
+
               <div
-                className="text-3xl font-extrabold mb-6"
-                style={{
-                  color: plan.highlight
-                    ? "white"
-                    : theme === "dark"
-                    ? "#f97316"
-                    : "#ea580c",
-                }}
+                className={themedClass(
+                  "text-3xl font-extrabold mb-6",
+                  // "text-white",
+                  // "text-orange-600",
+                  theme,
+                )}
               >
                 {plan.price}
               </div>
-              <ul className="space-y-2 mb-6">
+
+              <ul className="mb-6 space-y-2">
                 {plan.features.map((feature, i) => (
                   <li
                     key={i}
-                    style={{
-                      color: plan.highlight
-                        ? "white"
-                        : theme === "dark"
-                        ? "#d1d5db"
-                        : "#374151",
-                    }}
+                    className={themedClass(
+                      // "text-gray-300",
+                      // "text-white",
+                      // "text-gray-700",
+                      theme,
+                    )}
                   >
                     {feature}
                   </li>
                 ))}
               </ul>
+
               <Link
                 to="/contact"
-                className={`w-full inline-block text-center py-3 rounded-full font-semibold transition ${
-                  plan.highlight
-                    ? "bg-white text-orange-600 hover:bg-gray-100"
-                    : "bg-orange-600 text-white hover:bg-orange-700"
-                }`}
+                className={themedClass(
+                  "w-full inline-block text-center py-3 rounded-full font-semibold transition",
+                  "bg-orange-600 text-white hover:bg-orange-700",
+                  "bg-orange-500 hover:text-black  hover:bg-gray-100",
+                  theme,
+                )}
               >
                 {t("getStarted", language)}
               </Link>
@@ -599,9 +671,9 @@ const SleepOptimization = () => {
         </div>
 
         {/* Joiners Section */}
-        <div className="max-w-7xl mx-auto">
+        <div className="mx-auto max-w-7xl">
           <motion.h3
-            className="text-2xl md:text-4xl font-bold text-center mb-10"
+            className="mb-10 text-2xl font-bold text-center md:text-4xl"
             style={{ color: theme === "dark" ? "white" : "#111827" }}
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -610,7 +682,7 @@ const SleepOptimization = () => {
           >
             {t("joinersTitle", language)}
           </motion.h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {joiners.map((join, idx) => (
               <motion.div
                 key={idx}
@@ -625,9 +697,9 @@ const SleepOptimization = () => {
                 whileHover={cardHover}
                 viewport={{ once: true, amount: 0.3 }}
               >
-                <h4 className="text-xl font-semibold mb-2">{join.role}</h4>
+                <h4 className="mb-2 text-xl font-semibold">{join.role}</h4>
                 <p
-                  className="text-lg font-bold mb-3"
+                  className="mb-3 text-lg font-bold"
                   style={{
                     color: theme === "dark" ? "#f97316" : "#ea580c",
                   }}
@@ -649,42 +721,40 @@ const SleepOptimization = () => {
       </section>
 
       {/* CTA Row */}
-     <motion.section
-  className="relative w-full mt-0 pt-0"
-  initial={{ opacity: 0, y: 12 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  viewport={{ once: true }}
->
-  <div className="absolute inset-0">
-    {/* Background image with fixed attachment */}
-    <img
-      src={wellnessImg}
-      alt="CTA Background"
-      className="w-full h-full object-cover"
-      style={{ backgroundAttachment: "fixed" }}
-    />
-    {/* Black overlay with 50% opacity for both modes */}
-    <div className="absolute inset-0 bg-black bg-opacity-50"></div>
-  </div>
-
-  <div className="relative z-10 max-w-3xl mx-auto text-center py-24 px-6">
-    <h3 className="text-2xl md:text-3xl font-bold text-white">
-      {t("ctaTitle", language)}
-    </h3>
-    <p className="mt-3 text-white/90 text-lg md:text-xl">
-      {t("ctaDesc", language)}
-    </p>
-    <div className="mt-8 flex items-center justify-center gap-4">
-      <Link
-        to="/contact"
-        className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white text-orange-600 font-semibold shadow hover:bg-gray-100 transition"
+      <motion.section
+        className="relative w-full pt-0 mt-0"
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
       >
-        {t("getConsultation", language)}
-      </Link>
-    </div>
-  </div>
-</motion.section>
+        <div className="absolute inset-0">
+          {/* Background image with fixed attachment */}
+          <img
+            src={wellnessImg}
+            alt="CTA Background"
+            className="object-cover w-full h-full "
+          />
+          {/* Black overlay with 50% opacity for both modes */}
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        </div>
 
+        <div className="relative z-10 max-w-3xl px-6 py-24 mx-auto text-center">
+          <h3 className="text-2xl font-bold text-white md:text-3xl">
+            {t("ctaTitle", language)}
+          </h3>
+          <p className="mt-3 text-lg text-white/90 md:text-xl">
+            {t("ctaDesc", language)}
+          </p>
+          <div className="flex items-center justify-center gap-4 mt-8">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-6 py-3 font-semibold text-orange-600 transition bg-white rounded-full shadow hover:bg-gray-100"
+            >
+              {t("getConsultation", language)}
+            </Link>
+          </div>
+        </div>
+      </motion.section>
     </div>
   );
 };
