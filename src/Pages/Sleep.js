@@ -359,13 +359,13 @@ const SleepOptimization = () => {
     <div
       dir={dir}
       className={themedClass(
-        "caret-transparent",
+        "min-h-screen caret-transparent flex flex-col",
         "bg-black",
         "bg-white",
         theme,
       )}
     >
-      {/* Hero Section */}
+      {/* Hero Section - Cleaner Typography and Layout */}
       <section className="relative w-full h-screen p-0 m-0">
         <motion.video
           initial={{ scale: 1.1, opacity: 0 }}
@@ -377,12 +377,14 @@ const SleepOptimization = () => {
           muted
           loop
           playsInline
-          alt="Sleep Optimization Hero"
+          alt="Mindful Movement Hero"
         />
-        <div className="absolute inset-0 transition-colors duration-500 bg-black/50" />
+        {/* Darker overlay for better text contrast */}
+        <div className="absolute inset-0 transition-colors duration-500 bg-black/70" />
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full px-4 text-center">
           <motion.h1
-            className="text-4xl font-bold leading-tight text-white md:text-6xl"
+            // Increased size for impact
+            className="text-5xl font-extrabold leading-snug text-white md:text-7xl drop-shadow-lg"
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -390,7 +392,7 @@ const SleepOptimization = () => {
             {t("heroTitle", language)}
           </motion.h1>
           <motion.p
-            className="max-w-4xl mt-6 text-lg text-gray-200 md:text-2xl"
+            className="max-w-4xl mt-6 text-xl text-gray-300 md:text-2xl drop-shadow-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
@@ -400,64 +402,85 @@ const SleepOptimization = () => {
         </div>
       </section>
 
-      {/* Image + Content Section (2nd section) */}
+      {/* Image + Content Section - Modernized Layout and Feature List */}
       <section
-        className={`w-full py-20 px-6 ${
-          theme === "dark" ? "bg-gray-900" : "bg-white"
-        } transition-colors duration-500`}
+        className={themedClass(
+          "w-full py-24 px-6", // Increased padding
+          "bg-gray-900",
+          "bg-white", // Changed from gray-50 to white for a crisp look
+          theme,
+        )}
       >
         <motion.div
-          className="flex flex-col items-center gap-12 mx-auto max-w-7xl md:flex-row"
+          className="flex flex-col items-center gap-16 mx-auto max-w-7xl md:flex-row" // Increased gap
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
+          {/* Image Container */}
           <motion.div
             className="flex justify-center w-full md:w-1/2"
-            whileHover={{ scale: 1.05 }}
+            whileHover={{ scale: 1.01 }} // Subtle hover effect
             transition={{ type: "spring", stiffness: 300 }}
           >
             <img
               src={wellnessImg}
-              alt="Wellness"
-              className="rounded-2xl shadow-lg object-cover w-full sm:w-8/12 md:w-10/12 max-h-[400px]"
+              alt="Wellness Strategy"
+              className="rounded-xl shadow-2xl object-cover w-full sm:w-8/12 md:w-full lg:max-h-[500px]" // Stronger shadow, sharper corners
             />
           </motion.div>
+
+          {/* Text Content */}
           <motion.div
             className="w-full text-left md:w-1/2"
             variants={itemVariants}
           >
             <motion.h2
-              className="mb-6 text-4xl font-bold transition-colors duration-500 md:text-5xl"
-              style={{ color: theme === "dark" ? "#fff" : "#111827" }}
-              whileHover={{ scale: 1.02 }}
+              className={themedClass(
+                "text-4xl md:text-5xl font-bold mb-4", // Slightly smaller mb
+                "text-white",
+                "text-gray-900",
+                theme,
+              )}
             >
               {t("sectionTitle", language)}
             </motion.h2>
             <motion.p
-              className="mb-8 text-justify transition-colors duration-500"
-              style={{ color: theme === "dark" ? "#d1d5db" : "#374151" }}
+              className={themedClass(
+                "mb-10 text-xl", // Larger text, more margin
+                "text-gray-400",
+                "text-gray-600",
+                theme,
+              )}
               variants={itemVariants}
             >
               {t("sectionDesc", language)}
             </motion.p>
+
+            {/* Feature List - Changed to checkmarks/icons for list feel */}
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {[1, 2, 3, 4].map((i, idx) => (
+              {[1, 2, 3, 4].map((i, index) => (
                 <motion.div
-                  key={idx}
-                  className={`flex items-center gap-3 p-3 rounded-lg transition-all duration-300 ${
-                    theme === "dark"
-                      ? "bg-gray-800 hover:bg-gray-700"
-                      : "bg-gray-100 hover:bg-orange-50"
-                  }`}
+                  key={index}
+                  className={themedClass(
+                    "flex items-center gap-4 p-3 rounded-lg border-l-4 border-orange-600 transition-all duration-300", // New border accent
+                    "bg-gray-800 hover:bg-gray-700",
+                    "bg-gray-50 hover:bg-orange-50",
+                    theme,
+                  )}
                   variants={itemVariants}
-                  whileHover={{ x: 5, scale: 1.03 }}
+                  whileHover={{ x: 8 }} // Clean slide effect
                 >
-                  <span className="flex-shrink-0 w-5 h-5 bg-orange-600 rounded-full" />
+                  <span className="text-xl text-orange-600">✓</span>{" "}
+                  {/* Icon */}
                   <p
-                    className="transition-colors duration-500"
-                    style={{ color: theme === "dark" ? "#e5e7eb" : "#111827" }}
+                    className={themedClass(
+                      "text-base font-medium",
+                      "text-gray-200",
+                      "text-gray-800",
+                      theme,
+                    )}
                   >
                     {t(`feature${i}`, language)}
                   </p>
@@ -468,16 +491,23 @@ const SleepOptimization = () => {
         </motion.div>
       </section>
 
-      {/* Core Cards Section (3rd section) */}
+      {/* Services / Core Mindful Movement Cards - Minimalist Card Design */}
       <section
-        className={`w-full py-16 px-6 ${
-          theme === "dark" ? "bg-gray-900" : "bg-gray-100"
-        } transition-colors duration-500`}
+        className={themedClass(
+          "w-full py-24 px-6",
+          "bg-gray-900",
+          "bg-gray-50", // Light gray background
+          theme,
+        )}
       >
-        <div className="max-w-4xl mx-auto mb-12 text-center">
+        <div className="max-w-4xl mx-auto mb-16 text-center">
           <motion.h2
-            className="mb-4 text-3xl font-bold transition-colors duration-500 md:text-5xl"
-            style={{ color: theme === "dark" ? "#fff" : "#111827" }}
+            className={themedClass(
+              "text-4xl md:text-5xl font-bold mb-4",
+              "text-white",
+              "text-gray-900",
+              theme,
+            )}
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -486,8 +516,12 @@ const SleepOptimization = () => {
             {t("coreTitle", language)}
           </motion.h2>
           <motion.p
-            className="max-w-2xl mx-auto text-lg transition-colors duration-500"
-            style={{ color: theme === "dark" ? "#d1d5db" : "#374151" }}
+            className={themedClass(
+              "text-xl max-w-2xl mx-auto", // Larger description
+              "text-gray-400",
+              "text-gray-600",
+              theme,
+            )}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
@@ -496,7 +530,8 @@ const SleepOptimization = () => {
             {t("coreDesc", language)}
           </motion.p>
         </div>
-        <div className="grid grid-cols-1 gap-8 mx-auto max-w-7xl md:grid-cols-2">
+
+        <div className="grid grid-cols-1 gap-10 mx-auto max-w-7xl sm:grid-cols-2 lg:grid-cols-4">
           {[
             {
               icon: "https://i.pinimg.com/736x/54/8c/79/548c79918c150866286e342b4fc40119.jpg",
@@ -517,11 +552,12 @@ const SleepOptimization = () => {
           ].map((card, idx) => (
             <motion.article
               key={idx}
-              className={`rounded-2xl p-6 shadow-md border hover:shadow-lg transition-all duration-500 ${
-                theme === "dark"
-                  ? "bg-gray-800 border-gray-700"
-                  : "bg-white border-gray-200"
-              }`}
+              className={themedClass(
+                "rounded-xl p-6 transition-all duration-300 border-2", // Cleaner border-based design
+                "bg-gray-800 border-gray-700 hover:border-orange-600",
+                "bg-white border-gray-200 hover:border-orange-600",
+                theme,
+              )}
               variants={cardVariants}
               initial="hidden"
               whileInView="visible"
@@ -554,18 +590,23 @@ const SleepOptimization = () => {
         </div>
       </section>
 
-      {/* Pricing + Joiners Section */}
+      {/* Pricing + Joiners Section - Distinct Pricing Cards */}
       <section
-        className={`w-full py-20 px-6 ${
-          theme === "dark"
-            ? "bg-gray-900 text-white"
-            : "bg-gray-50 text-gray-900"
-        }`}
+        className={themedClass(
+          "w-full py-24 px-6",
+          "bg-black", // Deeper background for contrast
+          "bg-white",
+          theme,
+        )}
       >
-        {/* Section Header */}
-        <div className="mx-auto mb-12 text-center max-w-7xl">
+        <div className="mx-auto mb-16 text-center max-w-7xl">
           <motion.h2
-            className="mb-4 text-3xl font-bold transition-colors duration-500 md:text-5xl"
+            className={themedClass(
+              "text-4xl md:text-5xl font-bold mb-4",
+              "text-white",
+              "text-gray-900",
+              theme,
+            )}
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -574,8 +615,12 @@ const SleepOptimization = () => {
             {t("plansTitle", language)}
           </motion.h2>
           <motion.p
-            className="max-w-2xl mx-auto text-lg transition-colors duration-500"
-            style={{ color: theme === "dark" ? "#d1d5db" : "#4b5563" }}
+            className={themedClass(
+              "text-xl max-w-2xl mx-auto",
+              "text-gray-400",
+              "text-gray-600",
+              theme,
+            )}
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.3, duration: 0.6 }}
@@ -586,18 +631,20 @@ const SleepOptimization = () => {
         </div>
 
         {/* Pricing Plans */}
-        <div className="grid grid-cols-1 gap-8 mx-auto mb-16 md:grid-cols-3 max-w-7xl">
+        <div className="grid grid-cols-1 gap-12 mx-auto mb-20 md:grid-cols-3 max-w-7xl">
           {plans.map((plan, idx) => (
             <motion.div
               key={idx}
               className={themedClass(
-                "p-8 rounded-2xl flex flex-col justify-between shadow-lg border transition-transform transform",
+                "p-10 rounded-2xl flex flex-col justify-between shadow-2xl transition-transform transform border-4", // Stronger shadow, distinct border
+                // Dark Theme
                 plan.highlight
-                  ? "bg-orange-400 text-white border-orange-600 scale-105"
-                  : "bg-gray-800 text-white border-gray-700",
+                  ? "bg-orange-600 border-orange-600 text-white"
+                  : "bg-gray-800 border-gray-700 text-white",
+                // Light Theme
                 plan.highlight
-                  ? "bg-orange-600 text-white border-orange-600 scale-105"
-                  : "bg-white text-gray-900 border-gray-200",
+                  ? "bg-orange-600 border-orange-600 text-white"
+                  : "bg-gray-50 border-gray-200 text-gray-900",
                 theme,
               )}
               variants={cardVariants}
@@ -606,61 +653,81 @@ const SleepOptimization = () => {
               whileHover={cardHover}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <h3
-                className={themedClass(
-                  "text-2xl font-bold mb-3",
-                  // "text-white",
-                  // "text-gray-900",
-                  theme,
+              <div>
+                {/* Highlight Badge for Premium */}
+                {plan.highlight && (
+                  <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-orange-600 uppercase bg-white rounded-full">
+                    Most Popular
+                  </span>
                 )}
-              >
-                {plan.title}
-              </h3>
+                <h3
+                  className={themedClass(
+                    "text-3xl font-extrabold mb-3",
+                    plan.highlight
+                      ? "text-white"
+                      : "text-gray-900 dark:text-white",
+                    plan.highlight ? "text-white" : "text-gray-900",
+                    theme,
+                  )}
+                >
+                  {plan.title}
+                </h3>
 
-              <p
-                className={themedClass(
-                  "text-lg mb-4 opacity-90",
-                  // "text-white/90",
-                  // "text-gray-700 dark:text-gray-200",
-                  theme,
-                )}
-              >
-                {plan.description}
-              </p>
+                <p
+                  className={themedClass(
+                    "text-base mb-6",
+                    plan.highlight ? "text-white/80" : "text-gray-400",
+                    plan.highlight ? "text-white/80" : "text-gray-600",
+                    theme,
+                  )}
+                >
+                  {plan.description}
+                </p>
 
-              <div
-                className={themedClass(
-                  "text-3xl font-extrabold mb-6",
-                  // "text-white",
-                  // "text-orange-600",
-                  theme,
-                )}
-              >
-                {plan.price}
+                <div
+                  className={themedClass(
+                    "text-5xl font-extrabold mb-8",
+                    plan.highlight ? "text-white" : "text-orange-600",
+                    plan.highlight ? "text-white" : "text-orange-600",
+                    theme,
+                  )}
+                >
+                  {plan.price}
+                  <span className="text-lg font-medium opacity-70">/mo</span>
+                </div>
               </div>
 
-              <ul className="mb-6 space-y-2">
+              {/* Feature List */}
+              <ul className="mb-10 space-y-3">
                 {plan.features.map((feature, i) => (
                   <li
                     key={i}
                     className={themedClass(
-                      // "text-gray-300",
-                      // "text-white",
-                      // "text-gray-700",
+                      "flex items-center gap-3",
+                      plan.highlight ? "text-white/90" : "text-gray-300",
+                      plan.highlight ? "text-white/90" : "text-gray-600",
                       theme,
                     )}
                   >
+                    <span className="text-lg text-orange-400">✓</span>
                     {feature}
                   </li>
                 ))}
               </ul>
 
+              {/* Call to Action Button */}
               <Link
                 to="/contact"
                 className={themedClass(
-                  "w-full inline-block text-center py-3 rounded-full font-semibold transition",
-                  "bg-orange-600 text-white hover:bg-orange-700",
-                  "bg-orange-500 hover:text-black  hover:bg-gray-100",
+                  "w-full inline-block text-center py-4 rounded-lg font-bold text-lg transition-colors duration-300",
+                  // Dark Theme CTA
+                  plan.highlight
+                    ? "bg-white text-orange-600 hover:bg-gray-100"
+                    : "bg-orange-600 text-white hover:bg-orange-700",
+                  // Light Theme CTA
+                  plan.highlight
+                    ? "bg-white text-orange-600 hover:bg-gray-100"
+                    : "bg-orange-600 text-white hover:bg-orange-700",
                   theme,
                 )}
               >
@@ -670,11 +737,15 @@ const SleepOptimization = () => {
           ))}
         </div>
 
-        {/* Joiners Section */}
+        {/* Joiners Section - Minimalist Job Cards */}
         <div className="mx-auto max-w-7xl">
           <motion.h3
-            className="mb-10 text-2xl font-bold text-center md:text-4xl"
-            style={{ color: theme === "dark" ? "white" : "#111827" }}
+            className={themedClass(
+              "text-3xl md:text-4xl font-bold text-center mb-10",
+              "text-white",
+              "text-gray-900",
+              theme,
+            )}
             initial={{ opacity: 0, y: -20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -682,36 +753,58 @@ const SleepOptimization = () => {
           >
             {t("joinersTitle", language)}
           </motion.h3>
+
           <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
             {joiners.map((join, idx) => (
               <motion.div
                 key={idx}
-                className={`p-6 rounded-2xl shadow-md border transition-all duration-300 ${
-                  theme === "dark"
-                    ? "bg-gray-800 border-gray-700 text-white"
-                    : "bg-white border-gray-200 text-gray-900"
-                }`}
+                className={themedClass(
+                  "p-8 rounded-xl border-2 transition-all duration-300", // New style, less shadow
+                  "bg-gray-800 border-gray-700 hover:border-orange-600",
+                  "bg-white border-gray-200 hover:border-orange-600",
+                  theme,
+                )}
                 variants={cardVariants}
                 initial="hidden"
                 whileInView="visible"
-                whileHover={cardHover}
+                whileHover={{ scale: 1.02, y: -2 }}
                 viewport={{ once: true, amount: 0.3 }}
               >
-                <h4 className="mb-2 text-xl font-semibold">{join.role}</h4>
+                <h4
+                  className={themedClass(
+                    "text-xl font-bold mb-1", // Stronger title
+                    "text-white",
+                    "text-gray-900",
+                    theme,
+                  )}
+                >
+                  {join.role}
+                </h4>
+
                 <p
-                  className="mb-3 text-lg font-bold"
-                  style={{
-                    color: theme === "dark" ? "#f97316" : "#ea580c",
-                  }}
+                  className={themedClass(
+                    "text-lg font-semibold mb-6",
+                    "text-orange-400",
+                    "text-orange-600",
+                    theme,
+                  )}
                 >
                   {join.stipend}
                 </p>
+
                 <ul
-                  className="space-y-1"
-                  style={{ color: theme === "dark" ? "#d1d5db" : "#4b5563" }}
+                  className={themedClass(
+                    "space-y-2",
+                    "text-gray-300",
+                    "text-gray-600",
+                    theme,
+                  )}
                 >
                   {join.benefits.map((benefit, i) => (
-                    <li key={i}>• {benefit}</li>
+                    <li key={i} className="flex items-center gap-2">
+                      <span className="font-bold text-orange-500">•</span>
+                      {benefit}
+                    </li>
                   ))}
                 </ul>
               </motion.div>
@@ -720,7 +813,7 @@ const SleepOptimization = () => {
         </div>
       </section>
 
-      {/* CTA Row */}
+      {/* CTA Row - High Contrast, Full Width */}
       <motion.section
         className="relative w-full pt-0 mt-0"
         initial={{ opacity: 0, y: 12 }}
@@ -728,27 +821,29 @@ const SleepOptimization = () => {
         viewport={{ once: true }}
       >
         <div className="absolute inset-0">
-          {/* Background image with fixed attachment */}
           <img
             src={wellnessImg}
             alt="CTA Background"
-            className="object-cover w-full h-full "
+            className="object-cover w-full h-full"
+            style={{ backgroundAttachment: "fixed" }}
           />
-          {/* Black overlay with 50% opacity for both modes */}
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+          {/* Black overlay with 70% opacity for both modes (increased contrast) */}
+          <div className="absolute inset-0 bg-black bg-opacity-70"></div>
         </div>
 
-        <div className="relative z-10 max-w-3xl px-6 py-24 mx-auto text-center">
-          <h3 className="text-2xl font-bold text-white md:text-3xl">
+        <div className="relative z-10 max-w-4xl px-6 mx-auto text-center py-28">
+          {" "}
+          {/* Increased vertical padding */}
+          <h3 className="text-3xl font-bold text-white md:text-4xl">
             {t("ctaTitle", language)}
           </h3>
-          <p className="mt-3 text-lg text-white/90 md:text-xl">
+          <p className="mt-4 text-xl text-white/90 md:text-2xl">
             {t("ctaDesc", language)}
           </p>
-          <div className="flex items-center justify-center gap-4 mt-8">
+          <div className="flex items-center justify-center gap-4 mt-10">
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 font-semibold text-orange-600 transition bg-white rounded-full shadow hover:bg-gray-100"
+              className="inline-flex items-center gap-2 px-8 py-4 text-lg font-bold text-orange-600 transition bg-white rounded-lg shadow-xl hover:bg-gray-100" // Larger, bolder button
             >
               {t("getConsultation", language)}
             </Link>

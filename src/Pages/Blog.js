@@ -280,11 +280,12 @@ const Blog = () => {
       )}
     >
       {/* 1. Hero Section */}
+
       <section
         className={themedClass(
           "relative w-full h-screen flex items-center justify-center overflow-hidden",
-          "bg-black text-white",
-          "bg-white text-gray-900",
+          "bg-black text-white", // dark
+          "bg-white text-gray-900", // light
         )}
       >
         <video
@@ -298,15 +299,15 @@ const Blog = () => {
         <div
           className={themedClass(
             "relative z-10 flex flex-col items-center justify-center h-full text-center px-6",
-            "text-white",
-            "text-gray-900",
+            "text-white", // dark
+            "text-gray-900", // light
           )}
         >
           <h1
             className={themedClass(
               "text-5xl md:text-6xl font-extrabold mb-4 tracking-wide animate-bounce",
-              "text-orange-400",
-              "text-orange-600",
+              "text-orange-400", // dark
+              "text-orange-600", // light
             )}
           >
             {t("heroTitle")}
@@ -314,8 +315,8 @@ const Blog = () => {
           <p
             className={themedClass(
               "text-lg md:text-2xl mb-6 italic opacity-90 animate-pulse",
-              "text-orange-200",
-              "text-orange-700",
+              "text-orange-200", // dark
+              "text-orange-700", // light
             )}
           >
             {t("heroSubtitle")}

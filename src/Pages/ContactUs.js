@@ -18,7 +18,7 @@ const translations = {
   en: {
     heroTitle: "Contact Our Team", // Slightly revised title for focus
     heroDesc:
-      "Questions? Ideas? Let’s make your wellness journey exceptional. Our team is ready to help.",
+      "Let’s make your wellness journey exceptional. Our team is ready to help.",
     formTitle: "Send Your Message",
     namePlaceholder: "Full Name",
     emailPlaceholder: "Email Address",
@@ -39,8 +39,7 @@ const translations = {
   },
   ar: {
     heroTitle: "تواصل مع فريقنا",
-    heroDesc:
-      "أسئلة؟ أفكار؟ دعنا نجعل رحلتك الصحية استثنائية. فريقنا جاهز لمساعدتك.",
+    heroDesc: "دعنا نجعل رحلة عافيتك استثنائية. فريقنا جاهز لمساعدتك.",
     formTitle: "أرسل رسالتك",
     namePlaceholder: "الاسم الكامل",
     emailPlaceholder: "البريد الإلكتروني",
@@ -62,7 +61,7 @@ const translations = {
   he: {
     heroTitle: "צור קשר עם הצוות שלנו",
     heroDesc:
-      "שאלות? רעיונות? בוא נעשה את מסע הבריאות שלך יוצא דופן. הצוות שלנו מוכן לעזור.",
+      "בואו נהפוך את מסע הבריאות שלכם ליוצא דופן. הצוות שלנו מוכן לעזור.",
     formTitle: "שלח את ההודעה שלך",
     namePlaceholder: "שם מלא",
     emailPlaceholder: "אימייל",
@@ -178,7 +177,7 @@ const ContactUs = () => {
             initial={{ opacity: 0, y: -60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="mb-4 text-6xl font-black text-white md:text-8xl drop-shadow-lg"
+            className="mb-4 text-5xl font-black text-white md:text-8xl drop-shadow-lg"
           >
             {t("heroTitle", language)}
           </motion.h1>

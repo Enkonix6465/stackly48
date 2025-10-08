@@ -421,7 +421,7 @@ const AboutUs = () => {
             >
               <Link
                 to="/contact"
-                className="inline-block px-6 py-3 font-bold text-orange-400 transition-all border-2 border-orange-400 rounded-full shadow-lg hover:bg-orange-500 hover:text-white"
+                className="inline-block px-6 py-[10px] font-bold text-orange-400 transition-all border-2 border-orange-400 rounded-full shadow-lg hover:bg-orange-500 hover:text-white"
               >
                 {t("heroContact")}
               </Link>

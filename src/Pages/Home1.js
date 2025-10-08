@@ -272,7 +272,7 @@ const Home1 = () => {
 
           {/* Subheading (Health & Wellness themed) */}
           <motion.h2
-            className="mb-5 text-2xl text-white md:text-2xl"
+            className="mb-5 text-2xl text-white"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
@@ -300,7 +300,7 @@ const Home1 = () => {
             >
               <Link
                 to="/contact"
-                className="inline-block px-6 py-3 font-bold text-orange-400 transition-all border-2 border-orange-400 rounded-full shadow-lg hover:bg-orange-500 hover:text-white"
+                className="inline-block px-6 py-[10px] font-bold text-orange-400 transition-all border-2 border-orange-400 rounded-full shadow-lg hover:bg-orange-500 hover:text-white"
               >
                 {t("heroCta")}
               </Link>
@@ -347,7 +347,7 @@ const Home1 = () => {
           viewport={{ once: true }}
           transition={{ duration: 1.5 }}
         >
-          <h2
+          <h1
             className={themedClass(
               "text-5xl font-extrabold mb-6",
               "text-orange-400",
@@ -355,7 +355,7 @@ const Home1 = () => {
             )}
           >
             {t("aboutHeading")}
-          </h2>
+          </h1>
 
           <motion.p
             className={themedClass(
@@ -420,26 +420,6 @@ const Home1 = () => {
             </motion.div>
           ))}
         </div>
-
-        {/* Animated CTA Button */}
-        <motion.div
-          className="relative z-10 flex justify-center mt-16"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 1.5 }}
-        >
-          <Link
-            to="/about"
-            className={themedClass(
-              "px-12 py-4 rounded-full font-semibold shadow-md transform hover:scale-105 transition-all duration-300",
-              "bg-orange-500 text-white hover:bg-orange-600 hover:shadow-2xl",
-              "bg-orange-500 text-white hover:bg-orange-600 hover:shadow-2xl",
-            )}
-          >
-            {t("aboutCta")}
-          </Link>
-        </motion.div>
       </section>
 
       {/* Services Section */}
@@ -455,50 +435,6 @@ const Home1 = () => {
             : " bg-gradient-to-b from-orange-50 via-white to-orange-100")
         }
       >
-        {/* Floating Decorative Icons */}
-        <div className="absolute top-20 left-10 animate-bounce-slow">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="50px"
-            height="50px"
-            viewBox="0 0 32 32"
-          >
-            <g fill="none">
-              <path
-                fill="#ff822d"
-                d="M13.071 3.785c1.07-2.34 4.37-2.39 5.52-.09c.43.86 1.49 1.19 2.33.72l.52-.29c2.04-1.16 4.49.57 4.1 2.87l-.1.59c-.16.95.51 1.84 1.47 1.95l.59.07c2.32.27 3.29 3.1 1.62 4.73l-.43.42c-.69.67-.67 1.79.04 2.44l.44.4c1.72 1.58.84 4.44-1.47 4.78l-.59.09c-.95.14-1.59 1.05-1.4 2l.12.59c.46 2.29-1.93 4.09-4 3l-.53-.28c-.85-.45-1.91-.09-2.31.79c-1.07 2.34-4.37 2.39-5.52.09a1.685 1.685 0 0 0-2.33-.72l-.52.29c-2.03 1.15-4.48-.58-4.09-2.88l.1-.59c.16-.95-.51-1.84-1.47-1.95l-.59-.07c-2.32-.27-3.29-3.1-1.62-4.73l.43-.42c.69-.67.67-1.79-.04-2.44l-.44-.4c-1.72-1.58-.84-4.44 1.47-4.78l.59-.09c.95-.14 1.59-1.05 1.4-2l-.12-.58c-.46-2.29 1.93-4.09 4-3l.53.28c.85.44 1.9.08 2.3-.79"
-              ></path>
-              <path
-                fill="#fcd53f"
-                d="M15.991 27.165c6.076 0 11-4.924 11-11s-4.924-11-11-11s-11 4.925-11 11s4.925 11 11 11"
-              ></path>
-              <path
-                fill="#321b41"
-                d="M10.661 9.205a2.48 2.48 0 0 0-2.48 2.48a.5.5 0 1 1-1 0a3.48 3.48 0 0 1 3.48-3.48a.5.5 0 0 1 0 1m.24 8.54a.75.75 0 0 1 1.06 0a5.52 5.52 0 0 0 7.81 0a.75.75 0 0 1 1.06 1.06a7.02 7.02 0 0 1-9.93 0a.75.75 0 0 1 0-1.06m10.14-9.54a.5.5 0 1 0 0 1a2.48 2.48 0 0 1 2.48 2.48a.5.5 0 1 0 1 0a3.48 3.48 0 0 0-3.48-3.48m-9.46 4.48a1.37 1.37 0 0 0-1.282.864a.75.75 0 1 1-1.396-.548a2.87 2.87 0 0 1 2.678-1.816c1.273 0 2.354.826 2.733 1.976a.75.75 0 0 1-1.425.469c-.181-.55-.7-.945-1.308-.945m7.338.864a1.37 1.37 0 0 1 1.282-.864c.608 0 1.127.394 1.308.945a.75.75 0 0 0 1.425-.47a2.88 2.88 0 0 0-2.733-1.975a2.87 2.87 0 0 0-2.678 1.816a.75.75 0 1 0 1.396.548"
-              ></path>
-            </g>
-          </svg>
-        </div>
-        <div className="absolute text-4xl bottom-32 right-10 animate-float">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="50px"
-            height="50px"
-            viewBox="0 0 32 32"
-          >
-            <g fill="none">
-              <path
-                fill="#44911b"
-                d="m8.018 29.6l1.14.39l1.35-3.898l4.02.418c.33.03.63-.21.66-.54a.605.605 0 0 0-.54-.66l-3.733-.39a13.2 13.2 0 0 1 5.09-6.46l4.143.44c.33.03.63-.21.66-.54a.605.605 0 0 0-.54-.66l-2.904-.31a14.4 14.4 0 0 0 4.024-6.03l.38-1.09a.6.6 0 0 0-.37-.77a.6.6 0 0 0-.77.37l-.38 1.09a13.2 13.2 0 0 1-4.046 5.824l-1.704-3.504a.605.605 0 1 0-1.09.53l1.806 3.716l-.006.004a14.4 14.4 0 0 0-5.282 6.59l-1.308-2.69a.605.605 0 1 0-1.09.53l1.83 3.763z"
-              ></path>
-              <path
-                fill="#86d72f"
-                d="M23.978 2c-3.34 1.63-4.74 5.66-3.11 9a6.727 6.727 0 0 0 3.11-9m-8.19 7.05l-1.81-3.72a4.226 4.226 0 0 0-1.95 5.65l1.81 3.72a4.23 4.23 0 0 0 1.95-5.65m-5.43 6.39l-2.32-4.76c-2.68 1.31-3.8 4.54-2.49 7.22l2.32 4.76a5.41 5.41 0 0 0 2.49-7.22m17.56.03l-4.12-.43c-2.32-.25-4.39 1.44-4.64 3.76l4.12.43c2.32.24 4.4-1.44 4.64-3.76m-8.57 6.13l5.27.55a5.403 5.403 0 0 1-5.94 4.81l-5.27-.55a5.403 5.403 0 0 1 5.94-4.81"
-              ></path>
-            </g>
-          </svg>
-        </div>
-
         {/* Heading */}
         <h2
           className={themedClass(
@@ -879,7 +815,7 @@ const Home1 = () => {
                       {event.desc}
                     </p>
                   </div>
-                  <div className="flex items-end justify-center w-12 h-12 md:justify-end">
+                  <div className="flex items-end justify-center w-12 h-12 ml-0 md:justify-end md:-ml-[25px]">
                     <div className="flex items-center justify-center w-12 h-12 text-white transition-colors duration-500 bg-orange-500 rounded-full shadow-lg ">
                       ●
                     </div>
@@ -887,8 +823,10 @@ const Home1 = () => {
                 </div>
               ) : (
                 <div className="flex flex-col items-center justify-end my-12 md:flex-row">
-                  <div className="flex items-center justify-center w-12 h-12 text-white transition-colors duration-500 bg-orange-500 rounded-full shadow-lg">
-                    ●
+                  <div className="flex md:-mr-[25px]">
+                    <div className="flex items-center justify-center w-12 h-12 text-white transition-colors duration-500 bg-orange-500 rounded-full shadow-lg">
+                      ●
+                    </div>
                   </div>
                   <div
                     className={themedClass(
@@ -943,7 +881,7 @@ const Home1 = () => {
         {/* Heading */}
         <h2
           className={themedClass(
-            "text-4xl font-extrabold text-center mb-16",
+            "text-5xl font-extrabold text-center mb-16",
             "text-white",
             "text-orange-600",
           )}
@@ -961,9 +899,9 @@ const Home1 = () => {
               viewport={{ once: false }}
               transition={{ duration: 0.5 }}
               className={themedClass(
-                "relative w-64 h-64 p-6 flex flex-col items-center justify-center cursor-pointer overflow-hidden shadow-lg transition-transform duration-300",
-                "bg-gray-800 hover:bg-gray-700 rounded-[55px_0_55px_0]",
-                "bg-gradient-to-br from-orange-300 to-orange-400 hover:from-orange-400 hover:to-orange-500 rounded-xl",
+                "relative w-[180px] h-[180px] p-6 flex flex-col items-center justify-center cursor-pointer overflow-hidden shadow-lg transition-transform duration-300 rounded-[55px_0_55px_0]",
+                "bg-gray-800 hover:bg-gray-700 ",
+                "bg-gradient-to-br from-orange-300 to-orange-400 hover:from-orange-400 hover:to-orange-500",
               )}
             >
               {/* Count */}
@@ -980,7 +918,7 @@ const Home1 = () => {
               {/* Label */}
               <p
                 className={themedClass(
-                  "text-lg font-medium transition-colors duration-300",
+                  "text-lg font-medium text-nowrap transition-colors duration-300",
                   "text-gray-300",
                   "text-orange-700",
                 )}
@@ -1034,7 +972,7 @@ const Home1 = () => {
         {/* Content */}
         <div className="relative z-10 w-full text-center ">
           <motion.h2
-            className="mb-6 text-4xl font-extrabold text-white md:text-5xl"
+            className="mb-6 text-5xl font-extrabold text-white md:text-5xl"
             initial={{ opacity: 0, y: -50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}

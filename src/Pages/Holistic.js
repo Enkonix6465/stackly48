@@ -376,8 +376,16 @@ const HolisticDetox = () => {
   const dir = rtlLangs.includes(language) ? "rtl" : "ltr";
 
   return (
-    <div className=" caret-transparent" dir={dir} style={{ direction: dir }}>
-      {/* Hero Section */}
+    <div
+      dir={dir}
+      className={themedClass(
+        "min-h-screen caret-transparent flex flex-col",
+        "bg-black",
+        "bg-white",
+        theme,
+      )}
+    >
+      {/* Hero Section - Cleaner Typography and Layout */}
       <section className="relative w-full h-screen p-0 m-0">
         <motion.video
           initial={{ scale: 1.1, opacity: 0 }}
@@ -391,10 +399,12 @@ const HolisticDetox = () => {
           playsInline
           alt={t("altHero", language)}
         />
-        <div className="absolute inset-0 transition-colors duration-500 bg-black/50" />
+        {/* Darker overlay for better text contrast */}
+        <div className="absolute inset-0 transition-colors duration-500 bg-black/70" />
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full px-4 text-center">
           <motion.h1
-            className="text-4xl font-bold leading-tight text-white md:text-6xl"
+            // Increased size for impact
+            className="text-5xl font-extrabold leading-snug text-white md:text-7xl drop-shadow-lg"
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -402,7 +412,7 @@ const HolisticDetox = () => {
             {t("heroTitle", language)}
           </motion.h1>
           <motion.p
-            className="max-w-4xl mt-6 text-lg text-gray-200 md:text-2xl"
+            className="max-w-4xl mt-6 text-xl text-gray-300 md:text-2xl drop-shadow-md"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 1 }}
@@ -412,89 +422,83 @@ const HolisticDetox = () => {
         </div>
       </section>
 
-      {/* Image + Content Section */}
+      {/* Image + Content Section - Modernized Layout and Feature List */}
       <section
         className={themedClass(
-          "w-full py-20 px-6",
+          "w-full py-24 px-6", // Increased padding
           "bg-gray-900",
-          "bg-gray-100",
+          "bg-white", // Changed from gray-50 to white for a crisp look
           theme,
         )}
       >
         <motion.div
-          className="flex flex-col items-center gap-12 mx-auto max-w-7xl md:flex-row"
+          className="flex flex-col items-center gap-16 mx-auto max-w-7xl md:flex-row" // Increased gap
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
         >
+          {/* Image Container */}
           <motion.div
             className="flex justify-center w-full md:w-1/2"
-            variants={itemVariants}
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ type: "spring", stiffness: 100, damping: 20 }}
+            whileHover={{ scale: 1.01 }} // Subtle hover effect
+            transition={{ type: "spring", stiffness: 300 }}
           >
             <img
               src={detoxImg}
-              alt={t("altStrategy", language)}
-              className="rounded-2xl shadow-lg object-cover w-full sm:w-8/12 md:w-10/12 max-h-[400px]"
+              alt="Wellness Strategy"
+              className="rounded-xl shadow-2xl object-cover w-full sm:w-8/12 md:w-full lg:max-h-[500px]" // Stronger shadow, sharper corners
             />
           </motion.div>
+
+          {/* Text Content */}
           <motion.div
             className="w-full text-left md:w-1/2"
             variants={itemVariants}
           >
             <motion.h2
               className={themedClass(
-                "text-4xl md:text-5xl font-bold mb-6 hover:text-orange-600",
+                "text-4xl md:text-5xl font-bold mb-4", // Slightly smaller mb
                 "text-white",
-                "text-black",
+                "text-gray-900",
                 theme,
               )}
-              whileHover={{ scale: 1.02 }}
             >
               {t("section2Title", language)}
             </motion.h2>
             <motion.p
               className={themedClass(
-                "mb-8 text-justify",
-                "text-gray-300",
-                "text-gray-700",
+                "mb-10 text-xl", // Larger text, more margin
+                "text-gray-400",
+                "text-gray-600",
                 theme,
               )}
               variants={itemVariants}
             >
               {t("section2Desc", language)}
             </motion.p>
-            <div
-              className="grid grid-cols-1 gap-4 sm:grid-cols-2"
-              style={{ direction: dir }}
-            >
+
+            {/* Feature List - Changed to checkmarks/icons for list feel */}
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {translations[language].section2Features.map((feature, index) => (
                 <motion.div
                   key={index}
                   className={themedClass(
-                    "flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all duration-300",
-                    "hover:bg-gray-800",
-                    "hover:bg-orange-50",
+                    "flex items-center gap-4 p-3 rounded-lg border-l-4 border-orange-600 transition-all duration-300", // New border accent
+                    "bg-gray-800 hover:bg-gray-700",
+                    "bg-gray-50 hover:bg-orange-50",
                     theme,
                   )}
                   variants={itemVariants}
-                  whileHover={{
-                    x: 8,
-                    scale: 1.05,
-                    backgroundColor: "rgba(255,165,0,0.1)",
-                  }}
-                  transition={{ type: "spring", stiffness: 150 }}
+                  whileHover={{ x: 8 }} // Clean slide effect
                 >
-                  <span className="flex-shrink-0 w-5 h-5 bg-orange-600 rounded-full" />
+                  <span className="text-xl text-orange-600">✓</span>{" "}
+                  {/* Icon */}
                   <p
                     className={themedClass(
-                      "",
-                      "text-gray-300",
-                      "text-gray-700",
+                      "text-base font-medium",
+                      "text-gray-200",
+                      "text-gray-800",
                       theme,
                     )}
                   >
@@ -507,18 +511,19 @@ const HolisticDetox = () => {
         </motion.div>
       </section>
 
+      {/* Services / Core Mindful Movement Cards - Minimalist Card Design */}
       <section
         className={themedClass(
-          "w-full py-5 px-6",
+          "w-full py-24 px-6",
           "bg-gray-900",
-          "bg-gray-50",
+          "bg-gray-50", // Light gray background
           theme,
         )}
       >
-        <div className="max-w-4xl mx-auto mb-12 text-center">
+        <div className="max-w-4xl mx-auto mb-16 text-center">
           <motion.h2
             className={themedClass(
-              "text-3xl md:text-5xl font-bold mb-4",
+              "text-4xl md:text-5xl font-bold mb-4",
               "text-white",
               "text-gray-900",
               theme,
@@ -532,9 +537,9 @@ const HolisticDetox = () => {
           </motion.h2>
           <motion.p
             className={themedClass(
-              "text-lg max-w-2xl mx-auto",
-              "text-gray-300",
-              "text-gray-700",
+              "text-xl max-w-2xl mx-auto", // Larger description
+              "text-gray-400",
+              "text-gray-600",
               theme,
             )}
             initial={{ opacity: 0 }}
@@ -553,9 +558,9 @@ const HolisticDetox = () => {
             <motion.article
               key={i}
               className={themedClass(
-                "backdrop-blur-md rounded-2xl p-6 shadow-md border hover:shadow-lg transition-shadow",
-                "bg-gray-800 border-gray-700",
-                "bg-white border-gray-200",
+                "rounded-xl p-6 transition-all duration-300 border-2", // Cleaner border-based design
+                "bg-gray-800 border-gray-700 hover:border-orange-600",
+                "bg-white border-gray-200 hover:border-orange-600",
                 theme,
               )}
               variants={cardVariants}
@@ -564,7 +569,7 @@ const HolisticDetox = () => {
               viewport={{ once: true, amount: 0.3 }}
               whileHover={cardHover}
             >
-              <div className="flex items-start gap-4">
+              <div className="flex items-center justify-center w-12 h-12 mb-4 ">
                 <img
                   src={
                     [cleanseIcon, yogaIcon, consultationIcon, trackingIcon][i]
@@ -572,46 +577,46 @@ const HolisticDetox = () => {
                   alt={service.title}
                   className="object-cover h-[50px] rounded-xl w-[50px]"
                 />
-                <div>
-                  <h4
-                    className={themedClass(
-                      "text-lg font-semibold",
-                      "text-white",
-                      "text-gray-900",
-                      theme,
-                    )}
-                  >
-                    {service.title}
-                  </h4>
-                  <p
-                    className={themedClass(
-                      "mt-1 text-sm",
-                      "text-gray-300",
-                      "text-gray-700",
-                      theme,
-                    )}
-                  >
-                    {service.desc}
-                  </p>
-                </div>
               </div>
+
+              <h4
+                className={themedClass(
+                  "text-xl font-bold mb-2",
+                  "text-white",
+                  "text-gray-900",
+                  theme,
+                )}
+              >
+                {service.title}
+              </h4>
+              <p
+                className={themedClass(
+                  "text-sm",
+                  "text-gray-400",
+                  "text-gray-600",
+                  theme,
+                )}
+              >
+                {service.desc}
+              </p>
             </motion.article>
           ))}
         </div>
       </section>
 
+      {/* Pricing + Joiners Section - Distinct Pricing Cards */}
       <section
         className={themedClass(
-          "w-full py-20 px-6",
-          "bg-gray-900",
-          "bg-gray-100",
+          "w-full py-24 px-6",
+          "bg-black", // Deeper background for contrast
+          "bg-white",
           theme,
         )}
       >
-        <div className="mx-auto mb-12 text-center max-w-7xl">
+        <div className="mx-auto mb-16 text-center max-w-7xl">
           <motion.h2
             className={themedClass(
-              "text-3xl md:text-5xl font-bold mb-4",
+              "text-4xl md:text-5xl font-bold mb-4",
               "text-white",
               "text-gray-900",
               theme,
@@ -625,9 +630,9 @@ const HolisticDetox = () => {
           </motion.h2>
           <motion.p
             className={themedClass(
-              "text-lg max-w-2xl mx-auto",
-              "text-gray-300",
-              "text-gray-700",
+              "text-xl max-w-2xl mx-auto",
+              "text-gray-400",
+              "text-gray-600",
               theme,
             )}
             initial={{ opacity: 0 }}
@@ -648,13 +653,15 @@ const HolisticDetox = () => {
             <motion.div
               key={idx}
               className={themedClass(
-                "p-8 rounded-2xl flex flex-col justify-between shadow-lg border transition-transform transform",
-                idx === 1
-                  ? "bg-orange-400 text-white border-orange-600 scale-105"
-                  : "bg-gray-800 text-white border-gray-700",
-                idx === 1
-                  ? "bg-orange-600 text-white border-orange-600 scale-105"
-                  : "bg-white text-gray-900 border-gray-200",
+                "p-10 rounded-2xl flex flex-col justify-between shadow-2xl transition-transform transform border-4", // Stronger shadow, distinct border
+                // Dark Theme
+                plan.highlight
+                  ? "bg-orange-600 border-orange-600 text-white"
+                  : "bg-gray-800 border-gray-700 text-white",
+                // Light Theme
+                plan.highlight
+                  ? "bg-orange-600 border-orange-600 text-white"
+                  : "bg-gray-50 border-gray-200 text-gray-900",
                 theme,
               )}
               variants={cardVariants}
@@ -663,61 +670,81 @@ const HolisticDetox = () => {
               whileHover={cardHover}
               viewport={{ once: true, amount: 0.3 }}
             >
-              <h3
-                className={themedClass(
-                  "text-2xl font-bold mb-3",
-                  // "text-white",
-                  // "text-gray-900",
-                  theme,
+              <div>
+                {/* Highlight Badge for Premium */}
+                {plan.highlight && (
+                  <span className="inline-block px-3 py-1 mb-4 text-xs font-bold tracking-wider text-orange-600 uppercase bg-white rounded-full">
+                    Most Popular
+                  </span>
                 )}
-              >
-                {plan.title}
-              </h3>
+                <h3
+                  className={themedClass(
+                    "text-3xl font-extrabold mb-3",
+                    plan.highlight
+                      ? "text-white"
+                      : "text-gray-900 dark:text-white",
+                    plan.highlight ? "text-white" : "text-gray-900",
+                    theme,
+                  )}
+                >
+                  {plan.title}
+                </h3>
 
-              <p
-                className={themedClass(
-                  "text-lg mb-4 opacity-90",
-                  // "text-white/90",
-                  // "text-gray-700 dark:text-gray-200",
-                  theme,
-                )}
-              >
-                {plan.description}
-              </p>
+                <p
+                  className={themedClass(
+                    "text-base mb-6",
+                    plan.highlight ? "text-white/80" : "text-gray-400",
+                    plan.highlight ? "text-white/80" : "text-gray-600",
+                    theme,
+                  )}
+                >
+                  {plan.description}
+                </p>
 
-              <div
-                className={themedClass(
-                  "text-3xl font-extrabold mb-6",
-                  // "text-white",
-                  // "text-orange-600",
-                  theme,
-                )}
-              >
-                {plan.price}
+                <div
+                  className={themedClass(
+                    "text-5xl font-extrabold mb-8",
+                    plan.highlight ? "text-white" : "text-orange-600",
+                    plan.highlight ? "text-white" : "text-orange-600",
+                    theme,
+                  )}
+                >
+                  {plan.price}
+                  <span className="text-lg font-medium opacity-70">/mo</span>
+                </div>
               </div>
 
-              <ul className="mb-6 space-y-2">
+              {/* Feature List */}
+              <ul className="mb-10 space-y-3">
                 {plan.features.map((feature, i) => (
                   <li
                     key={i}
                     className={themedClass(
-                      // "text-gray-300",
-                      // "text-white",
-                      // "text-gray-700",
+                      "flex items-center gap-3",
+                      plan.highlight ? "text-white/90" : "text-gray-300",
+                      plan.highlight ? "text-white/90" : "text-gray-600",
                       theme,
                     )}
                   >
+                    <span className="text-lg text-orange-400">✓</span>
                     {feature}
                   </li>
                 ))}
               </ul>
 
+              {/* Call to Action Button */}
               <Link
                 to="/contact"
                 className={themedClass(
-                  "w-full inline-block text-center py-3 rounded-full font-semibold transition",
-                  "bg-orange-600 text-white hover:bg-orange-700",
-                  "bg-orange-500 hover:text-black  hover:bg-gray-100",
+                  "w-full inline-block text-center py-4 rounded-lg font-bold text-lg transition-colors duration-300",
+                  // Dark Theme CTA
+                  plan.highlight
+                    ? "bg-white text-orange-600 hover:bg-gray-100"
+                    : "bg-orange-600 text-white hover:bg-orange-700",
+                  // Light Theme CTA
+                  plan.highlight
+                    ? "bg-white text-orange-600 hover:bg-gray-100"
+                    : "bg-orange-600 text-white hover:bg-orange-700",
                   theme,
                 )}
               >
@@ -727,11 +754,11 @@ const HolisticDetox = () => {
           ))}
         </div>
 
-        {/* Joiners Section */}
+        {/* Joiners Section - Minimalist Job Cards */}
         <div className="mx-auto max-w-7xl">
           <motion.h3
             className={themedClass(
-              "text-2xl md:text-4xl font-bold text-center mb-10",
+              "text-3xl md:text-4xl font-bold text-center mb-10",
               "text-white",
               "text-gray-900",
               theme,
@@ -752,20 +779,20 @@ const HolisticDetox = () => {
               <motion.div
                 key={idx}
                 className={themedClass(
-                  "p-6 rounded-2xl shadow-md border hover:shadow-xl transition",
-                  "bg-gray-800 text-white border-gray-700",
-                  "bg-white text-gray-900 border-gray-200 dark:bg-gray-800 dark:text-white dark:border-gray-700",
+                  "p-8 rounded-xl border-2 transition-all duration-300", // New style, less shadow
+                  "bg-gray-800 border-gray-700 hover:border-orange-600",
+                  "bg-white border-gray-200 hover:border-orange-600",
                   theme,
                 )}
                 variants={cardVariants}
                 initial="hidden"
                 whileInView="visible"
-                whileHover={cardHover}
+                whileHover={{ scale: 1.02, y: -2 }}
                 viewport={{ once: true, amount: 0.3 }}
               >
                 <h4
                   className={themedClass(
-                    "text-xl font-semibold mb-2",
+                    "text-xl font-bold mb-1", // Stronger title
                     "text-white",
                     "text-gray-900",
                     theme,
@@ -776,7 +803,7 @@ const HolisticDetox = () => {
 
                 <p
                   className={themedClass(
-                    "text-lg font-bold mb-3",
+                    "text-lg font-semibold mb-6",
                     "text-orange-400",
                     "text-orange-600",
                     theme,
@@ -787,14 +814,17 @@ const HolisticDetox = () => {
 
                 <ul
                   className={themedClass(
-                    "space-y-1",
+                    "space-y-2",
                     "text-gray-300",
-                    "text-gray-600 dark:text-gray-300",
+                    "text-gray-600",
                     theme,
                   )}
                 >
-                  {join.benefits.map((b, i) => (
-                    <li key={i}>• {b}</li>
+                  {join.benefits.map((benefit, i) => (
+                    <li key={i} className="flex items-center gap-2">
+                      <span className="font-bold text-orange-500">•</span>
+                      {benefit}
+                    </li>
                   ))}
                 </ul>
               </motion.div>
@@ -803,7 +833,7 @@ const HolisticDetox = () => {
         </div>
       </section>
 
-      {/* CTA Row */}
+      {/* CTA Row - High Contrast, Full Width */}
       <motion.section
         className="relative w-full pt-0 mt-0"
         initial={{ opacity: 0, y: 12 }}
@@ -811,30 +841,31 @@ const HolisticDetox = () => {
         viewport={{ once: true }}
       >
         <div className="absolute inset-0">
-          {/* Background image fixed */}
           <img
             src={detoxImg}
-            alt={t("altCta", language)}
+            alt="CTA Background"
             className="object-cover w-full h-full"
             style={{ backgroundAttachment: "fixed" }}
           />
-          {/* Black overlay with 50% opacity */}
-          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+          {/* Black overlay with 70% opacity for both modes (increased contrast) */}
+          <div className="absolute inset-0 bg-black bg-opacity-70"></div>
         </div>
 
-        <div className="relative z-10 max-w-3xl px-6 py-24 mx-auto text-center">
-          <h3 className="text-2xl font-bold text-white md:text-3xl">
+        <div className="relative z-10 max-w-4xl px-6 mx-auto text-center py-28">
+          {" "}
+          {/* Increased vertical padding */}
+          <h3 className="text-3xl font-bold text-white md:text-4xl">
             {t("ctaTitle", language)}
           </h3>
-          <p className="mt-3 text-lg text-white/90 md:text-xl">
+          <p className="mt-4 text-xl text-white/90 md:text-2xl">
             {t("ctaDesc", language)}
           </p>
-          <div className="flex items-center justify-center gap-4 mt-8">
+          <div className="flex items-center justify-center gap-4 mt-10">
             <Link
-              to={t("contact", language)}
-              className="inline-flex items-center gap-2 px-6 py-3 font-semibold text-orange-600 transition bg-white rounded-full shadow hover:bg-gray-100"
+              to="/contact"
+              className="inline-flex items-center gap-2 px-8 py-4 text-lg font-bold text-orange-600 transition bg-white rounded-lg shadow-xl hover:bg-gray-100" // Larger, bolder button
             >
-              {t("ctaBtn", language)}
+              {t("getConsultation", language)}
             </Link>
           </div>
         </div>

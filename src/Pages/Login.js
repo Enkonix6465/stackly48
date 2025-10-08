@@ -8,6 +8,7 @@ const translations = {
     weMake: "We Promote",
     dreamHouses: "Health and Wellness",
     login: "Login",
+    loginTitle: "Welcome Back",
     email: "Email",
     password: "Password",
     forgotPassword: "Forgot password?",
@@ -19,7 +20,7 @@ const translations = {
     confirmNewPassword: "Confirm New Password",
     resetBtn: "Reset Password",
     cancel: "Cancel",
-    signupTitle: "Sign Up",
+    signupTitle: "Register an Account",
     firstName: "First Name",
     lastName: "Last Name",
     phone: "Phone Number",
@@ -40,6 +41,7 @@ const translations = {
     weMake: "نحن نعزز",
     dreamHouses: "الصحة والعافية",
     login: "تسجيل الدخول",
+    loginTitle: "مرحبًا بعودتك",
     email: "البريد الإلكتروني",
     password: "كلمة المرور",
     forgotPassword: "نسيت كلمة المرور؟",
@@ -51,7 +53,7 @@ const translations = {
     confirmNewPassword: "تأكيد كلمة المرور الجديدة",
     resetBtn: "إعادة تعيين",
     cancel: "إلغاء",
-    signupTitle: "إنشاء حساب",
+    signupTitle: "تسجيل حساب",
     firstName: "الاسم الأول",
     lastName: "اسم العائلة",
     phone: "رقم الهاتف",
@@ -72,6 +74,7 @@ const translations = {
     weMake: "אנו מקדמים",
     dreamHouses: "בריאות ורווחה",
     login: "התחברות",
+    loginTitle: "ברוכים השבים",
     email: "אימייל",
     password: "סיסמה",
     forgotPassword: "שכחת סיסמה?",
@@ -83,7 +86,7 @@ const translations = {
     confirmNewPassword: "אישור סיסמה חדשה",
     resetBtn: "איפוס סיסמה",
     cancel: "ביטול",
-    signupTitle: "הרשמה",
+    signupTitle: "פתח חשבון",
     firstName: "שם פרטי",
     lastName: "שם משפחה",
     phone: "מספר טלפון",
@@ -264,8 +267,10 @@ export default function WelcomePage() {
 
       <div className="flex flex-col items-center justify-center w-full p-8 bg-white shadow-lg lg:w-1/2 rounded-r-xl">
         <div className="w-full max-w-md">
-          <div className="flex items-center justify-between mb-6">
-            <img src={logoImg} alt="Logo" className="w-[150px] h-auto" />
+          <div className="flex items-center justify-center w-full ">
+            <img src={logoImg} alt="Logo" className="w-[150px] h-auto" />{" "}
+          </div>
+          <div className="flex justify-end mb-6">
             <select
               value={language}
               onChange={handleLanguageChange}
@@ -284,7 +289,7 @@ export default function WelcomePage() {
           {!showSignup && !showForgot ? (
             <>
               <h2 className="mb-6 text-2xl font-bold text-center text-orange-600 caret-transparent">
-                {t.login}
+                {t.loginTitle}
               </h2>
               <form className="space-y-4" onSubmit={handleLogin}>
                 <input

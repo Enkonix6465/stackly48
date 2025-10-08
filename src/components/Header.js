@@ -316,7 +316,7 @@ const Header = () => {
           <div className="flex items-center ">
             <button
               onClick={() => navigate("/home1")}
-              className="focus:outline-none"
+              className={` focus:outline-none     ${theme === "dark" ? "bg-white" : ""}`}
             >
               <img src={logo} alt="STACKLY" className="w-auto h-6 sm:h-8" />
             </button>

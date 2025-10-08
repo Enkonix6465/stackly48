@@ -337,14 +337,14 @@ const Home2 = () => {
           </motion.h1>
 
           {/* Health & Wellness Subheading */}
-          <motion.h2
-            className="mb-6 text-2xl text-white md:text-2xl"
+          <motion.p
+            className="mb-6 text-2xl text-white "
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.5 }}
           >
             {t("heroSubtitle")}
-          </motion.h2>
+          </motion.p>
 
           {/* Buttons */}
           <div className="flex flex-wrap gap-4 mt-8">
@@ -366,7 +366,7 @@ const Home2 = () => {
             >
               <Link
                 to="/contact"
-                className="inline-block px-6 py-3 font-bold text-orange-400 transition-all border-2 border-orange-400 rounded-full shadow-lg hover:bg-orange-500 hover:text-white"
+                className="inline-block px-6 py-[10px] font-bold text-orange-400 transition-all border-2 border-orange-400 rounded-full shadow-lg hover:bg-orange-500 hover:text-white"
               >
                 {t("contactCta")}
               </Link>
@@ -649,7 +649,7 @@ const Home2 = () => {
         >
           <h2
             className={themedClass(
-              "text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent mb-2",
+              "text-6xl md:text-4xl font-extrabold bg-clip-text text-transparent mb-2",
               "bg-gradient-to-r from-orange-400 to-orange-600", // dark gradient
               "bg-gradient-to-r from-orange-500 to-orange-700", // light gradient
             )}
@@ -796,7 +796,7 @@ const Home2 = () => {
         >
           <h2
             className={themedClass(
-              "text-3xl md:text-4xl font-extrabold bg-clip-text text-transparent mb-2",
+              "text-6xl md:text-4xl font-extrabold bg-clip-text text-transparent mb-2",
               "bg-gradient-to-r from-orange-400 to-orange-600", // dark gradient
               "bg-gradient-to-r from-orange-500 to-orange-700", // light gradient
             )}
@@ -848,7 +848,7 @@ const Home2 = () => {
         </div>
 
         {/* Animated floating text highlights */}
-        <motion.div
+        {/* <motion.div
           className={themedClass(
             "absolute top-10 left-1/4 text-6xl font-extrabold opacity-20 select-none",
             "text-orange-400", // dark
@@ -869,7 +869,7 @@ const Home2 = () => {
           transition={{ repeat: Infinity, duration: 12 }}
         >
           Wellness
-        </motion.div>
+        </motion.div> */}
       </section>
 
       {/* Section 7cd: Contact CTA */}

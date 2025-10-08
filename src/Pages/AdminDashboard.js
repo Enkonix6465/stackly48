@@ -265,23 +265,6 @@ const AdminDashboard = () => {
     setUserStatus({ activeUsers: act, inactiveUsers: inact });
   }, []);
 
-  if (!allUserData.length) {
-    return (
-      <div
-        dir={dir}
-        className={themedClass(
-          "min-h-screen flex items-center justify-center",
-          "bg-gray-900 text-orange-100",
-          "bg-orange-50 text-orange-900",
-        )}
-      >
-        <p style={{ fontSize: 18, textAlign: "center" }}>
-          {t("noUsers", language)}
-        </p>
-      </div>
-    );
-  }
-
   // --- Chart Data & Options (using original orange colors) ---
   const loginData = {
     labels: loginStats.labels,
@@ -381,7 +364,10 @@ const AdminDashboard = () => {
       tooltip: {
         callbacks: {
           label: ({ label, raw }) =>
-            `${label}: ${raw} (${((raw / (userStatus.activeUsers + userStatus.inactiveUsers)) * 100).toFixed(1)}%)`,
+            `${label}: ${raw} (${(
+              (raw / (userStatus.activeUsers + userStatus.inactiveUsers)) *
+              100
+            ).toFixed(1)}%)`,
         },
       },
     },

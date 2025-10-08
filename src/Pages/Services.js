@@ -19,6 +19,7 @@ const TRANSLATIONS = {
     featuredHeading: "Featured Wellness Services",
     heroSubtitle: "Discover our holistic approach to health and wellness",
     heroCta: "Explore Blogs",
+    servicesHedding: "Featured Services",
     service1Title: "Personalized Nutrition",
     service1Desc:
       "Tailored meal plans designed by certified nutritionists to meet your unique dietary needs.",
@@ -92,6 +93,7 @@ const TRANSLATIONS = {
     featuredHeading: "خدمات العافية المميزة",
     heroSubtitle: "اكتشف نهجنا الشامل للصحة والعافية",
     heroCta: "استكشف المدونات",
+    servicesHedding: "خدمات مميزة",
     service1Title: "تغذية شخصية",
     service1Desc:
       "خطط وجبات مصممة خصيصًا من قبل أخصائيي تغذية لتلبية احتياجاتك.",
@@ -153,6 +155,7 @@ const TRANSLATIONS = {
     featuredHeading: "שירותי בריאות נבחרים",
     heroSubtitle: "גלה את הגישה ההוליסטית שלנו לבריאות ורווחה",
     heroCta: "גלה בלוגים",
+    servicesHedding: "שירותים נבחרים",
     service1Title: "תזונה מותאמת אישית",
     service1Desc: "תוכניות ארוחות מותאמות אישית על ידי תזונאים מוסמכים.",
     service1Detail:
@@ -489,7 +492,7 @@ const ServicesPage = () => {
               "bg-gradient-to-r from-yellow-400 via-orange-500 to-red-500 bg-clip-text text-transparent",
             )}
           >
-            {t("heroTitle")}
+            {t("servicesHedding")}
           </motion.h2>
 
           {/* Gradient Underline */}
