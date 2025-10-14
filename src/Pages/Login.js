@@ -126,7 +126,7 @@ export default function WelcomePage() {
     confirmPassword: "",
   });
   const [language, setLanguage] = useState(
-    localStorage.getItem("language") || "en",
+    localStorage.getItem("language") || "en"
   );
 
   const navigate = useNavigate();
@@ -182,7 +182,7 @@ export default function WelcomePage() {
     }
     const users = JSON.parse(localStorage.getItem("users") || "[]");
     const userIndex = users.findIndex(
-      (u) => u.email === email && u.password === password,
+      (u) => u.email === email && u.password === password
     );
     if (userIndex !== -1) {
       const user = users[userIndex];
@@ -270,7 +270,7 @@ export default function WelcomePage() {
           <div className="flex items-center justify-center w-full ">
             <img src={logoImg} alt="Logo" className="w-[150px] h-auto" />{" "}
           </div>
-          <div className="flex justify-end mb-6">
+          <div className="flex justify-end mt-[-2rem]">
             <select
               value={language}
               onChange={handleLanguageChange}
@@ -282,13 +282,13 @@ export default function WelcomePage() {
             </select>
           </div>
 
-          <h1 className="mb-8 text-4xl font-extrabold text-center text-orange-600 whitespace-nowrap caret-transparent">
+          <h1 className="mb-6 text-2xl font-extrabold text-center text-orange-600 md:text-4xl whitespace-nowrap caret-transparent">
             {t.dreamHouses}
           </h1>
 
           {!showSignup && !showForgot ? (
             <>
-              <h2 className="mb-6 text-2xl font-bold text-center text-orange-600 caret-transparent">
+              <h2 className="mb-6 text-2xl font-bold text-center caret-transparent">
                 {t.loginTitle}
               </h2>
               <form className="space-y-4" onSubmit={handleLogin}>
@@ -311,7 +311,7 @@ export default function WelcomePage() {
                 <div className="flex justify-between text-base">
                   <button
                     type="button"
-                    className="text-orange-600 hover:underline"
+                    className="text-orange-700 hover:underline"
                     onClick={() => setShowForgot(true)}
                   >
                     {t.forgotPassword}
@@ -381,7 +381,7 @@ export default function WelcomePage() {
             </>
           ) : (
             <>
-              <h2 className="mb-6 text-2xl font-bold text-center text-orange-600">
+              <h2 className="mb-6 text-2xl font-bold text-center ">
                 {t.signupTitle}
               </h2>
               <form className="space-y-4" onSubmit={handleSignup}>

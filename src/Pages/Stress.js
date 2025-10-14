@@ -12,6 +12,7 @@ import trackingIcon from "../assets/blog1.jpg";
 const translations = {
   en: {
     heroTitle: "Stress Resilience & Mental Wellness",
+    heroDesc:"Build your stress resilience and enhance mental wellness with our expert solutions.",
 
     sectionTitle: "Personalized Stress Resilience Solutions",
     sectionDesc:
@@ -87,6 +88,7 @@ const translations = {
   },
   ar: {
     heroTitle: "المرونة ضد التوتر والصحة النفسية",
+    heroDesc:"ابنِ مرونتك ضد التوتر وعزز صحتك النفسية من خلال حلولنا المتخصصة.",
 
     sectionTitle: "حلول شخصية للمرونة ضد التوتر",
     sectionDesc:
@@ -155,6 +157,7 @@ const translations = {
   },
   he: {
     heroTitle: "חוסן נפשי ורווחה מנטלית",
+    heroDesc:"בנה את החוסן הנפשי שלך ושפר את הרווחה המנטלית עם הפתרונות המומחים שלנו.",
 
     sectionTitle: "פתרונות חוסן נפשי מותאמים אישית",
     sectionDesc:
@@ -384,7 +387,11 @@ const StressResilience = () => {
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full px-4 text-center">
           <motion.h1
             // Increased size for impact
-            className="text-5xl font-extrabold leading-snug text-white md:text-7xl drop-shadow-lg"
+            className={themedClass(
+              "text-5xl md:text-7xl font-extrabold drop-shadow-[0_0_20px_rgba(255,165,0,0.8)]",
+              "text-orange-400",
+              "text-orange-600",
+            )}
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -398,7 +405,7 @@ const StressResilience = () => {
             transition={{ delay: 0.5, duration: 1 }}
           >
             {/* Using heroDesc translation key, assuming it was missing and added for completeness */}
-            {t("holisticDesc", language)}
+            {t("heroDesc", language)}
           </motion.p>
         </div>
       </section>
@@ -413,7 +420,7 @@ const StressResilience = () => {
         )}
       >
         <motion.div
-          className="flex flex-col items-center gap-16 mx-auto max-w-7xl md:flex-row" // Increased gap
+          className="flex flex-col gap-16 mx-auto max-w-7xl md:flex-row" // Increased gap
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -428,7 +435,7 @@ const StressResilience = () => {
             <img
               src={wellnessImg}
               alt="Wellness Strategy"
-              className="rounded-xl shadow-2xl object-cover w-full sm:w-8/12 md:w-full lg:max-h-[500px]" // Stronger shadow, sharper corners
+              className="rounded-xl shadow-2xl object-cover w-full sm:w-8/12 md:w-full lg:max-h-[400px]" // Stronger shadow, sharper corners
             />
           </motion.div>
 
@@ -645,7 +652,7 @@ const StressResilience = () => {
         </div>
 
         {/* Pricing Plans */}
-        <div className="grid grid-cols-1 gap-12 mx-auto mb-20 md:grid-cols-3 max-w-7xl">
+        <div className="grid grid-cols-1 gap-12 mx-auto mb-20 min-[769px]:grid-cols-3 max-w-7xl">
           {plans.map((plan, idx) => (
             <motion.div
               key={idx}

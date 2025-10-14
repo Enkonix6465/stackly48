@@ -380,7 +380,11 @@ const Nutrition = () => {
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full px-4 text-center">
           <motion.h1
             // Increased size for impact
-            className="text-5xl font-extrabold leading-snug text-white md:text-7xl drop-shadow-lg"
+            className={themedClass(
+              "text-5xl md:text-7xl font-extrabold drop-shadow-[0_0_20px_rgba(255,165,0,0.8)]",
+              "text-orange-400",
+              "text-orange-600",
+            )}
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -408,7 +412,7 @@ const Nutrition = () => {
         )}
       >
         <motion.div
-          className="flex flex-col items-center gap-16 mx-auto max-w-7xl md:flex-row" // Increased gap
+          className="flex flex-col gap-16 mx-auto max-w-7xl md:flex-row" // Increased gap
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -423,7 +427,7 @@ const Nutrition = () => {
             <img
               src={wellnessImg}
               alt="Wellness Strategy"
-              className="rounded-xl shadow-2xl object-cover w-full sm:w-8/12 md:w-full lg:max-h-[500px]" // Stronger shadow, sharper corners
+              className="rounded-xl shadow-2xl object-cover w-full sm:w-8/12 md:w-full lg:max-h-[400px]" // Stronger shadow, sharper corners
             />
           </motion.div>
 
@@ -1061,7 +1065,7 @@ const Nutrition = () => {
         </div>
 
         {/* Pricing Plans */}
-        <div className="grid grid-cols-1 gap-12 mx-auto mb-20 md:grid-cols-3 max-w-7xl">
+        <div className="grid grid-cols-1 gap-12 mx-auto mb-20 min-[769px]:grid-cols-3 max-w-7xl">
           {plans.map((plan, idx) => (
             <motion.div
               key={idx}
@@ -1123,7 +1127,7 @@ const Nutrition = () => {
                   )}
                 >
                   {plan.price}
-                  <span className="text-lg font-medium opacity-70">/mo</span>
+                   
                 </div>
               </div>
 

@@ -32,9 +32,9 @@ function AppContent() {
 
   return (
     <>
-      {!hideHeaderFooter && <Header />}
       <ScrollToTop />
-      <main className="min-h-screen">
+      <main className="max-h-screen overflow-auto  [&::-webkit-scrollbar]:hidden">
+        {!hideHeaderFooter && <Header />}
         <Routes>
           <Route path="/home1" element={<Home1 />} />
           <Route path="/home2" element={<Home2 />} />
@@ -53,8 +53,8 @@ function AppContent() {
           <Route path="/" element={<Login />} />
           <Route path="/article" element={<Article />} />
         </Routes>
+        {!hideHeaderFooter && <Footer />}
       </main>
-      {!hideHeaderFooter && <Footer />}
     </>
   );
 }

@@ -177,7 +177,7 @@ const ContactUs = () => {
             initial={{ opacity: 0, y: -60 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
-            className="mb-4 text-5xl font-black text-white md:text-8xl drop-shadow-lg"
+            className="mb-4 text-5xl font-black text-white md:text-7xl drop-shadow-lg"
           >
             {t("heroTitle", language)}
           </motion.h1>
@@ -263,7 +263,7 @@ const ContactUs = () => {
           {/* Right Column (Contact Details) - Takes 2/5 width */}
           <div
             className={themedClass(
-              "p-10 lg:col-span-2 flex flex-col justify-center caret-transparent",
+              "p-10 lg:col-span-2 flex flex-col   caret-transparent",
               "bg-gray-900 rounded-r-3xl", // Darker panel in dark mode
               "bg-gray-100 rounded-r-3xl", // Lighter panel in light mode
             )}

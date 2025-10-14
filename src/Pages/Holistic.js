@@ -12,6 +12,7 @@ import trackingIcon from "../assets/blog1.jpg";
 const translations = {
   en: {
     heroTitle: "Holistic Detox & Wellness",
+    heroDesc:"Rejuvenate your body and mind with our comprehensive holistic detox programs.", 
 
     section2Title: "Personalized Holistic Detox Solutions",
     section2Desc:
@@ -116,6 +117,7 @@ const translations = {
   },
   ar: {
     heroTitle: "إزالة السموم الشاملة والعافية",
+    heroDesc:"جدد جسمك وعقلك من خلال برامج إزالة السموم الشاملة لدينا.",
 
     section2Title: "حلول إزالة السموم الشاملة المخصصة",
     section2Desc:
@@ -215,6 +217,7 @@ const translations = {
   },
   he: {
     heroTitle: "דיטוקס הוליסטי ובריאות",
+    heroDesc:"התחדש את הגוף והנפש שלך עם תוכניות דיטוקס הוליסטיות מקיפות.",
 
     section2Title: "פתרונות דיטוקס הוליסטיים מותאמים אישית",
     section2Desc:
@@ -404,7 +407,12 @@ const HolisticDetox = () => {
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full px-4 text-center">
           <motion.h1
             // Increased size for impact
-            className="text-5xl font-extrabold leading-snug text-white md:text-7xl drop-shadow-lg"
+            className={themedClass(
+              "text-5xl md:text-7xl font-extrabold drop-shadow-[0_0_20px_rgba(255,165,0,0.8)]",
+              "text-orange-400",
+              "text-orange-600",
+              theme,
+            )}
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -432,7 +440,7 @@ const HolisticDetox = () => {
         )}
       >
         <motion.div
-          className="flex flex-col items-center gap-16 mx-auto max-w-7xl md:flex-row" // Increased gap
+          className="flex flex-col gap-16 mx-auto max-w-7xl md:flex-row" // Increased gap
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
@@ -447,7 +455,7 @@ const HolisticDetox = () => {
             <img
               src={detoxImg}
               alt="Wellness Strategy"
-              className="rounded-xl shadow-2xl object-cover w-full sm:w-8/12 md:w-full lg:max-h-[500px]" // Stronger shadow, sharper corners
+              className="rounded-xl shadow-2xl object-cover w-full sm:w-8/12 md:w-full lg:max-h-[400px]" // Stronger shadow, sharper corners
             />
           </motion.div>
 
@@ -865,7 +873,7 @@ const HolisticDetox = () => {
               to="/contact"
               className="inline-flex items-center gap-2 px-8 py-4 text-lg font-bold text-orange-600 transition bg-white rounded-lg shadow-xl hover:bg-gray-100" // Larger, bolder button
             >
-              {t("getConsultation", language)}
+              {t("ctaBtn", language)}
             </Link>
           </div>
         </div>

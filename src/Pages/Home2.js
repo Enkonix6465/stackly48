@@ -271,7 +271,7 @@ const Home2 = () => {
       className={themedClass(
         "font-sans min-h-screen transition-colors duration-500 caret-transparent",
         "bg-gray-900 text-gray-100",
-        "bg-white text-gray-800",
+        "bg-white text-gray-800"
       )}
       dir={dir}
       style={{ direction: dir }}
@@ -392,7 +392,7 @@ const Home2 = () => {
         className={themedClass(
           "relative w-full py-28 px-6 md:px-16 overflow-hidden transition-colors duration-500",
           "bg-gradient-to-br from-gray-950 via-gray-900 to-gray-800",
-          "bg-gradient-to-br from-orange-50 via-white to-orange-100",
+          "bg-gradient-to-br from-orange-50 via-white to-orange-100"
         )}
       >
         {/* Soft Glow Background */}
@@ -400,14 +400,14 @@ const Home2 = () => {
           className={themedClass(
             "absolute -top-32 -left-32 w-96 h-96 rounded-full blur-3xl opacity-20",
             "bg-orange-500/30",
-            "bg-orange-200",
+            "bg-orange-200"
           )}
         ></div>
         <div
           className={themedClass(
             "absolute -bottom-32 -right-32 w-[500px] h-[500px] rounded-full blur-3xl opacity-20",
             "bg-orange-400/20",
-            "bg-orange-300",
+            "bg-orange-300"
           )}
         ></div>
 
@@ -423,14 +423,14 @@ const Home2 = () => {
               className={themedClass(
                 "text-4xl md:text-6xl font-extrabold leading-tight mb-6",
                 "text-gray-100",
-                "text-gray-900",
+                "text-gray-900"
               )}
             >
               <span
                 className={themedClass(
                   "bg-clip-text text-transparent bg-gradient-to-r",
-                  "from-orange-400 to-orange-600",
                   "from-orange-600 to-orange-800",
+                  "from-orange-400 to-orange-600"
                 )}
               >
                 {t("aboutHeading")}
@@ -441,7 +441,7 @@ const Home2 = () => {
               className={themedClass(
                 "text-lg leading-relaxed mb-8",
                 "text-gray-300",
-                "text-gray-700",
+                "text-gray-700"
               )}
             >
               {t("aboutParagraph")}
@@ -460,7 +460,7 @@ const Home2 = () => {
               className={themedClass(
                 "absolute inset-0",
                 "bg-gray-900/50", // dark overlay
-                "bg-orange-100/60", // light overlay
+                "bg-orange-100/60" // light overlay
               )}
               initial={{ x: 0 }}
               whileInView={{ x: "100%" }}
@@ -481,7 +481,7 @@ const Home2 = () => {
         className={themedClass(
           "relative py-28 px-6 overflow-hidden transition-colors duration-500",
           "bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900", // dark theme gradient
-          "bg-gradient-to-br from-orange-50 via-white to-orange-100", // light theme gradient
+          "bg-gradient-to-br from-orange-50 via-white to-orange-100" // light theme gradient
         )}
       >
         {/* Animated Background */}
@@ -490,14 +490,14 @@ const Home2 = () => {
             className={themedClass(
               "absolute w-[120%] h-[120%] animate-pulse opacity-30",
               "bg-[radial-gradient(circle_at_30%_30%,#f97316,transparent_50%)]", // dark particles
-              "bg-[radial-gradient(circle_at_30%_30%,#fcd34d,transparent_50%)]", // light particles
+              "bg-[radial-gradient(circle_at_30%_30%,#fcd34d,transparent_50%)]" // light particles
             )}
           ></div>
           <div
             className={themedClass(
               "absolute w-[120%] h-[120%] animate-pulse opacity-30",
               "bg-[radial-gradient(circle_at_70%_70%,#f97316,transparent_50%)]",
-              "bg-[radial-gradient(circle_at_70%_70%,#f97316,transparent_50%)]",
+              "bg-[radial-gradient(circle_at_70%_70%,#f97316,transparent_50%)]"
             )}
           ></div>
         </div>
@@ -507,7 +507,7 @@ const Home2 = () => {
           className={themedClass(
             "text-4xl md:text-6xl font-extrabold text-center mb-20",
             "text-orange-400", // dark heading
-            "text-orange-600", // light heading
+            "text-orange-600" // light heading
           )}
           initial={{ opacity: 0, y: -50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -551,14 +551,14 @@ const Home2 = () => {
                   className={themedClass(
                     "absolute inset-0 rounded-full opacity-0 hover:opacity-100 transition duration-500 flex flex-col items-center justify-center px-6",
                     "bg-black/50", // dark overlay
-                    "bg-black/50", // light overlay (can adjust to lighter opacity if needed)
+                    "bg-black/50" // light overlay (can adjust to lighter opacity if needed)
                   )}
                 >
                   <h3
                     className={themedClass(
                       "text-2xl font-bold mb-2",
                       "text-orange-400", // dark text
-                      "text-white", // light text
+                      "text-white" // light text
                     )}
                   >
                     {t(`serviceTitle${i + 1}`)}
@@ -567,7 +567,7 @@ const Home2 = () => {
                     className={themedClass(
                       "text-sm md:text-base",
                       "text-gray-200",
-                      "text-white",
+                      "text-white"
                     )}
                   >
                     {t(`serviceDesc${i + 1}`)}
@@ -586,7 +586,7 @@ const Home2 = () => {
               className={themedClass(
                 "absolute w-4 h-4 rounded-full",
                 "bg-orange-400 opacity-40", // dark particles
-                "bg-orange-300 opacity-30", // light particles
+                "bg-orange-300 opacity-30" // light particles
               )}
               initial={{
                 x: Math.random() * window.innerWidth,
@@ -611,7 +611,7 @@ const Home2 = () => {
         className={themedClass(
           "relative w-full py-16 overflow-hidden transition-colors duration-500",
           "bg-gradient-to-tr from-gray-900 via-gray-800 to-gray-900", // dark background
-          "bg-gradient-to-tr from-orange-50 via-orange-200 to-orange-300", // light background
+          "bg-gradient-to-tr from-orange-50 via-orange-200 to-orange-300" // light background
         )}
       >
         {/* Background animated ribbons */}
@@ -622,7 +622,7 @@ const Home2 = () => {
               className={themedClass(
                 "absolute w-[200%] h-1/2 opacity-30 rounded-full",
                 "bg-gradient-to-r from-gray-700 via-gray-600 to-gray-500", // dark ribbons
-                "bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500", // light ribbons
+                "bg-gradient-to-r from-orange-400 via-orange-300 to-orange-500" // light ribbons
               )}
               style={{
                 top: `${i * 15}%`,
@@ -651,7 +651,7 @@ const Home2 = () => {
             className={themedClass(
               "text-6xl md:text-4xl font-extrabold bg-clip-text text-transparent mb-2",
               "bg-gradient-to-r from-orange-400 to-orange-600", // dark gradient
-              "bg-gradient-to-r from-orange-500 to-orange-700", // light gradient
+              "bg-gradient-to-r from-orange-500 to-orange-700" // light gradient
             )}
           >
             {t("testimonialsHeading")}
@@ -667,7 +667,7 @@ const Home2 = () => {
               className={themedClass(
                 "relative w-96 h-[400px] backdrop-blur-lg rounded-[45%_55%_35%_65%] shadow-2xl flex flex-col justify-center px-8 py-8 cursor-pointer hover:scale-105 hover:rotate-2 transition-transform duration-500",
                 "bg-gray-800/80",
-                "bg-orange-100/80",
+                "bg-orange-100/80"
               )}
               initial={{
                 opacity: 0,
@@ -680,9 +680,9 @@ const Home2 = () => {
             >
               <p
                 className={themedClass(
-                  "italic text-center mb-4",
+                  " text-center mb-4",
                   "text-gray-300",
-                  "text-gray-800",
+                  "text-gray-800"
                 )}
               >
                 "{t(`testimonial${i}`)}"
@@ -691,7 +691,7 @@ const Home2 = () => {
                 className={themedClass(
                   "font-bold text-center mb-1",
                   "text-orange-400",
-                  "text-orange-700",
+                  "text-orange-700"
                 )}
               >
                 {t(`name${i}`)}
@@ -700,7 +700,7 @@ const Home2 = () => {
                 className={themedClass(
                   "text-sm text-center mb-2",
                   "text-gray-400",
-                  "text-gray-600",
+                  "text-gray-600"
                 )}
               >
                 {t(`position${i}`)}
@@ -710,7 +710,7 @@ const Home2 = () => {
                 className={themedClass(
                   "absolute -top-4 -left-4 w-16 h-16 rounded-full blur-2xl",
                   "bg-orange-500 opacity-40",
-                  "bg-orange-400 opacity-40",
+                  "bg-orange-400 opacity-40"
                 )}
                 animate={{ rotate: [0, 360] }}
                 transition={{ duration: 8, repeat: Infinity }}
@@ -719,7 +719,7 @@ const Home2 = () => {
                 className={themedClass(
                   "absolute -bottom-4 -right-4 w-20 h-20 rounded-full blur-3xl",
                   "bg-orange-600 opacity-30",
-                  "bg-orange-500 opacity-30",
+                  "bg-orange-500 opacity-30"
                 )}
                 animate={{ rotate: [360, 0] }}
                 transition={{ duration: 10, repeat: Infinity }}
@@ -735,7 +735,7 @@ const Home2 = () => {
             className={themedClass(
               "absolute w-2 h-2 rounded-full",
               "bg-orange-500 opacity-40", // dark
-              "bg-orange-400 opacity-40", // light
+              "bg-orange-400 opacity-40" // light
             )}
             initial={{
               x: Math.random() * window.innerWidth,
@@ -757,7 +757,7 @@ const Home2 = () => {
         className={themedClass(
           "relative py-16 px-6 overflow-hidden transition-colors duration-500",
           "bg-gradient-to-tr from-gray-900 via-gray-800 to-gray-900", // dark background
-          "bg-gradient-to-tr from-orange-50 via-orange-100 to-orange-200", // light background
+          "bg-gradient-to-tr from-orange-50 via-orange-100 to-orange-200" // light background
         )}
       >
         {/* Animated background circles */}
@@ -773,7 +773,7 @@ const Home2 = () => {
               background: themedClass(
                 "",
                 "radial-gradient(circle, rgba(255,149,0,0.3), transparent)", // dark circle
-                "radial-gradient(circle, rgba(255,149,0,0.6), transparent)", // light circle
+                "radial-gradient(circle, rgba(255,149,0,0.6), transparent)" // light circle
               ),
             }}
             animate={{ x: [0, 50, -50, 0], y: [0, -30, 30, 0] }}
@@ -798,7 +798,7 @@ const Home2 = () => {
             className={themedClass(
               "text-6xl md:text-4xl font-extrabold bg-clip-text text-transparent mb-2",
               "bg-gradient-to-r from-orange-400 to-orange-600", // dark gradient
-              "bg-gradient-to-r from-orange-500 to-orange-700", // light gradient
+              "bg-gradient-to-r from-orange-500 to-orange-700" // light gradient
             )}
           >
             {t("blogHeading")}
@@ -825,7 +825,7 @@ const Home2 = () => {
                   background: themedClass(
                     "",
                     "linear-gradient(90deg, #FF7F50, #FFA500)",
-                    "linear-gradient(90deg, #FF7F50, #FFA500)",
+                    "linear-gradient(90deg, #FF7F50, #FFA500)"
                   ),
                 }}
                 animate={{ x: [0, 10, -10, 0] }}
@@ -835,7 +835,7 @@ const Home2 = () => {
                 className={themedClass(
                   "text-2xl font-bold mb-2",
                   "text-orange-400",
-                  "text-orange-600",
+                  "text-orange-600"
                 )}
               >
                 {t(`blogCard${i}`)}

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import logo from "../assets/logo-dark.png";
 import { Moon, Sun } from "lucide-react";
 
@@ -91,6 +91,40 @@ const Header = () => {
 
   const t = (key) => translations[language]?.[key] || key;
 
+  const location = useLocation();
+
+  // Helpers to determine active route and return classes
+  const isActive = (path) => {
+    if (!path) return false;
+    // exact match or if path is a prefix of current pathname
+    return (
+      location.pathname === path || location.pathname.startsWith(path + "/")
+    );
+  };
+
+  const navLinkClass = (path) =>
+    `inline-flex items-center gap-1 px-3 py-2 rounded transition-colors duration-200 ${
+      isActive(path)
+        ? "text-[#FF7043] border-b-2 border-[#FF7043]"
+        : theme === "dark"
+        ? "text-white hover:text-[#FF7043]"
+        : "text-black hover:text-[#FF7043]"
+    }`;
+
+  const navDropdownItemClass = (path) =>
+    `block px-4 py-2 ${
+      isActive(path)
+        ? "font-semibold text-[#FF7043] bg-[#FFFAF5]"
+        : theme === "dark"
+        ? "text-white hover:bg-[#22304a]"
+        : "text-gray-800 hover:bg-[#FF7043]/10"
+    }`;
+
+  const mobileLinkClass = (path) =>
+    `px-4 py-2 rounded ${
+      isActive(path) ? "bg-[#FFF2E6] text-[#FF7043] font-semibold" : ""
+    }`;
+
   // Initial theme setup
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme") || "light";
@@ -158,7 +192,7 @@ const Header = () => {
 
   // Mobile menu links
   const mobileLinks = (
-    <nav className="flex flex-col mt-6 space-y-2">
+  <nav className="flex flex-col mt-6 space-y-2">
       {/* Home Dropdown */}
       <button
         className="flex items-center justify-between px-4 py-2 font-semibold rounded hover:bg-green-100"
@@ -183,30 +217,12 @@ const Header = () => {
       </button>
       {mobileHomeOpen && (
         <div className="flex flex-col pl-6 space-y-1">
-          <Link
-            to="/home1"
-            className="px-4 py-2 rounded hover:bg-green-50"
-            onClick={toggleMobileMenu}
-          >
-            {t("home1")}
-          </Link>
-          <Link
-            to="/home2"
-            className="px-4 py-2 rounded hover:bg-green-50"
-            onClick={toggleMobileMenu}
-          >
-            {t("home2")}
-          </Link>
+          <Link to="/home1" className={mobileLinkClass("/home1")} onClick={toggleMobileMenu}>{t("home1")}</Link>
+          <Link to="/home2" className={mobileLinkClass("/home2")} onClick={toggleMobileMenu}>{t("home2")}</Link>
         </div>
       )}
 
-      <Link
-        to="/about"
-        className="px-4 py-2 rounded hover:bg-green-100"
-        onClick={toggleMobileMenu}
-      >
-        {t("about")}
-      </Link>
+      <Link to="/about" className={mobileLinkClass("/about")} onClick={toggleMobileMenu}>{t("about")}</Link>
 
       {/* Services Dropdown */}
       <button
@@ -232,72 +248,18 @@ const Header = () => {
       </button>
       {mobileServicesOpen && (
         <div className="flex flex-col pl-6 space-y-1">
-          <Link
-            to="/services"
-            className="px-4 py-2 rounded hover:bg-green-50"
-            onClick={toggleMobileMenu}
-          >
-            {t("allServices")}
-          </Link>
-          <Link
-            to="/Nutrition"
-            className="px-4 py-2 rounded hover:bg-green-50"
-            onClick={toggleMobileMenu}
-          >
-            {t("nutrition")}
-          </Link>
-          <Link
-            to="/Mindful"
-            className="px-4 py-2 rounded hover:bg-green-50"
-            onClick={toggleMobileMenu}
-          >
-            {t("mindful")}
-          </Link>
-          <Link
-            to="/Sleep"
-            className="px-4 py-2 rounded hover:bg-green-50"
-            onClick={toggleMobileMenu}
-          >
-            {t("sleep")}
-          </Link>
-          <Link
-            to="/Stress"
-            className="px-4 py-2 rounded hover:bg-green-50"
-            onClick={toggleMobileMenu}
-          >
-            {t("stress")}
-          </Link>
-          <Link
-            to="/Holistic"
-            className="px-4 py-2 rounded hover:bg-green-50"
-            onClick={toggleMobileMenu}
-          >
-            {t("holistic")}
-          </Link>
-          <Link
-            to="/Wellness"
-            className="px-4 py-2 rounded hover:bg-green-50"
-            onClick={toggleMobileMenu}
-          >
-            {t("wellness")}
-          </Link>
+          <Link to="/services" className={mobileLinkClass("/services")} onClick={toggleMobileMenu}>{t("allServices")}</Link>
+          <Link to="/Nutrition" className={mobileLinkClass("/Nutrition")} onClick={toggleMobileMenu}>{t("nutrition")}</Link>
+          <Link to="/Mindful" className={mobileLinkClass("/Mindful")} onClick={toggleMobileMenu}>{t("mindful")}</Link>
+          <Link to="/Sleep" className={mobileLinkClass("/Sleep")} onClick={toggleMobileMenu}>{t("sleep")}</Link>
+          <Link to="/Stress" className={mobileLinkClass("/Stress")} onClick={toggleMobileMenu}>{t("stress")}</Link>
+          <Link to="/Holistic" className={mobileLinkClass("/Holistic")} onClick={toggleMobileMenu}>{t("holistic")}</Link>
+          <Link to="/Wellness" className={mobileLinkClass("/Wellness")} onClick={toggleMobileMenu}>{t("wellness")}</Link>
         </div>
       )}
 
-      <Link
-        to="/blog"
-        className="px-4 py-2 rounded hover:bg-green-100"
-        onClick={toggleMobileMenu}
-      >
-        {t("blog")}
-      </Link>
-      <Link
-        to="/contact"
-        className="px-4 py-2 rounded hover:bg-green-100"
-        onClick={toggleMobileMenu}
-      >
-        {t("contact")}
-      </Link>
+      <Link to="/blog" className={mobileLinkClass("/blog")} onClick={toggleMobileMenu}>{t("blog")}</Link>
+      <Link to="/contact" className={mobileLinkClass("/contact")} onClick={toggleMobileMenu}>{t("contact")}</Link>
     </nav>
   );
 
@@ -323,7 +285,7 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <div className="hidden min-[860px]:flex items-center space-x-8">
+          <div className="hidden min-[860px]:flex items-center space-x-4">
             {/* Home Dropdown */}
             <div
               className="relative"
@@ -341,9 +303,7 @@ const Header = () => {
             >
               <button
                 onClick={() => navigate("/home1")}
-                className={`flex items-center ${
-                  theme === "dark" ? "text-white" : "text-black"
-                } hover:text-[#FF7043] transition-colors duration-200`}
+                className={navLinkClass("/home1")}
                 aria-haspopup="true"
                 aria-expanded={isHomeDropdownOpen}
               >
@@ -372,22 +332,14 @@ const Header = () => {
                 >
                   <Link
                     to="/home1"
-                    className={`block px-4 py-2 ${
-                      theme === "dark"
-                        ? "text-white hover:bg-[#22304a]"
-                        : "text-gray-800 hover:bg-[#FF7043]/10"
-                    }`}
+                    className={navDropdownItemClass("/home1")}
                     onClick={() => setIsHomeDropdownOpen(false)}
                   >
                     {t("home1")}
                   </Link>
                   <Link
                     to="/home2"
-                    className={`block px-4 py-2 ${
-                      theme === "dark"
-                        ? "text-white hover:bg-[#22304a]"
-                        : "text-gray-800 hover:bg-[#FF7043]/10"
-                    }`}
+                    className={navDropdownItemClass("/home2")}
                     onClick={() => setIsHomeDropdownOpen(false)}
                   >
                     {t("home2")}
@@ -396,14 +348,7 @@ const Header = () => {
               )}
             </div>
 
-            <Link
-              to="/about"
-              className={`${
-                theme === "dark" ? "text-white" : "text-black"
-              } hover:text-[#FF7043] transition-colors duration-200`}
-            >
-              {t("about")}
-            </Link>
+            <Link to="/about" className={navLinkClass("/about")}> {t("about")} </Link>
 
             {/* Services Dropdown */}
             <div
@@ -422,9 +367,7 @@ const Header = () => {
             >
               <button
                 onClick={() => navigate("/services")}
-                className={`flex items-center ${
-                  theme === "dark" ? "text-white" : "text-black"
-                } hover:text-[#FF7043] transition-colors duration-200`}
+                className={navLinkClass("/services")}
                 aria-haspopup="true"
                 aria-expanded={isServicesDropdownOpen}
               >
@@ -451,196 +394,98 @@ const Header = () => {
                       : "bg-white border-gray-200"
                   }`}
                 >
-                  <Link
-                    to="/services"
-                    className={`block px-4 py-2 ${
-                      theme === "dark"
-                        ? "text-white hover:bg-[#22304a]"
-                        : "text-gray-800 hover:bg-[#FF7043]/10"
-                    }`}
-                    onClick={() => setIsServicesDropdownOpen(false)}
-                  >
-                    {t("allServices")}
-                  </Link>
-                  <Link
-                    to="/Nutrition"
-                    className={`block px-4 py-2 ${
-                      theme === "dark"
-                        ? "text-white hover:bg-[#22304a]"
-                        : "text-gray-800 hover:bg-[#FF7043]/10"
-                    }`}
-                    onClick={() => setIsServicesDropdownOpen(false)}
-                  >
-                    {t("nutrition")}
-                  </Link>
-                  <Link
-                    to="/Mindful"
-                    className={`block px-4 py-2 ${
-                      theme === "dark"
-                        ? "text-white hover:bg-[#22304a]"
-                        : "text-gray-800 hover:bg-[#FF7043]/10"
-                    }`}
-                    onClick={() => setIsServicesDropdownOpen(false)}
-                  >
-                    {t("mindful")}
-                  </Link>
-                  <Link
-                    to="/Sleep"
-                    className={`block px-4 py-2 ${
-                      theme === "dark"
-                        ? "text-white hover:bg-[#22304a]"
-                        : "text-gray-800 hover:bg-[#FF7043]/10"
-                    }`}
-                    onClick={() => setIsServicesDropdownOpen(false)}
-                  >
-                    {t("sleep")}
-                  </Link>
-                  <Link
-                    to="/Stress"
-                    className={`block px-4 py-2 ${
-                      theme === "dark"
-                        ? "text-white hover:bg-[#22304a]"
-                        : "text-gray-800 hover:bg-[#FF7043]/10"
-                    }`}
-                    onClick={() => setIsServicesDropdownOpen(false)}
-                  >
-                    {t("stress")}
-                  </Link>
-                  <Link
-                    to="/Holistic"
-                    className={`block px-4 py-2 ${
-                      theme === "dark"
-                        ? "text-white hover:bg-[#22304a]"
-                        : "text-gray-800 hover:bg-[#FF7043]/10"
-                    }`}
-                    onClick={() => setIsServicesDropdownOpen(false)}
-                  >
-                    {t("holistic")}
-                  </Link>
-                  <Link
-                    to="/Wellness"
-                    className={`block px-4 py-2 ${
-                      theme === "dark"
-                        ? "text-white hover:bg-[#22304a]"
-                        : "text-gray-800 hover:bg-[#FF7043]/10"
-                    }`}
-                    onClick={() => setIsServicesDropdownOpen(false)}
-                  >
-                    {t("wellness")}
-                  </Link>
+                  <Link to="/services" className={navDropdownItemClass("/services")} onClick={() => setIsServicesDropdownOpen(false)}>{t("allServices")}</Link>
+                  <Link to="/Nutrition" className={navDropdownItemClass("/Nutrition")} onClick={() => setIsServicesDropdownOpen(false)}>{t("nutrition")}</Link>
+                  <Link to="/Mindful" className={navDropdownItemClass("/Mindful")} onClick={() => setIsServicesDropdownOpen(false)}>{t("mindful")}</Link>
+                  <Link to="/Sleep" className={navDropdownItemClass("/Sleep")} onClick={() => setIsServicesDropdownOpen(false)}>{t("sleep")}</Link>
+                  <Link to="/Stress" className={navDropdownItemClass("/Stress")} onClick={() => setIsServicesDropdownOpen(false)}>{t("stress")}</Link>
+                  <Link to="/Holistic" className={navDropdownItemClass("/Holistic")} onClick={() => setIsServicesDropdownOpen(false)}>{t("holistic")}</Link>
+                  <Link to="/Wellness" className={navDropdownItemClass("/Wellness")} onClick={() => setIsServicesDropdownOpen(false)}>{t("wellness")}</Link>
                 </div>
               )}
             </div>
 
-            <Link
-              to="/blog"
-              className={`${
-                theme === "dark" ? "text-white" : "text-black"
-              } hover:text-[#FF7043] transition-colors duration-200`}
-            >
-              {t("blog")}
-            </Link>
-            <Link
-              to="/contact"
-              className={`${
-                theme === "dark" ? "text-white" : "text-black"
-              } hover:text-[#FF7043] transition-colors duration-200`}
-            >
-              {t("contact")}
-            </Link>
+            <Link to="/blog" className={navLinkClass("/blog")}>{t("blog")}</Link>
+            <Link to="/contact" className={navLinkClass("/contact")}>{t("contact")}</Link>
 
-            {/* Dark Mode Toggle */}
-            <button
-              className={`w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200 ${
-                theme === "dark"
-                  ? "bg-gray-800 border-gray-700 hover:bg-gray-700"
-                  : "bg-[#FF7043]/10 border-[#FF7043] hover:bg-[#FF7043]/20"
-              }`}
-              onClick={toggleTheme}
-              title={
-                theme === "dark"
-                  ? "Switch to light mode"
-                  : "Switch to dark mode"
-              }
-              aria-label="Toggle dark mode"
-            >
-              {theme === "dark" ? (
-                <>
-                  <Sun color="#FF7043" />
-                </>
-              ) : (
-                <>
-                  <Moon color="#FF7043" />
-                </>
-              )}
-            </button>
-
-            {/* Language Selector */}
-            <div className="flex items-center">
-              <select
-                id="language-select"
-                value={language}
-                onChange={(e) => setLanguage(e.target.value)}
-                className={`text-sm rounded-md border px-2 py-1 focus:outline-none ${
-                  theme === "dark"
-                    ? "bg-gray-800 border-gray-700 text-white"
-                    : "bg-white border-gray-300 text-gray-800"
-                }`}
-              >
-                <option value="en">{t("english")}</option>
-                <option value="ar">{t("arabic")}</option>
-                <option value="he">{t("hebrew")}</option>
-              </select>
-            </div>
-
-            {/* Avatar Dropdown */}
-            <div className="relative">
+            <div className="flex items-center gap-4">
+              {/* Dark Mode Toggle */}
               <button
-                className="w-10 h-10 rounded-full bg-[#FF7043] flex items-center justify-center text-white font-semibold focus:outline-none"
-                onClick={() => setIsAvatarDropdownOpen((prev) => !prev)}
+                className={`w-10 h-10 rounded-full border flex items-center justify-center transition-colors duration-200 ${
+                  theme === "dark"
+                    ? "bg-gray-800 border-gray-700 hover:bg-gray-700"
+                    : "bg-[#FF7043]/10 border-[#FF7043] hover:bg-[#FF7043]/20"
+                }`}
+                onClick={toggleTheme}
+                title={
+                  theme === "dark" ? "Switch to light mode" : "Switch to dark mode"
+                }
+                aria-label="Toggle dark mode"
               >
-                {initials}
+                {theme === "dark" ? <Sun color="#FF7043" /> : <Moon color="#FF7043" />}
               </button>
-              {isAvatarDropdownOpen && (
-                <div
-                  className={`absolute right-0 mt-2 w-40 rounded-md shadow-lg border py-2 z-50 ${
+
+              {/* Language Selector */}
+              <div className="flex items-center">
+                <select
+                  id="language-select"
+                  value={language}
+                  onChange={(e) => setLanguage(e.target.value)}
+                  className={`text-sm rounded-md border px-2 py-1 focus:outline-none ${
                     theme === "dark"
-                      ? "bg-[#1E2A38] border-[#141B25]"
-                      : "bg-white border-gray-200"
+                      ? "bg-gray-800 border-gray-700 text-white"
+                      : "bg-white border-gray-300 text-gray-800"
                   }`}
                 >
-                  {email === "admin@enkonix.in" && (
+                  <option value="en">{t("english")}</option>
+                  <option value="ar">{t("arabic")}</option>
+                  <option value="he">{t("hebrew")}</option>
+                </select>
+              </div>
+
+              {/* Avatar Dropdown */}
+              <div className="relative">
+                <button
+                  className="w-10 h-10 rounded-full bg-[#FF7043] flex items-center justify-center text-white font-semibold focus:outline-none"
+                  onClick={() => setIsAvatarDropdownOpen((prev) => !prev)}
+                >
+                  {initials}
+                </button>
+                {isAvatarDropdownOpen && (
+                  <div
+                    className={`absolute right-0 mt-2 w-40 rounded-md shadow-lg border py-2 z-50 ${
+                      theme === "dark" ? "bg-[#1E2A38] border-[#141B25]" : "bg-white border-gray-200"
+                    }`}
+                  >
+                    {email === "admin@enkonix.in" && (
+                      <button
+                        className={`block w-full text-left px-4 py-2 ${
+                          theme === "dark" ? "text-white hover:bg-green-500" : "text-gray-800 hover:bg-green-100"
+                        }`}
+                        onClick={() => {
+                          setIsAvatarDropdownOpen(false);
+                          navigate("/admindashboard");
+                        }}
+                      >
+                        {t("backToAdmin")}
+                      </button>
+                    )}
+
                     <button
                       className={`block w-full text-left px-4 py-2 ${
-                        theme === "dark"
-                          ? "text-white hover:bg-green-500"
-                          : "text-gray-800 hover:bg-green-100"
+                        theme === "dark" ? "text-white hover:bg-green-500" : "text-gray-800 hover:bg-green-100"
                       }`}
                       onClick={() => {
                         setIsAvatarDropdownOpen(false);
-                        navigate("/admindashboard");
+                        window.location.href = "/";
+                        localStorage.removeItem("currentUser");
                       }}
                     >
-                      {t("backToAdmin")}
+                      {t("logout")}
                     </button>
-                  )}
-
-                  <button
-                    className={`block w-full text-left px-4 py-2 ${
-                      theme === "dark"
-                        ? "text-white hover:bg-green-500"
-                        : "text-gray-800 hover:bg-green-100"
-                    }`}
-                    onClick={() => {
-                      setIsAvatarDropdownOpen(false);
-                      window.location.href = "/";
-                      localStorage.removeItem("currentUser");
-                    }}
-                  >
-                    {t("logout")}
-                  </button>
-                </div>
-              )}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
 

@@ -397,7 +397,7 @@ const ServicesPage = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           className={themedClass(
-            "relative flex justify-center items-center h-full text-center px-4 z-10",
+            "relative flex flex-col justify-center items-center h-full text-center px-4 z-10",
             "text-white",
             "text-gray-900",
           )}
@@ -421,6 +421,16 @@ const ServicesPage = () => {
           >
             {t("heroTitle")}
           </motion.h1>
+          <p
+            className={themedClass(
+              "text-lg md:text-xl font-extrabold drop-shadow-[0_0_20px_rgba(255,165,0,0.8)]",
+              "text-orange-400",
+              "text-orange-600",
+            )}
+          >
+            {t("heroSubtitle")}
+          </p>
+          
         </motion.div>
 
         {/* Glowing Circles */}
@@ -561,7 +571,7 @@ const ServicesPage = () => {
                 whileTap={{ scale: 0.95 }}
                 animate={{ scale: [1, 1.05, 1] }}
                 transition={{ repeat: Infinity, duration: 2 }}
-                className="text-center"
+                className="flex items-center justify-center w-full text-center"
               >
                 <Link
                   to={`/${service.link}`}
@@ -649,15 +659,7 @@ const ServicesPage = () => {
           >
             {t("featuredHeading")}
           </h2>
-          <p
-            className={themedClass(
-              "text-md md:text-lg mt-4",
-              "text-gray-300",
-              "text-gray-700",
-            )}
-          >
-            {t("heroSubtitle")}
-          </p>
+          
         </motion.div>
 
         {/* Services */}

@@ -90,7 +90,7 @@ ChartJS.register(
   Title,
   Tooltip,
   Legend,
-  ArcElement,
+  ArcElement
 );
 
 const fadeInUp = {
@@ -214,7 +214,7 @@ const AdminDashboard = () => {
       }
     });
     const sortedDates = Object.keys(counts).sort(
-      (a, b) => new Date(a) - new Date(b),
+      (a, b) => new Date(a) - new Date(b)
     );
     setLoginStats({
       labels: sortedDates,
@@ -234,7 +234,7 @@ const AdminDashboard = () => {
       }
     });
     const sDates = Object.keys(sCounts).sort(
-      (a, b) => new Date(a) - new Date(b),
+      (a, b) => new Date(a) - new Date(b)
     );
     const sData = sDates.map((d) => sCounts[d]);
     setSignupStats({ labels: sDates, data: sData });
@@ -244,8 +244,8 @@ const AdminDashboard = () => {
     const growth = totalPrevWeek
       ? ((totalRecentWeek - totalPrevWeek) / totalPrevWeek) * 100
       : totalRecentWeek > 0
-        ? 100
-        : 0;
+      ? 100
+      : 0;
     setSignupGrowth({
       percent: Math.abs(growth.toFixed(1)),
       isGrowth: growth >= 0,
@@ -353,8 +353,8 @@ const AdminDashboard = () => {
       title: { display: false },
       legend: {
         ...chartOptionsBase.plugins.legend,
-        position: "right",
-        align: "middle",
+        position: "bottom",
+        align: "center",
         labels: {
           ...chartOptionsBase.plugins.legend.labels,
           boxWidth: 15,
@@ -379,12 +379,12 @@ const AdminDashboard = () => {
       ? themedClass(
           "border-b-4 font-bold transition-all",
           "border-orange-500 text-orange-200",
-          "border-orange-600 text-orange-800",
+          "border-orange-600 text-orange-800"
         )
       : themedClass(
           "border-b-2 hover:border-orange-400 transition-all",
           "border-transparent text-gray-400 hover:text-orange-200",
-          "border-transparent text-gray-500 hover:text-orange-600",
+          "border-transparent text-gray-500 hover:text-orange-600"
         );
 
   // --- Render Functions for Tab Content ---
@@ -395,7 +395,7 @@ const AdminDashboard = () => {
         className={themedClass(
           "grid grid-cols-1 md:grid-cols-3 gap-6 p-6 rounded-xl shadow-lg",
           "bg-[#33211A]",
-          "bg-orange-100",
+          "bg-orange-100"
         )}
         style={{ ...fadeInUp, animationDelay: "0.1s" }}
       >
@@ -408,10 +408,10 @@ const AdminDashboard = () => {
               : "bg-red-800 text-white",
             signupGrowth.isGrowth
               ? "bg-orange-500 text-white"
-              : "bg-red-500 text-white",
+              : "bg-red-500 text-white"
           )}
         >
-          <p className="text-sm font-light opacity-90">
+          <p className="text-xl font-semibold opacity-90">
             {t("signupGrowth", language)}
           </p>
           <p className="text-3xl font-extrabold mb-0.5">
@@ -426,11 +426,15 @@ const AdminDashboard = () => {
         <div
           className={themedClass(
             "p-4 rounded-lg text-center shadow-md card-hover",
-            "bg-orange-800 text-white",
-            "bg-orange-600 text-white",
+            signupGrowth.isGrowth
+              ? "bg-orange-600 text-white"
+              : "bg-red-800 text-white",
+            signupGrowth.isGrowth
+              ? "bg-orange-500 text-white"
+              : "bg-red-500 text-white"
           )}
         >
-          <p className="text-sm font-light opacity-90">
+          <p className="text-xl font-semibold opacity-90">
             {t("activeUsers", language)}
           </p>
           <p className="text-3xl font-extrabold">{userStatus.activeUsers}</p>
@@ -443,11 +447,15 @@ const AdminDashboard = () => {
         <div
           className={themedClass(
             "p-4 rounded-lg text-center shadow-md card-hover",
-            "bg-orange-900 text-orange-100",
-            "bg-orange-200 text-orange-900",
+            signupGrowth.isGrowth
+              ? "bg-orange-600 text-white"
+              : "bg-red-800 text-white",
+            signupGrowth.isGrowth
+              ? "bg-orange-500 text-white"
+              : "bg-red-500 text-white"
           )}
         >
-          <p className="text-sm font-light opacity-90">
+          <p className="text-xl font-semibold opacity-90">
             {t("inactiveUsers", language)}
           </p>
           <p className="text-3xl font-extrabold">{userStatus.inactiveUsers}</p>
@@ -462,7 +470,7 @@ const AdminDashboard = () => {
           className={themedClass(
             "chart-container shadow-xl lg:col-span-2",
             "bg-[#1E2A38]",
-            "bg-orange-50",
+            "bg-orange-50"
           )}
           style={{ ...fadeInUp, animationDelay: "0.2s" }}
         >
@@ -470,7 +478,7 @@ const AdminDashboard = () => {
             className={themedClass(
               "mb-4 font-bold text-lg",
               "text-orange-200",
-              "text-orange-700",
+              "text-orange-700"
             )}
           >
             {t("loginGraph", language)}
@@ -496,9 +504,9 @@ const AdminDashboard = () => {
         {/* User Status Doughnut (Small Card) */}
         <section
           className={themedClass(
-            "chart-container shadow-xl flex flex-col justify-center items-center",
+            "chart-container shadow-xl flex flex-col   items-center",
             "bg-[#33211A]",
-            "bg-orange-100",
+            "bg-orange-100"
           )}
           style={{ ...fadeInUp, animationDelay: "0.3s" }}
         >
@@ -506,13 +514,13 @@ const AdminDashboard = () => {
             className={themedClass(
               "mb-6 font-bold text-lg w-full text-center",
               "text-orange-200",
-              "text-orange-700",
+              "text-orange-700"
             )}
           >
             {t("userStatus", language)}
           </h3>
           <div className="w-full max-w-xs md:max-w-xs">
-            <Doughnut data={userStatusData} options={doughnutOptions} />
+            <Doughnut data={userStatusData} options={doughnutOptions} className="flex flex-row"   />
           </div>
         </section>
 
@@ -521,7 +529,7 @@ const AdminDashboard = () => {
           className={themedClass(
             "chart-container shadow-xl lg:col-span-2",
             "bg-[#33211A]",
-            "bg-orange-100",
+            "bg-orange-100"
           )}
           style={{ ...fadeInUp, animationDelay: "0.4s" }}
         >
@@ -529,7 +537,7 @@ const AdminDashboard = () => {
             className={themedClass(
               "mb-4 font-bold text-lg",
               "text-orange-200",
-              "text-orange-700",
+              "text-orange-700"
             )}
           >
             {t("signupTrends", language)}
@@ -552,7 +560,7 @@ const AdminDashboard = () => {
           className={themedClass(
             "chart-container shadow-xl",
             "bg-[#1E2A38]",
-            "bg-orange-50",
+            "bg-orange-50"
           )}
           style={{ ...fadeInUp, animationDelay: "0.5s" }}
         >
@@ -560,7 +568,7 @@ const AdminDashboard = () => {
             className={themedClass(
               "mb-4 font-bold text-lg",
               "text-orange-200",
-              "text-orange-700",
+              "text-orange-700"
             )}
           >
             {t("recentLogin", language)}
@@ -590,7 +598,7 @@ const AdminDashboard = () => {
       className={themedClass(
         "p-4 md:p-8 rounded-xl shadow-xl mt-4",
         "bg-[#33211A]",
-        "bg-orange-100",
+        "bg-orange-100"
       )}
       style={{ ...fadeInUp, animationDelay: "0.1s" }}
     >
@@ -598,7 +606,7 @@ const AdminDashboard = () => {
         className={themedClass(
           "mb-6 font-extrabold text-3xl border-b pb-3",
           "text-orange-200 border-orange-700",
-          "text-orange-700 border-orange-300",
+          "text-orange-700 border-orange-300"
         )}
       >
         {t("userTable", language)}
@@ -608,7 +616,7 @@ const AdminDashboard = () => {
           className={themedClass(
             "w-full border-collapse min-w-[700px] text-base",
             "text-orange-100",
-            "text-orange-900",
+            "text-orange-900"
           )}
         >
           <thead>
@@ -616,7 +624,7 @@ const AdminDashboard = () => {
               className={themedClass(
                 "sticky top-0 z-10", // Sticky header for better scrolling
                 "bg-orange-800 text-white",
-                "bg-orange-600 text-white",
+                "bg-orange-600 text-white"
               )}
             >
               <th className="p-3 text-left">{t("name", language)}</th>
@@ -637,8 +645,8 @@ const AdminDashboard = () => {
                         ? "#33211A"
                         : "#fff4e6"
                       : theme === "dark"
-                        ? "#1E2A38"
-                        : "#FFE6CC",
+                      ? "#1E2A38"
+                      : "#FFE6CC",
                 }}
               >
                 <td className="p-3">{u.name}</td>
@@ -668,16 +676,16 @@ const AdminDashboard = () => {
       <div
         dir={dir}
         className={themedClass(
-          "min-h-screen py-10 px-2 caret-transparent",
+          "min-h-screen   caret-transparent",
           "bg-gray-900 text-orange-100",
-          "bg-orange-50 text-orange-900",
+          "bg-orange-50 text-orange-900"
         )}
       >
         <div
           className={themedClass(
             "max-w-7xl mx-auto p-4 md:p-8 rounded-xl shadow-2xl",
             "bg-[#1a1a1a]",
-            "bg-white",
+            "bg-white"
           )}
         >
           {/* Tab Navigation */}
@@ -685,7 +693,7 @@ const AdminDashboard = () => {
             className={themedClass(
               "flex space-x-6 border-b pb-2 mb-8",
               "border-gray-700",
-              "border-gray-200",
+              "border-gray-200"
             )}
           >
             <button

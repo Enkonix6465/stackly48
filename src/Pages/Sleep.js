@@ -9,6 +9,7 @@ import wellnessImg from "../assets/SO.jpg";
 const translations = {
   en: {
     heroTitle: "Sleep Optimization for Health & Wellness",
+    heroDesc:" Improve your sleep quality and overall well-being with our expert sleep optimization services.",
     sectionTitle: "Personalized Sleep Solutions",
     sectionDesc:
       "Our experts design personalized sleep routines, relaxation techniques, and recovery strategies to help you achieve restorative rest.",
@@ -81,6 +82,7 @@ const translations = {
   },
   ar: {
     heroTitle: "تحسين النوم للصحة والعافية",
+    heroDesc:"حسّن جودة نومك ورفاهيتك العامة من خلال خدمات تحسين النوم المتخصصة لدينا.",
     sectionTitle: "حلول نوم شخصية",
     sectionDesc:
       "يصمم خبراؤنا روتينات نوم مخصصة، تقنيات استرخاء، واستراتيجيات تعافي لمساعدتك على تحقيق راحة عميقة.",
@@ -148,6 +150,7 @@ const translations = {
   },
   he: {
     heroTitle: "אופטימיזציית שינה לבריאות ורווחה",
+    heroDesc:"שפר את איכות השינה שלך ואת הרווחה הכללית שלך עם שירותי אופטימיזציית השינה המומחים שלנו.",
     sectionTitle: "פתרונות שינה מותאמים אישית",
     sectionDesc:
       "המומחים שלנו מעצבים שגרות שינה אישיות, טכניקות הרפיה ואסטרטגיות התאוששות כדי לעזור לך להגיע למנוחה משקמת.",
@@ -384,7 +387,11 @@ const SleepOptimization = () => {
         <div className="relative z-10 flex flex-col items-center justify-center w-full h-full px-4 text-center">
           <motion.h1
             // Increased size for impact
-            className="text-5xl font-extrabold leading-snug text-white md:text-7xl drop-shadow-lg"
+            className={themedClass(
+              "text-5xl md:text-7xl font-extrabold drop-shadow-[0_0_20px_rgba(255,165,0,0.8)]",
+              "text-orange-400",
+              "text-orange-600",
+            )}
             initial={{ opacity: 0, y: -40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
@@ -631,7 +638,7 @@ const SleepOptimization = () => {
         </div>
 
         {/* Pricing Plans */}
-        <div className="grid grid-cols-1 gap-12 mx-auto mb-20 md:grid-cols-3 max-w-7xl">
+        <div className="grid grid-cols-1 gap-12 mx-auto mb-20 min-[769px]:grid-cols-3 max-w-7xl">
           {plans.map((plan, idx) => (
             <motion.div
               key={idx}

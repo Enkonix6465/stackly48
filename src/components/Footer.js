@@ -137,7 +137,7 @@ const Footer = () => {
     <footer className={`${bg} ${textMain} caret-transparent`} dir={dir}>
       {/* Main Footer Content */}
       <div className="px-4 py-12 mx-auto sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 min-[769px]:grid-cols-4 gap-16 justify-between">
+  <div className="grid grid-cols-1 md:grid-cols-[2fr_1fr_1fr_1fr] gap-8 md:gap-12 lg:gap-16 items-start">
           {/* Column 1 - Company Information */}
           <div className="space-y-4">
             <div className="flex items-center">
@@ -259,7 +259,7 @@ const Footer = () => {
                 },
               ];
               return (
-                <div className={`flex   ${socialIconSpacing}`}>
+                <div className={`flex pt-2 ${socialIconSpacing}`}>
                   {icons.map((icon) => (
                     <a
                       key={icon.name}
@@ -277,7 +277,7 @@ const Footer = () => {
           </div>
 
           {/* Column 2 - Quick Links */}
-          <div className="space-y-4">
+          <div className="min-w-0 space-y-4">
             <h3 className="text-[#FF7043] font-semibold text-lg">
               {t("quickLinks", language)}
             </h3>
@@ -326,7 +326,7 @@ const Footer = () => {
           </div>
 
           {/* Column 3 - Our Services */}
-          <div className="space-y-4">
+          <div className="min-w-0 space-y-4">
             <h3 className="text-[#FF7043] font-semibold text-lg">
               {t("ourServices", language)}
             </h3>
@@ -383,7 +383,7 @@ const Footer = () => {
           </div>
 
           {/* Column 4 - Get In Touch */}
-          <div className="space-y-4">
+          <div className="min-w-0 space-y-4">
             <h3 className="text-[#FF7043] font-semibold text-lg">
               {t("getInTouch", language)}
             </h3>
@@ -477,7 +477,7 @@ const Footer = () => {
             </div>
             <Link
               to="/contact"
-              className="w-full bg-[#FF7043] hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 mt-4 whitespace-nowrap text-center block"
+              className="w-full bg-[#FF7043] hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-200 mt-4   text-center block"
             >
               {t("startJourney", language)}
             </Link>

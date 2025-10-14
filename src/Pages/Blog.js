@@ -265,7 +265,7 @@ const Blog = () => {
 
   const toggleComplete = (id) => {
     setCompleted((prev) =>
-      prev.includes(id) ? prev.filter((c) => c !== id) : [...prev, id],
+      prev.includes(id) ? prev.filter((c) => c !== id) : [...prev, id]
     );
   };
 
@@ -276,7 +276,7 @@ const Blog = () => {
       className={themedClass(
         "min-h-screen transition-colors caret-transparent duration-500",
         "bg-gray-900 text-gray-100",
-        "bg-white text-gray-900",
+        "bg-white text-gray-900"
       )}
     >
       {/* 1. Hero Section */}
@@ -285,7 +285,7 @@ const Blog = () => {
         className={themedClass(
           "relative w-full h-screen flex items-center justify-center overflow-hidden",
           "bg-black text-white", // dark
-          "bg-white text-gray-900", // light
+          "bg-white text-gray-900" // light
         )}
       >
         <video
@@ -294,29 +294,29 @@ const Blog = () => {
           loop
           muted
           playsInline
-          className="absolute top-0 left-0 object-cover w-full h-full opacity-60"
+          className="absolute top-0 left-0 object-cover w-full h-full opacity-20"
         />
         <div
           className={themedClass(
             "relative z-10 flex flex-col items-center justify-center h-full text-center px-6",
             "text-white", // dark
-            "text-gray-900", // light
+            "text-gray-900" // light
           )}
         >
           <h1
             className={themedClass(
               "text-5xl md:text-6xl font-extrabold mb-4 tracking-wide animate-bounce",
               "text-orange-400", // dark
-              "text-orange-600", // light
+              "text-orange-600" // light
             )}
           >
             {t("heroTitle")}
           </h1>
           <p
             className={themedClass(
-              "text-lg md:text-2xl mb-6 italic opacity-90 animate-pulse",
-              "text-orange-200", // dark
-              "text-orange-700", // light
+              "text-lg md:text-3xl mb-6    ",
+              "text-orange-400", // dark
+              "text-orange-600" // light
             )}
           >
             {t("heroSubtitle")}
@@ -330,7 +330,7 @@ const Blog = () => {
         className={themedClass(
           "py-20 px-4 md:px-20 transition-colors duration-500",
           "bg-gray-900 text-gray-100",
-          " bg-gray-100 text-gray-900",
+          " bg-gray-100 text-gray-900"
         )}
       >
         <div className="mx-auto mb-12 text-center max-w-7xl">
@@ -341,7 +341,7 @@ const Blog = () => {
             className={themedClass(
               "text-4xl md:text-5xl font-extrabold tracking-tight mb-4",
               "text-white",
-              "text-gray-900",
+              "text-gray-900"
             )}
           >
             {t("latestArticles")}
@@ -353,7 +353,7 @@ const Blog = () => {
             className={themedClass(
               "text-lg md:text-xl max-w-2xl mx-auto",
               "text-gray-300",
-              "text-gray-600",
+              "text-gray-600"
             )}
           >
             {t("latestArticlesDesc")}
@@ -370,7 +370,7 @@ const Blog = () => {
               className={themedClass(
                 "rounded-2xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2",
                 "bg-gray-900 text-gray-100",
-                "bg-white text-gray-900",
+                "bg-white text-gray-900"
               )}
             >
               <img
@@ -383,7 +383,7 @@ const Blog = () => {
                   className={themedClass(
                     "text-xl font-bold mb-3",
                     "text-white",
-                    "text-gray-900",
+                    "text-gray-900"
                   )}
                 >
                   {blog.title}
@@ -392,7 +392,7 @@ const Blog = () => {
                   className={themedClass(
                     "mb-4",
                     "text-gray-300",
-                    "text-gray-600",
+                    "text-gray-600"
                   )}
                 >
                   {blog.desc}
@@ -408,7 +408,7 @@ const Blog = () => {
         className={themedClass(
           "py-12 px-4 md:px-20 transition-colors duration-500",
           "bg-gray-800 text-gray-100",
-          "bg-gray-50 text-gray-900",
+          "bg-gray-50 text-gray-900"
         )}
       >
         <div className="mx-auto mb-12 text-center max-w-7xl">
@@ -419,7 +419,7 @@ const Blog = () => {
             className={themedClass(
               "text-4xl md:text-5xl font-extrabold tracking-tight mb-4",
               "text-white",
-              "text-gray-900",
+              "text-gray-900"
             )}
           >
             {t("journeyTitle")}
@@ -431,7 +431,7 @@ const Blog = () => {
             className={themedClass(
               "text-lg md:text-xl max-w-2xl mx-auto",
               "text-gray-300",
-              "text-gray-600",
+              "text-gray-600"
             )}
           >
             {t("journeyDesc")}
@@ -457,7 +457,7 @@ const Blog = () => {
                     className={themedClass(
                       "text-xl font-bold mb-2 group-hover:text-[#FF7043] transition-colors duration-300",
                       "text-white",
-                      "text-gray-900",
+                      "text-gray-900"
                     )}
                   >
                     {step.title}
@@ -466,7 +466,7 @@ const Blog = () => {
                     className={themedClass(
                       "",
                       "text-gray-300",
-                      "text-gray-600",
+                      "text-gray-600"
                     )}
                   >
                     {step.desc}
@@ -483,7 +483,7 @@ const Blog = () => {
         className={themedClass(
           "w-full py-5 px-4 md:px-20 transition-colors duration-500",
           " bg-gray-900 text-green-200",
-          " bg-gray-100 text-gray-900",
+          " bg-gray-100 text-gray-900"
         )}
         initial={{ opacity: 0, y: 50 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -494,7 +494,7 @@ const Blog = () => {
           className={themedClass(
             "text-3xl md:text-4xl font-bold text-center mb-12",
             "text-green-200",
-            "text-gray-900",
+            "text-gray-900"
           )}
         >
           {t("featuredReads")}
@@ -508,7 +508,7 @@ const Blog = () => {
               className={themedClass(
                 "relative rounded-xl overflow-hidden shadow-lg transition-colors duration-500",
                 "bg-[#1E2A38] text-green-200",
-                "bg-white text-gray-900",
+                "bg-white text-gray-900"
               )}
             >
               <img
@@ -518,36 +518,38 @@ const Blog = () => {
               />
               <div
                 className={themedClass(
-                  "p-6",
+                  "p-6 flex flex-col  justify-between  h-[200px] ",
                   "bg-[#22304a] text-green-100",
-                  "bg-white text-gray-900",
+                  "bg-white text-gray-900"
                 )}
               >
-                <h3
-                  className={themedClass(
-                    "text-xl font-bold mb-2",
-                    "text-green-200",
-                    "text-gray-900",
-                  )}
-                >
-                  {i === 0 ? t("featured1Title") : t("featured2Title")}
-                </h3>
-                <p
-                  className={themedClass(
-                    "mb-4",
-                    "text-green-100",
-                    "text-gray-700",
-                  )}
-                >
-                  {i === 0 ? t("featured1Desc") : t("featured2Desc")}
-                </p>
+                <div>
+                  <h3
+                    className={themedClass(
+                      "text-xl font-bold mb-2",
+                      "text-green-200",
+                      "text-gray-900"
+                    )}
+                  >
+                    {i === 0 ? t("featured1Title") : t("featured2Title")}
+                  </h3>
+                  <p
+                    className={themedClass(
+                      "mb-4",
+                      "text-green-100",
+                      "text-gray-700"
+                    )}
+                  >
+                    {i === 0 ? t("featured1Desc") : t("featured2Desc")}
+                  </p>
+                </div>
                 <motion.div
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
                   <Link
                     to="/article"
-                    className="px-6 py-2 rounded-full font-semibold transition-all inline-block text-center bg-[#FF7043] text-white hover:bg-[#e85a2a]"
+                    className="px-6 py-2 rounded-full font-semibold transition-all  inline-block text-center bg-[#FF7043] text-white hover:bg-[#e85a2a] justify-end"
                   >
                     {t("readMore")}
                   </Link>
@@ -563,7 +565,7 @@ const Blog = () => {
         className={themedClass(
           "py-20 px-4 md:px-20 transition-colors duration-500",
           "bg-gray-800 text-gray-100",
-          "bg-gray-50 text-gray-900",
+          "bg-gray-50 text-gray-900"
         )}
       >
         <div className="mx-auto mb-12 text-center max-w-7xl">
@@ -574,7 +576,7 @@ const Blog = () => {
             className={themedClass(
               "text-4xl md:text-5xl font-extrabold tracking-tight mb-4",
               "text-white",
-              "text-gray-900",
+              "text-gray-900"
             )}
           >
             {t("challengesTitle")}
@@ -586,7 +588,7 @@ const Blog = () => {
             className={themedClass(
               "text-lg md:text-xl max-w-2xl mx-auto",
               "text-gray-300",
-              "text-gray-600",
+              "text-gray-600"
             )}
           >
             {t("challengesDesc")}
@@ -607,7 +609,7 @@ const Blog = () => {
               className={themedClass(
                 `p-6 rounded-2xl cursor-pointer transition-all duration-300 `,
                 "bg-gray-900 text-white",
-                "bg-white text-gray-900",
+                "bg-white text-gray-900"
               )}
               onClick={() => toggleComplete(challenge.id)}
             >

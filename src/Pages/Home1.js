@@ -398,7 +398,7 @@ const Home1 = () => {
               <motion.img
                 src={card.img}
                 alt={card.title}
-                className="object-cover w-full h-64 mb-6 shadow-md rounded-2xl"
+                className="w-full mb-6 shadow-md object-cotain rounded-2xl h-80"
                 initial={{ scale: 1 }}
                 whileHover={{ scale: 1.1 }}
                 transition={{ duration: 0.5 }}
@@ -706,20 +706,7 @@ const Home1 = () => {
           </a>
         </div>
 
-        {/* Decorative Wave Animation */}
-        <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none">
-          <svg
-            className="relative block w-full h-20 text-orange-200 dark:text-orange-700 animate-pulse"
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 1200 120"
-            preserveAspectRatio="none"
-          >
-            <path
-              d="M0,0V46.29c47.76,22,103.69,29.13,158,17,70.5-15.89,136.92-57,207.5-72.94,81.53-18.41,165,6.43,242.54,36.87,63.61,25,127.64,55.29,195,57.26,54.62,1.58,104.35-18.48,158-35.57,47.47-15.24,95.54-23.87,146-15.59,46.26,7.56,90.35,26.55,135,39.34V0Z"
-              fill="currentColor"
-            ></path>
-          </svg>
-        </div>
+        
       </section>
 
       {/* Blog Section */}
